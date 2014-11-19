@@ -14,6 +14,6 @@ make_console_app('ris-test', { './test/*.cpp' })
 run_target_after_build()
 make_cpp11()
 
-make_console_app('ris', { 'ris.cpp' })
+make_console_app('ris', { './ris_app/*.cpp' })
 make_cpp11()
 
