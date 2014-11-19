@@ -1,6 +1,8 @@
 ris
 ===
 
+[![Build Status](https://travis-ci.org/d-led/ris.svg?branch=master)](https://travis-ci.org/d-led/ris)
+
 ris strives to be a simplistic cross-platform resource compiler for c++11 projects
 
 license

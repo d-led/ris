@@ -33,6 +33,7 @@ namespace ris {
 			s
 
 				<< "#include \"resource.h\"\n"
+				<< "#include <unordered_map>\n"
 				<< "std::string Resource::Get(std::string const& key) {\n"
 				<< "	static std::unordered_map<std::string,ResourceGetter> getters\n"
 			;

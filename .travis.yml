@@ -1,4 +1,4 @@
 language: cpp
 
 script:
-  - make -C BuildClang config=release
+  - make -C Build config=release
