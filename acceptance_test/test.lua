@@ -1,3 +1,3 @@
 local e = ... or 'macosx/bin/Debug/ris'
 
-os.execute(e)
+os.execute(e .. " bla")

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../ris_lib/ris_generator.h"
 
 void print_usage() {
 	std::cout
@@ -7,10 +8,19 @@ void print_usage() {
 	;	
 }
 
+void process(char const* path) {
+	std::cout << "processing " << path << std::endl;
+	auto g=ris::generator();
+	g.generate_header(std::cout);
+	std::cout<<std::endl;
+	g.generate_source(std::cout);
+}
+
 int main(int argc, char ** argv) {
 	switch(argc) {
 		case 2:
-			std::cout << "processing " << argv[1] << std::endl;
+			process(argv[1]);
+			break;
 		default:
 			print_usage();
 	}
