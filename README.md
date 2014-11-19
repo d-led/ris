@@ -1,7 +1,7 @@
 ris
 ===
 
-ris strives to be a simplistic cross-platform resource compiler for c++ projects
+ris strives to be a simplistic cross-platform resource compiler for c++11 projects
 
 license
 =======

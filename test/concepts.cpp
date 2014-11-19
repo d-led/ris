@@ -1,7 +1,7 @@
 #include <catch.hpp>
 
 #include <string>
-#include <map>
+#include <unordered_map>
 
 TEST_CASE("literals encoding strategy") {
  char const literal[] = { 0, 1, 2 };
@@ -10,9 +10,20 @@ TEST_CASE("literals encoding strategy") {
 }
 
 namespace {
+
 	class Resource {
 	public:
+		typedef std::string(*ResourceGetter)();
+	public:
 		static std::string Test();
+		static std::string PlainText();
+	public: // key/value api
+		static std::string Get(std::string const& key);
+	public:
+		static std::string OnNoKey() {
+			// can be throwing or not
+			return "";
+		}
 	};
 
 	std::string Resource::Test() {
@@ -20,6 +31,23 @@ namespace {
 		return std::string(literal, sizeof(literal)/sizeof(char));
 	}
 
+	std::string Resource::PlainText() {
+		static char const literal[] = "some plain text";
+		return std::string(literal);
+	}
+
+	std::string Resource::Get(std::string const& key) {
+		static std::unordered_map<std::string,ResourceGetter> getters = {
+			{ "Test", Resource::Test },
+			{ "PlainText", Resource::PlainText }
+		};
+
+		auto getter = getters.find(key);
+		if (getter == getters.end())
+			return OnNoKey();
+
+		return getter->second();
+	}
 }
 
 TEST_CASE("api") {
@@ -29,4 +57,11 @@ TEST_CASE("api") {
 	CHECK( reference == res );
 	std::string another(literal, 3);
 	CHECK( another != res );
+
+	CHECK( Resource::PlainText() == "some plain text" );
+
+	SECTION("key/value api") {
+		CHECK( Resource::Get("PlainText") == "some plain text" );
+		CHECK( Resource::Get("Whatever") == "" );
+	}
 }
