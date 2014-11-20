@@ -11,7 +11,7 @@ TEST_CASE("literals encoding strategy") {
 
 namespace {
 
-	class Resource final {
+	class Resource /*final*/ {
 	public:
 		typedef std::string(*ResourceGetter)();
 	public:
