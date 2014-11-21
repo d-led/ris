@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ris-test", "ris-test.vcxproj", "{0786C933-E935-AC42-8C81-876FD401AEC1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ris", "ris.vcxproj", "{82CD87FF-DCDF-B341-BC72-1646CDA5936C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0786C933-E935-AC42-8C81-876FD401AEC1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0786C933-E935-AC42-8C81-876FD401AEC1}.Debug|Win32.Build.0 = Debug|Win32
+		{0786C933-E935-AC42-8C81-876FD401AEC1}.Release|Win32.ActiveCfg = Release|Win32
+		{0786C933-E935-AC42-8C81-876FD401AEC1}.Release|Win32.Build.0 = Release|Win32
+		{82CD87FF-DCDF-B341-BC72-1646CDA5936C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82CD87FF-DCDF-B341-BC72-1646CDA5936C}.Debug|Win32.Build.0 = Debug|Win32
+		{82CD87FF-DCDF-B341-BC72-1646CDA5936C}.Release|Win32.ActiveCfg = Release|Win32
+		{82CD87FF-DCDF-B341-BC72-1646CDA5936C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
