@@ -4,20 +4,12 @@
 		{
 			"name" : "string_test",
 			"source_type" : "string",
-			"source" : "plain text",
-			"format" : "text"
-		},
-		{
-			"name" : "binary_string_test",
-			"source_type" : "string",
-			"source" : "not plain text",
-			"format" : "binary"
+			"source" : "plain text"
 		},
 		{
 			"name" : "binary_file_test",
 			"source_type" : "file",
-			"source" : "test.bin",
-			"format" : "binary"
+			"source" : "test.bin"
 		}
 
 	]

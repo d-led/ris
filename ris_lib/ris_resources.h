@@ -9,7 +9,6 @@ namespace ris {
 		std::string name;
         std::string source_type;
         std::string source;
-        std::string format;
 
         template<class Archive>
         void json(Archive & ar)
@@ -17,7 +16,6 @@ namespace ris {
             ar & picojson::convert::member("name", name);
             ar & picojson::convert::member("source_type", source_type);
             ar & picojson::convert::member("source", source);
-            ar & picojson::convert::member("format", format);
         }
 	};
 

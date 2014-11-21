@@ -48,9 +48,9 @@ namespace ris {
 				<< "    static std::string Get(std::string const& key);\n"
 				<< "public:\n"
 				<< "    static std::string OnNoKey() {\n"
-				<< "        // can be throwing or not\n"
-				<< "        return "";\n"
-				<< "	}\n"
+				<< "        // could be configured to throw\n"
+				<< "        return \"\";\n"
+				<< "    }\n"
 				<< "};\n"
 			;
 
@@ -74,13 +74,12 @@ namespace ris {
 			for (auto& resource: resources.resources) {
 				s
 					<< "std::string Resource::" << resource.name << "()\n"
-					<< "    static char const literal[] = { "
+					<< "    static char const literal[] = "
 				;
 
 				stream_resource(s,resource);
 
 				s
-					<< "};\n"
 					<< "    return std::string(literal, sizeof(literal)/sizeof(char));\n"
 					<< "}\n"
 				;
@@ -113,7 +112,27 @@ namespace ris {
 	private:
 		template <typename TStream>
 		void stream_resource(TStream& s,resource const& res) {
+			static const unsigned MAX_IN_ONE_LINE = 100;
 			std::string data = get_resource_data(res);
+			s << " {";
+			int count = 0;
+
+			for (char c: data) {
+				if (count > MAX_IN_ONE_LINE) {
+					count = 0;
+					s << "\n";
+				}
+
+				if (count==0) {
+					s << "\n        ";
+				}
+
+				s << static_cast<unsigned short>(c) << ", ";
+
+				count++;
+			}
+
+			s << "\n    };\n";
 		}
 
 		std::string get_resource_data(resource const& res) {
@@ -122,13 +141,17 @@ namespace ris {
 			else if (res.source_type == "file")
 				return read_file_contents_binary(res.source);
 
-			return "";
+			throw std::runtime_error(std::string("unknown source type: ")+res.source_type);
 		}
 
 		std::string read_file_contents_binary(std::string const& filename) {
-			std::ifstream file(filename, std::ios::binary);
+			std::string full_filename = (boost::filesystem::path(source.base_path())
+			/ filename).generic_string();
+
+			std::ifstream file(full_filename, std::ios::binary);
 			if (!file)
-				throw std::runtime_error(std::string("cannot open "+filename));
+				throw std::runtime_error(std::string("cannot open "+full_filename));
+
 			return std::string(std::istreambuf_iterator<char>(file),
                                std::istreambuf_iterator<char>());
 		}
