@@ -5,8 +5,8 @@
 
 namespace ris {
 
-	struct resource {
-		std::string name;
+    struct resource {
+        std::string name;
         std::string source_type;
         std::string source;
 
@@ -17,13 +17,13 @@ namespace ris {
             ar & picojson::convert::member("source_type", source_type);
             ar & picojson::convert::member("source", source);
         }
-	};
+    };
 
-	struct resource_collection {
+    struct resource_collection {
         std::string namespace_;
         std::string header;
         std::string source;
-		std::vector<resource> resources;
+        std::vector<resource> resources;
 
         template<class Archive>
         void json(Archive & ar)
@@ -33,5 +33,5 @@ namespace ris {
             ar & picojson::convert::member("header", header);
             ar & picojson::convert::member("source", source);
         }
-	};
+    };
 }
