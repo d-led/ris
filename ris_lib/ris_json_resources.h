@@ -17,6 +17,10 @@ namespace ris {
 			read_from_file(json_path);
 		}
 
+		resource_collection const& resources() const {
+			return collection;
+		}
+
 	private:
 		void read_from_file(std::string const& json_path) {
 			std::ifstream json_file(json_path);
@@ -31,10 +35,6 @@ namespace ris {
 			picojson::convert::from_value(v,collection);
 
 			std::cout<<"read "<<collection.resources.size()<<" resources"<<std::endl;
-		}
-
-		resource_collection const& resources() const {
-			return collection;
 		}
 	};
 }

@@ -39,7 +39,7 @@ namespace {
 	std::string Resource::Get(std::string const& key) {
 		static std::unordered_map<std::string,ResourceGetter> getters = {
 			{ "Test", Resource::Test },
-			{ "PlainText", Resource::PlainText }
+			{ "PlainText", Resource::PlainText },
 		};
 
 		auto getter = getters.find(key);
