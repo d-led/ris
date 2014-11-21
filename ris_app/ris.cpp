@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../ris_lib/ris_generator.h"
+#include "../ris_lib/ris_json_resources.h"
 
 void print_usage() {
 	std::cout
@@ -10,6 +11,7 @@ void print_usage() {
 
 void process(char const* path) {
 	std::cout << "processing " << path << std::endl;
+	auto r=ris::json_resources(path);
 	auto g=ris::generator();
 	g.generate_header(std::cout);
 	std::cout<<std::endl;
@@ -19,7 +21,12 @@ void process(char const* path) {
 int main(int argc, char ** argv) {
 	switch(argc) {
 		case 2:
-			process(argv[1]);
+			try {
+				process(argv[1]);
+			} catch (std::exception& e) {
+				std::cerr<<"Error: "<< e.what() <<std::endl;
+				return 1;
+			}
 			break;
 		default:
 			print_usage();
