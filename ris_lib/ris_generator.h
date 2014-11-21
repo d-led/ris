@@ -120,7 +120,6 @@ namespace ris {
 			for (char c: data) {
 				if (count > MAX_IN_ONE_LINE) {
 					count = 0;
-					s << "\n";
 				}
 
 				if (count==0) {

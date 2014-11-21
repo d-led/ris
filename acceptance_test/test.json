@@ -1,5 +1,7 @@
 {
 	"namespace" : "test",
+	"header" : "acceptance_test/resource.h",
+	"source" : "acceptance_test/resource.cpp",
 	"resources" : [
 		{
 			"name" : "string_test",
@@ -10,6 +12,11 @@
 			"name" : "binary_file_test",
 			"source_type" : "file",
 			"source" : "test.bin"
+		},
+		{
+			"name" : "itself",
+			"source_type" : "file",
+			"source" : "test.json"
 		}
 
 	]

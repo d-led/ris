@@ -29,6 +29,14 @@ namespace ris {
 			return root_path;
 		}
 
+		std::string header() const {
+			return collection.header;
+		}
+
+		std::string source() const {
+			return collection.source;
+		}
+
 	private:
 		void read_from_file(std::string const& json_path) {
 			std::ifstream json_file(json_path);

@@ -21,6 +21,8 @@ namespace ris {
 
 	struct resource_collection {
         std::string namespace_;
+        std::string header;
+        std::string source;
 		std::vector<resource> resources;
 
         template<class Archive>
@@ -28,6 +30,8 @@ namespace ris {
         {
             ar & picojson::convert::member("namespace", namespace_);
             ar & picojson::convert::member("resources", resources);
+            ar & picojson::convert::member("header", header);
+            ar & picojson::convert::member("source", source);
         }
 	};
 }

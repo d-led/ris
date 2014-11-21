@@ -17,18 +17,16 @@ void process(char const* path) {
 	auto r=ris::json_resources(path);
 	auto g=ris::get_generator(r);
 
-	const std::string header_filename("resource.h");
-	std::ofstream header(header_filename);
+	std::ofstream header(r.header());
 	if (!header)
-		throw std::runtime_error(std::string("cannot write ")+header_filename);
+		throw std::runtime_error(std::string("cannot write ")+r.header());
 
 	g.generate_header(header);
 	header.close();
 
-	const std::string source_filename("resource.cpp");
-	std::ofstream source(source_filename);
+	std::ofstream source(r.source());
 	if (!source)
-		throw std::runtime_error(std::string("cannot write ")+source_filename);
+		throw std::runtime_error(std::string("cannot write ")+r.source());
 
 	g.generate_source(source);
 	source.close();
