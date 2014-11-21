@@ -1,15 +1,22 @@
 {
+	"namespace" : "test",
 	"resources" : [
 		{
 			"name" : "string_test",
-			"source" : "string",
-			"string" : "plain text",
+			"source_type" : "string",
+			"source" : "plain text",
 			"format" : "text"
 		},
 		{
+			"name" : "binary_string_test",
+			"source_type" : "string",
+			"source" : "not plain text",
+			"format" : "binary"
+		},
+		{
 			"name" : "binary_file_test",
-			"source" : "file",
-			"file" : "test.bin",
+			"source_type" : "file",
+			"source" : "test.bin",
 			"format" : "binary"
 		}
 

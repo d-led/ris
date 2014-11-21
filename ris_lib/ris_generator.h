@@ -3,14 +3,21 @@
 #include <iostream>
 
 namespace ris {
+
+	template <typename TSource>
 	class generator {
+		TSource&& source;
+
+	public:
+		generator(TSource&& s):source(s){}
+
 	public:
 		template <typename TStream>
 		void generate_header(TStream& s) {
 			s
 				<< "#pragma once\n"
 				<< "#include <string>\n"
-				<< "class Resource final {\n"
+				<< "class Resource /*final*/ {\n"
 				<< "public:\n"
 				<< "	typedef std::string(*ResourceGetter)();\n"
 				<< "public:\n"
@@ -48,4 +55,9 @@ namespace ris {
 			;
 		}
 	};
+
+	template <typename TSource>
+	generator<TSource> get_generator(TSource&& s) {
+		return generator<TSource>(s);
+	}
 }

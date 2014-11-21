@@ -1,33 +1,14 @@
 #pragma once
+
+#include "ris_resources.h"
+
 #include <picojson_serializer.h>
-#include <picojson_vector_serializer.h>
 #include <fstream>
 #include <string>
 #include <vector>
 #include <stdexcept>
 
 namespace ris {
-
-	struct resource {
-		std::string name;
-
-        template<class Archive>
-        void json(Archive & ar)
-        {
-            ar & picojson::convert::member("name", name);
-        }
-	};
-
-	struct resource_collection {
-		std::vector<resource> resources;
-
-        template<class Archive>
-        void json(Archive & ar)
-        {
-            ar & picojson::convert::member("resources", resources);
-        }
-	};
-
 	class json_resources {
 		resource_collection collection;
 
@@ -50,6 +31,10 @@ namespace ris {
 			picojson::convert::from_value(v,collection);
 
 			std::cout<<"read "<<collection.resources.size()<<" resources"<<std::endl;
+		}
+
+		resource_collection const& resources() const {
+			return collection;
 		}
 	};
 }

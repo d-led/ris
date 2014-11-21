@@ -12,7 +12,7 @@ void print_usage() {
 void process(char const* path) {
 	std::cout << "processing " << path << std::endl;
 	auto r=ris::json_resources(path);
-	auto g=ris::generator();
+	auto g=ris::get_generator(r);
 	g.generate_header(std::cout);
 	std::cout<<std::endl;
 	g.generate_source(std::cout);
