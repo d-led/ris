@@ -73,7 +73,7 @@ namespace ris {
 
 			for (auto& resource: resources.resources) {
 				s
-					<< "std::string Resource::" << resource.name << "()\n"
+					<< "std::string Resource::" << resource.name << "() {\n"
 					<< "    static char const literal[] = "
 				;
 
