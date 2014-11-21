@@ -1,1 +1,17 @@
-{}
+{
+	"resources" : [
+		{
+			"name" : "string_test",
+			"source" : "string",
+			"string" : "plain text",
+			"format" : "text"
+		},
+		{
+			"name" : "binary_file_test",
+			"source" : "file",
+			"file" : "test.bin",
+			"format" : "binary"
+		}
+
+	]
+}
