@@ -31,7 +31,7 @@ ifeq ($(config),debug)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L.
   LDDEPS    +=
-  LIBS      += $(LDDEPS) -lpthread
+  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -55,7 +55,7 @@ ifeq ($(config),release)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -s
   LDDEPS    +=
-  LIBS      += $(LDDEPS) -lpthread
+  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef

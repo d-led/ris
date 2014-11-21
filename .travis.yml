@@ -8,3 +8,4 @@ before_install:
 
 script:
   - make -C Build config=release
+  - lua acceptance_test/test.lua linux/bin/Release/ris
