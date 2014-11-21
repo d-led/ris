@@ -1,6 +1,12 @@
 #pragma once
 
-#include <iostream>
+#include "ris_resources.h"
+
+#include <fstream>
+#include <string>
+#include <stdexcept>
+
+#include <boost/filesystem.hpp>
 
 namespace ris {
 
@@ -68,8 +74,11 @@ namespace ris {
 			for (auto& resource: resources.resources) {
 				s
 					<< "std::string Resource::" << resource.name << "()\n"
-					<< "    static char const literal[] = { ";
-					//0, 1, 2, 0, 1 
+					<< "    static char const literal[] = { "
+				;
+
+				stream_resource(s,resource);
+
 				s
 					<< "};\n"
 					<< "    return std::string(literal, sizeof(literal)/sizeof(char));\n"
@@ -99,6 +108,29 @@ namespace ris {
 
 			if (!resources.namespace_.empty())
 				s << "}\n";
+		}
+
+	private:
+		template <typename TStream>
+		void stream_resource(TStream& s,resource const& res) {
+			std::string data = get_resource_data(res);
+		}
+
+		std::string get_resource_data(resource const& res) {
+			if (res.source_type == "string")
+				return res.source;
+			else if (res.source_type == "file")
+				return read_file_contents_binary(res.source);
+
+			return "";
+		}
+
+		std::string read_file_contents_binary(std::string const& filename) {
+			std::ifstream file(filename, std::ios::binary);
+			if (!file)
+				throw std::runtime_error(std::string("cannot open "+filename));
+			return std::string(std::istreambuf_iterator<char>(file),
+                               std::istreambuf_iterator<char>());
 		}
 	};
 

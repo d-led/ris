@@ -2,6 +2,27 @@ _G.package.path=_G.package.path..[[;./?.lua;./?/?.lua]]
 
 assert( require 'premake.quickstart' )
 
+local OS = os.get()
+local settings = {
+	links = {
+		linux = { 'boost_system', 'boost_filesystem', 'dl', 'pthread' },
+		windows = {  },
+		macosx = { 'boost_system', 'boost_filesystem' }
+	}
+}
+
+local function platform_specifics()
+	make_cpp11()
+	configuration 'macosx'
+		includedirs {'/usr/local/include' }
+		libdirs { '/usr/local/lib' }
+	configuration 'windows'
+		includedirs { os.getenv 'BOOST' }
+		libdirs { path.join(os.getenv'BOOST',[[lib32-msvc-12.0]]) }
+	configuration 'linux'
+	configuration { '*' }
+end
+
 make_solution 'ris'
 
 includedirs {
@@ -11,10 +32,11 @@ includedirs {
 }
 
 make_console_app('ris-test', { './test/*.cpp' })
-make_cpp11()
+platform_specifics()
 run_target_after_build()
 
 make_console_app('ris', { './ris_app/*.cpp' })
-make_cpp11()
+platform_specifics()
 run_target_after_build()
+links(settings.links[OS])
 

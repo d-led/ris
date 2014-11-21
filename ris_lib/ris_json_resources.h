@@ -8,13 +8,17 @@
 #include <vector>
 #include <stdexcept>
 
+#include <boost/filesystem.hpp>
+
 namespace ris {
 	class json_resources {
 		resource_collection collection;
+		std::string root_path;
 
 	public:
 		json_resources(std::string const& json_path) {
 			read_from_file(json_path);
+			root_path = boost::filesystem::path(json_path).parent_path().generic_string();
 		}
 
 		resource_collection const& resources() const {
