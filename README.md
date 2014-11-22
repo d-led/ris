@@ -61,7 +61,7 @@ test::Resource::GetKeys([&keys](char const* key){
 compression with bundle
 -----------------------
 
-Resources can optionally be commpressed with [bundle](https://github.com/r-lyeh/bundle.git), which means, the resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git), which is trivial to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
+Resources can optionally be commpressed with [bundle](https://github.com/r-lyeh/bundle.git). The resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git) as well. Bundle is easy to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
 
 The compression algorithm enums as strings can be used in the resource definition, i.e.:
 
