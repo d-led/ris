@@ -25,8 +25,7 @@ namespace {
                 "PlainText"
             };
             for (auto key : keys) {
-                (*inserter) = key;
-                ++inserter;
+                inserter(key);
             }
         }
 
@@ -79,7 +78,9 @@ TEST_CASE("api") {
 
     SECTION("getting all keys") {
         std::vector<std::string> keys;
-        Resource::GetKeys(std::back_inserter(keys));
+        Resource::GetKeys([&keys](char const* key){
+            keys.emplace_back(key);
+        });
         CHECK(keys.size() == 2);
         CHECK(keys[0] == "Test");
         CHECK(keys[1] == "PlainText");
