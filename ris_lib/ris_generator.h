@@ -22,11 +22,7 @@ namespace ris {
         void generate_header(TStream& s) {
             auto& resources = source.resources();
 
-            s
-                << "#pragma once\n"
-                << "#include <string>\n"
-
-                ;
+            stream_head(s);
 
             if (!resources.namespace_.empty())
                 s << "namespace " << resources.namespace_ << " {\n";
@@ -38,10 +34,9 @@ namespace ris {
                 << "public:\n"
                 ;
 
-            for (auto& resource : resources.resources) {
-                s
-                    << "    static std::string " << resource.name << "();\n";
-            }
+            stream_resource_members(s);
+
+            stream_keys_getter(s);
 
             s
                 << "public: // key/value api\n"
@@ -110,6 +105,45 @@ namespace ris {
         }
 
     private:
+        template <typename TStream>
+        void stream_head(TStream& s) {
+            s
+                << "#pragma once\n"
+                << "#include <string>\n"
+            ;
+        }
+
+        template <typename TStream>
+        void stream_resource_members(TStream& s) {
+            for (auto& resource : source.resources().resources) {
+                s
+                    << "    static std::string " << resource.name << "();\n";
+            }
+        }
+
+        template <typename TStream>
+        void stream_keys_getter(TStream& s) {
+            s
+                << "public: // key/value api\n"
+                << "template <typename TInserter>\n"
+                << "static void GetKeys(TInserter inserter) {\n"
+                << "    static const char* keys[] = {\n"
+            ;
+            
+            for (auto& resource : source.resources().resources) {
+                s
+                    << "        \"" << resource.name << "\",\n";
+            }
+            
+            s
+                << "    };\n"
+                << "    for (auto key : keys) {\n"
+                << "        inserter(key);\n"
+                << "    }\n"
+                << "}\n"
+            ;
+        }
+
         template <typename TStream>
         void stream_resource(TStream& s, resource const& res) {
             static const unsigned MAX_IN_ONE_LINE = 100;

@@ -43,7 +43,7 @@ namespace {
     }
 
     std::string Resource::PlainText() {
-        static char const literal[] = "some plain text";
+        static char const literal[] = "some plain text"; // not in scope at the moment
         return std::string(literal);
     }
 
