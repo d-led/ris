@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E934C789-4F5E-C541-9B66-27C62C0C4057}</ProjectGuid>
+    <ProjectGuid>{6D1F14C3-D031-124A-B479-EDFA37631509}</ProjectGuid>
     <RootNamespace>ris</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -126,6 +126,11 @@
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="bundle.vcxproj">
+      <Project>{BC1C9BB2-7DFC-DF41-ABD4-A0D923741DC7}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

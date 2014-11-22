@@ -6,7 +6,7 @@
 
 namespace ris {
     class bundle_compression {
-        std::unordered_map<std::string, unsigned> compression_algos;
+        std::unordered_map<std::string, unsigned int> compression_algos;
     public:
         bundle_compression() : 
             compression_algos({
@@ -23,6 +23,13 @@ namespace ris {
     public:
         bool is_legal(std::string const& key) const {
             return compression_algos.find(key) != compression_algos.end();
+        }
+
+        unsigned int get(std::string const& key) const {
+            auto it = compression_algos.find(key);
+            if (it != compression_algos.end())
+                return it->second;
+            return bundle::NONE;
         }
     };
 }

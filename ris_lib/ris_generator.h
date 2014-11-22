@@ -76,17 +76,7 @@ namespace ris {
                 s << "namespace " << resources.namespace_ << " {\n";
 
             for (auto& resource : resources.resources) {
-                s
-                    << "std::string Resource::" << resource.name << "() {\n"
-                    << "    static char const literal[] = "
-                    ;
-
                 stream_resource(s, resource);
-
-                s
-                    << "    return std::string(literal, sizeof(literal)/sizeof(char));\n"
-                    << "}\n"
-                    ;
             }
 
             s
@@ -162,8 +152,18 @@ namespace ris {
 
         template <typename TStream>
         void stream_resource(TStream& s, resource const& res) {
+            s
+                << "std::string Resource::" << res.name << "() {\n"
+                << "    static char const literal[] = "
+            ;
+
+
             static const unsigned MAX_IN_ONE_LINE = 100;
             std::string data = resource_loader(res, source.base_path()).get();
+
+            if (compression.is_legal(res.compression))
+                data = bundle::pack(compression.get(res.compression), data);
+
             s << " {";
             int count = 0;
 
@@ -182,6 +182,19 @@ namespace ris {
             }
 
             s << "\n    };\n";
+
+            std::string return_statement =
+                compression.is_legal(res.compression)
+                ?
+                "    return bundle::unpack(std::string(literal, sizeof(literal)/sizeof(char)));\n"
+                :
+                "    return {literal, sizeof(literal)/sizeof(char)};\n"
+            ;
+
+            s
+                << return_statement
+                << "}\n"
+            ;
         }
     };
 

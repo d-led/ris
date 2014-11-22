@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{C1B0F46C-E260-BE4B-82FF-597621423E2C}</UniqueIdentifier>
+      <UniqueIdentifier>{88688631-0559-A349-9F66-21AFF05C70A9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headers">
-      <UniqueIdentifier>{977EF57B-AB90-5D4D-8EB5-74040BBD0C6E}</UniqueIdentifier>
+      <UniqueIdentifier>{B8B0D4ED-4A43-BD46-8DD1-D91E25687F87}</UniqueIdentifier>
     </Filter>
     <Filter Include="acceptance_test">
-      <UniqueIdentifier>{53B9945F-0F58-0342-9B7A-DCF10626F7C6}</UniqueIdentifier>
+      <UniqueIdentifier>{38F69533-EDB6-144E-9C38-9DDD33FCC5CB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
