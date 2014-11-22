@@ -4,15 +4,27 @@
 #include "ris_resource_loader.h"
 
 #include <string>
+#include <algorithm>
 
 namespace ris {
 
-    template <typename TSource>
+    template <typename TSource,typename TCompression>
     class generator {
         TSource&& source;
+        TCompression&& compression;
+
+        bool any_with_compression;
 
     public:
-        generator(TSource&& s) :source(s){}
+        generator(TSource&& s, TCompression&& c) :
+            source(s),
+            compression(c),
+            any_with_compression(std::any_of(std::begin(source.resources().resources),
+                                         std::end(source.resources().resources),
+                                         [this](resource const& res) {
+            return compression.is_legal(res.compression);
+        }))
+        {}
 
     public:
         template <typename TStream>
@@ -108,6 +120,13 @@ namespace ris {
                 << "#pragma once\n"
                 << "#include <string>\n"
             ;
+
+            if (any_with_compression) {
+                s
+                    << "#include <cstring>\n"
+                    << "#include <bundle.hpp>\n"
+                ;
+            }
         }
 
         template <typename TStream>
@@ -166,8 +185,8 @@ namespace ris {
         }
     };
 
-    template <typename TSource>
-    generator<TSource> get_generator(TSource&& s) {
-        return generator<TSource>(s);
+    template <typename TSource, typename TCompression>
+    generator<TSource, TCompression> get_generator(TSource&& s,TCompression&& c) {
+        return generator<TSource,TCompression>(s,c);
     }
 }

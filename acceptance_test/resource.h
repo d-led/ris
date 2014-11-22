@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <cstring>
+#include <bundle.hpp>
 namespace test {
 class Resource /*final*/ {
 public:

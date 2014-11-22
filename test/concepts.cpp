@@ -45,12 +45,12 @@ namespace {
 
     std::string Resource::Test() {
         static char const literal[] = { 0, 1, 2, 0, 1 };
-        return Unpack({ literal, sizeof(literal) / sizeof(char) });
+        return { literal, sizeof(literal) / sizeof(char) };
     }
 
     std::string Resource::PlainText() {
         static char const literal[] = "some plain text"; // not in scope at the moment
-        return Unpack({ literal });
+        return Unpack({ literal }); //Unpack doesn't mess with non-encoded strings
     }
 
     std::string Resource::Compressed() {
