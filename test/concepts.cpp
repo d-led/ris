@@ -19,7 +19,7 @@ namespace {
         static std::string PlainText();
     public: // key/value api
         template <typename TInserter>
-        static void GetKeys(TInserter& inserter) {
+        static void GetKeys(TInserter inserter) {
             static const char* keys[] = {
                 "Test",
                 "PlainText"
