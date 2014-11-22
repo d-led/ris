@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A8637AD0-39B0-4C43-8BB4-133F571D7F0B}</ProjectGuid>
+    <ProjectGuid>{A3D929D5-2CFE-0742-83DD-334116D4FB7E}</ProjectGuid>
     <RootNamespace>ris</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>

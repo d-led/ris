@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3EA0956C-A059-044B-B86F-B9CA45844E60}</ProjectGuid>
+    <ProjectGuid>{F6DCC343-ECF8-9749-9B09-8003913C8C5D}</ProjectGuid>
     <RootNamespace>ris-acceptance-test</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -120,7 +120,8 @@
     <ClInclude Include="..\acceptance_test\resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\acceptance_test\acceptance_test.cpp" />
+    <ClCompile Include="..\acceptance_test\acceptance_test.cpp">
+    </ClCompile>
     <ClCompile Include="..\acceptance_test\resource.cpp">
     </ClCompile>
     <ClCompile Include="..\acceptance_test\test.cpp">

@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{CB3D29CA-1162-9D40-BB21-4356BB8A23F6}</UniqueIdentifier>
+      <UniqueIdentifier>{A93A9430-22F7-584A-9308-8DC2EDE7A96D}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headers">
-      <UniqueIdentifier>{1217D1A1-657B-1744-931D-DF3F4796F508}</UniqueIdentifier>
+      <UniqueIdentifier>{9F1B1B1F-89B3-4345-B2B4-AB9B9B68E537}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
