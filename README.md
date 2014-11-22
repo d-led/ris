@@ -41,11 +41,27 @@ Furthermore, `name` should be a valid c++ identifier, as it will be translated i
 ```cpp
 std::string res = test::Resource::string_test();
 ```
+or
+```cpp
+std::string res = test::Resource::Get("string_test");
+```
+
+key query
+---------
+
+Resource keys in the compiled resource can be enumerated passing a callable to `GetKeys`:
+
+```cpp
+std::vector<std::string> keys;
+test::Resource::GetKeys([&keys](char const* key){
+    keys.emplace_back(key);
+});
+```
 
 compression with bundle
 -----------------------
 
-Resources can optionally be commpressed with [bundle](https://github.com/r-lyeh/bundle.git), which means, the resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git), which is trivial to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
+Resources can optionally be commpressed with [bundle](https://github.com/r-lyeh/bundle.git). The resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git) as well. Bundle is easy to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
 
 The compression algorithm enums as strings can be used in the resource definition, i.e.:
 
@@ -57,6 +73,13 @@ The compression algorithm enums as strings can be used in the resource definitio
     "compression" : "LZ4HC"
 }
 ```
+
+now and then
+------------
+
+- The strings are copied at the moment. An optional copy-reduced API is thinkable
+- Resource names are not validated at the moment. The C++ compiler will ultimately validate them
+- the generator is not using any template engine, and is thus not very flexible at the moment
 
 dependencies
 ------------
@@ -73,4 +96,5 @@ license
 
 - Copyright 2014, Dmitry Ledentsov
 - [MIT License](http://www.opensource.org/licenses/mit-license.php)
+- Generated code is not licensed
 - Dependencies retain their respective licenses
