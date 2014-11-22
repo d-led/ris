@@ -2,7 +2,6 @@
 
 #include <string>
 #include <unordered_map>
-#include <cstring>
 #include <bundle.hpp>
 
 TEST_CASE("literals encoding strategy") {
