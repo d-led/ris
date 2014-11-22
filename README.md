@@ -10,7 +10,7 @@ dependencies
 
 - [Boost](http://www.boost.org/), filesystem api
 - [Premake4](https://bitbucket.org/premake/premake-dev/wiki/Home), meta-build
-- Catch (testing)
+- [Catch](https://github.com/philsquared/Catch), testing
 - [picojson](https://github.com/kazuho/picojson), json serialization
 - [picojson_serializer](https://github.com/d-led/picojson_serializer) json serialization wrappers for fast prototyping
 - [bundle](https://github.com/r-lyeh/bundle), compression
