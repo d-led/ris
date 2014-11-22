@@ -11,14 +11,14 @@ public:
 public: // key/value api
 template <typename TInserter>
 static void GetKeys(TInserter inserter) {
-static const char* keys[] = {
-    "string_test",
-    "binary_file_test",
-    "itself",
-};
-for (auto key : keys) {
-    inserter(key);
-}
+    static const char* keys[] = {
+        "string_test",
+        "binary_file_test",
+        "itself",
+    };
+    for (auto key : keys) {
+        inserter(key);
+    }
 }
 public: // key/value api
     static std::string Get(std::string const& key);
