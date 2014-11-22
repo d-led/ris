@@ -31,5 +31,9 @@ namespace ris {
                 return it->second;
             return bundle::NONE;
         }
+
+        std::string pack(std::string const& key, std::string const& data) {
+            return bundle::pack(this->get(key), data);
+        }
     };
 }

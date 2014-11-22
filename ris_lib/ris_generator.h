@@ -162,7 +162,7 @@ namespace ris {
             std::string data = resource_loader(res, source.base_path()).get();
 
             if (compression.is_legal(res.compression))
-                data = bundle::pack(compression.get(res.compression), data);
+                data = compression.pack(res.compression, data);
 
             s << " {";
             int count = 0;
