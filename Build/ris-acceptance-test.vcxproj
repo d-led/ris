@@ -120,6 +120,7 @@
     <ClInclude Include="..\acceptance_test\resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\acceptance_test\acceptance_test.cpp" />
     <ClCompile Include="..\acceptance_test\resource.cpp">
     </ClCompile>
     <ClCompile Include="..\acceptance_test\test.cpp">

@@ -13,7 +13,7 @@ namespace ris {
         resource const& res;
         boost::filesystem::path base;
     public:
-        resource_loader(resource const& r,boost::filesystem::path const& base_dir) :
+        resource_loader(resource const& r,std::string const& base_dir) :
             res(r),
             base(base_dir)
         {}
