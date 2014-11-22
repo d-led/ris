@@ -74,6 +74,13 @@ The compression algorithm enums as strings can be used in the resource definitio
 }
 ```
 
+now and then
+------------
+
+- The strings are copied at the moment. An optional copy-reduced API is thinkable
+- Resource names are not validated at the moment. The C++ compiler will ultimately validate them
+- the generator is not using any template engine, and is thus not very flexible at the moment
+
 dependencies
 ------------
 
