@@ -24,8 +24,10 @@ namespace {
                 "Test",
                 "PlainText"
             };
-            for (auto key : keys)
-                inserter = key;
+            for (auto key : keys) {
+                (*inserter) = key;
+                ++inserter;
+            }
         }
 
         static std::string Get(std::string const& key);
