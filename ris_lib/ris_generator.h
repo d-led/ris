@@ -176,7 +176,7 @@ namespace ris {
                     s << "\n        ";
                 }
 
-                s << static_cast<unsigned short>(c) << ", ";
+                s << static_cast<short>(c) << ", ";
 
                 count++;
             }
