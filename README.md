@@ -10,7 +10,7 @@ usage
 
 `ris <path_to>/<resources>.json`
 
-where `<resources>.json` is the resource definition, i.e.
+where `<resources>.json` is the resource definition, i.e [test.json](acceptance_test/test.json).
 
 ```json
 {
@@ -32,11 +32,11 @@ where `<resources>.json` is the resource definition, i.e.
 }
 ```
 
-Two c++11 files containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources. 
+Two c++11 files ([.h](acceptance_test/resource.h) and [.cpp](acceptance_test/resource.h)) containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources. 
 
 Strings are single-byte `char`s and are treated agnostically with respect to their meaning/encoding. 
 
-Furthermore, `name` should be a valid c++ identifier, as it will be translated into the resource getter, i.e.:
+`name` should be a valid c++ identifier, as it will be translated into the resource getter, i.e.:
 
 ```cpp
 std::string res = test::Resource::string_test();
