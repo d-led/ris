@@ -6,13 +6,17 @@ ifndef config
 endif
 export config
 
-PROJECTS := ris-test ris ris-acceptance-test
+PROJECTS := bundle ris-test ris ris-acceptance-test
 
 .PHONY: all clean help $(PROJECTS)
 
 all: $(PROJECTS)
 
-ris-test: 
+bundle: 
+	@echo "==== Building bundle ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f bundle.make
+
+ris-test: bundle
 	@echo "==== Building ris-test ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ris-test.make
 
@@ -25,6 +29,7 @@ ris-acceptance-test:
 	@${MAKE} --no-print-directory -C . -f ris-acceptance-test.make
 
 clean:
+	@${MAKE} --no-print-directory -C . -f bundle.make clean
 	@${MAKE} --no-print-directory -C . -f ris-test.make clean
 	@${MAKE} --no-print-directory -C . -f ris.make clean
 	@${MAKE} --no-print-directory -C . -f ris-acceptance-test.make clean
@@ -39,6 +44,7 @@ help:
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
+	@echo "   bundle"
 	@echo "   ris-test"
 	@echo "   ris"
 	@echo "   ris-acceptance-test"

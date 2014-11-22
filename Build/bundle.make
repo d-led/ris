@@ -20,9 +20,9 @@ ifndef RESCOMP
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = Debug/obj/Debug/ris
+  OBJDIR     = Debug/obj/Debug/bundle
   TARGETDIR  = ../linux/bin/Debug
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   += -DDEBUG -D_DEBUG
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -31,22 +31,20 @@ ifeq ($(config),debug)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L.
   LDDEPS    +=
-  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LIBS      += $(LDDEPS) -lpthread
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = Release/obj/Release/ris
+  OBJDIR     = Release/obj/Release/bundle
   TARGETDIR  = ../linux/bin/Release
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   += -DRELEASE
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -55,20 +53,18 @@ ifeq ($(config),release)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -s
   LDDEPS    +=
-  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  LIBS      += $(LDDEPS) -lpthread
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 OBJECTS := \
-	$(OBJDIR)/ris.o \
+	$(OBJDIR)/bundle.o \
 
 RESOURCES := \
 
@@ -86,7 +82,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking ris
+	@echo Linking bundle
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -107,7 +103,7 @@ else
 endif
 
 clean:
-	@echo Cleaning ris
+	@echo Cleaning bundle
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -128,7 +124,7 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/ris.o: ../ris_app/ris.cpp
+$(OBJDIR)/bundle.o: ../bundle/bundle.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 

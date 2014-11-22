@@ -24,7 +24,7 @@ ifeq ($(config),debug)
   TARGETDIR  = ../linux/bin/Debug
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   += -DDEBUG -D_DEBUG
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -48,7 +48,7 @@ ifeq ($(config),release)
   TARGETDIR  = ../linux/bin/Release
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   += -DRELEASE
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
@@ -70,6 +70,7 @@ endif
 OBJECTS := \
 	$(OBJDIR)/resource.o \
 	$(OBJDIR)/test.o \
+	$(OBJDIR)/acceptance_test.o \
 
 RESOURCES := \
 
@@ -134,6 +135,10 @@ $(OBJDIR)/resource.o: ../acceptance_test/resource.cpp
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
 $(OBJDIR)/test.o: ../acceptance_test/test.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/acceptance_test.o: ../acceptance_test/acceptance_test.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 

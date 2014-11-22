@@ -24,13 +24,13 @@ ifeq ($(config),debug)
   TARGETDIR  = ../linux/bin/Debug
   TARGET     = $(TARGETDIR)/ris-test
   DEFINES   += -DDEBUG -D_DEBUG
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L.
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Debug
+  LDDEPS    += ../linux/bin/Debug/libbundle.a
   LIBS      += $(LDDEPS) -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -48,13 +48,13 @@ ifeq ($(config),release)
   TARGETDIR  = ../linux/bin/Release
   TARGET     = $(TARGETDIR)/ris-test
   DEFINES   += -DRELEASE
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -s
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Release -s
+  LDDEPS    += ../linux/bin/Release/libbundle.a
   LIBS      += $(LDDEPS) -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
