@@ -2,8 +2,22 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{E0CD8F14-7BE0-7A40-A576-B70850EE5EA1}</UniqueIdentifier>
+      <UniqueIdentifier>{CB3D29CA-1162-9D40-BB21-4356BB8A23F6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{1217D1A1-657B-1744-931D-DF3F4796F508}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ris_lib\ris_generator.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ris_lib\ris_json_resources.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ris_lib\ris_resources.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">

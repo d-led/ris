@@ -35,7 +35,20 @@ make_console_app('ris-test', { './test/*.cpp' })
 platform_specifics()
 run_target_after_build()
 
-make_console_app('ris', { './ris_app/*.cpp' })
+make_console_app('ris', {
+ './ris_app/*.cpp',
+ './ris_lib/*.h'
+})
+platform_specifics()
+run_target_after_build()
+links(settings.links[OS])
+
+make_console_app('ris-acceptance-test', {
+ './acceptance_test/*.cpp',
+ './acceptance_test/*.h',
+ './acceptance_test/*.json',
+ './acceptance_test/*.lua',
+})
 platform_specifics()
 run_target_after_build()
 links(settings.links[OS])
