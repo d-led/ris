@@ -67,6 +67,4 @@ make_console_app('ris-acceptance-test', {
  './acceptance_test/*.lua',
 })
 platform_specifics()
-run_target_after_build()
 links{settings.links[OS],'bundle'}
-
