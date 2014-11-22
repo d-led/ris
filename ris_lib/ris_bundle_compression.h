@@ -3,6 +3,7 @@
 #include <bundle.hpp>
 #include <string>
 #include <unordered_map>
+#include <stdexcept>
 
 namespace ris {
     class bundle_compression {
@@ -29,7 +30,9 @@ namespace ris {
             auto it = compression_algos.find(key);
             if (it != compression_algos.end())
                 return it->second;
-            return bundle::NONE;
+
+            throw std::runtime_error(std::string("no such compression algorithm: ")+key);
+            // return bundle::NONE;
         }
 
         std::string pack(std::string const& key, std::string const& data) {
