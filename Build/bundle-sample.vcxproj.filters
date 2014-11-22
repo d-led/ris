@@ -2,14 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{77515434-732C-6B43-AE3D-0A45DAE1808F}</UniqueIdentifier>
+      <UniqueIdentifier>{379C6155-5DF5-6646-A454-E88D991C8027}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\test\concepts.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\test\test.cpp">
+    <ClCompile Include="..\bundle\sample.cc">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

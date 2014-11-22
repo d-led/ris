@@ -8,6 +8,7 @@ public:
     static std::string string_test();
     static std::string binary_file_test();
     static std::string itself();
+    static std::string itself_packed_lz4();
 public: // key/value api
 template <typename TInserter>
 static void GetKeys(TInserter inserter) {
@@ -15,6 +16,7 @@ static void GetKeys(TInserter inserter) {
         "string_test",
         "binary_file_test",
         "itself",
+        "itself_packed_lz4",
     };
     for (auto key : keys) {
         inserter(key);

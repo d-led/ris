@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A3D929D5-2CFE-0742-83DD-334116D4FB7E}</ProjectGuid>
+    <ProjectGuid>{E934C789-4F5E-C541-9B66-27C62C0C4057}</ProjectGuid>
     <RootNamespace>ris</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -56,7 +56,7 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;_DEBUG;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -70,7 +70,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>DEBUG;_DEBUG;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,7 +87,7 @@
     <ClCompile>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RELEASE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
@@ -101,7 +101,7 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>RELEASE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <SubSystem>Console</SubSystem>

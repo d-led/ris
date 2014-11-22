@@ -28,12 +28,29 @@ make_solution 'ris'
 includedirs {
 	'./Catch/single_include',
 	'./picojson',
-	'./picojson_serializer/'
+	'./picojson_serializer',
+	'./bundle'
 }
+
+make_static_lib('bundle',{
+	'./bundle/bundle.cpp',
+	'./bundle/bundle.hpp'
+})
+platform_specifics()
+
+-- make_console_app('bundle-sample',{
+-- 	'./bundle/sample.cc'
+-- })
+-- platform_specifics()
+-- run_target_after_build()
+-- links {
+-- 	'bundle'
+-- }
 
 make_console_app('ris-test', { './test/*.cpp' })
 platform_specifics()
 run_target_after_build()
+links {'bundle'}
 
 make_console_app('ris', {
  './ris_app/*.cpp',
@@ -41,7 +58,7 @@ make_console_app('ris', {
 })
 platform_specifics()
 run_target_after_build()
-links(settings.links[OS])
+links(settings.links[OS],'bundle')
 
 make_console_app('ris-acceptance-test', {
  './acceptance_test/*.cpp',
@@ -51,5 +68,5 @@ make_console_app('ris-acceptance-test', {
 })
 platform_specifics()
 run_target_after_build()
-links(settings.links[OS])
+links(settings.links[OS],'bundle')
 

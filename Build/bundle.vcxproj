@@ -11,19 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A039D673-B3EA-C24C-87E7-4B5EF4C0F815}</ProjectGuid>
-    <RootNamespace>ris-acceptance-test</RootNamespace>
+    <ProjectGuid>{52D4A0B2-ECCC-D44E-92F4-C6575F62B3F5}</ProjectGuid>
+    <RootNamespace>bundle</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
@@ -40,17 +40,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\windows\bin\Debug\</OutDir>
-    <IntDir>Debug\obj\Debug\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
-    <LinkIncremental>true</LinkIncremental>
+    <IntDir>Debug\obj\Debug\bundle\</IntDir>
+    <TargetName>bundle</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\windows\bin\Release\</OutDir>
-    <IntDir>Release\obj\Release\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
-    <LinkIncremental>false</LinkIncremental>
+    <IntDir>Release\obj\Release\bundle\</IntDir>
+    <TargetName>bundle</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -66,22 +64,19 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ProgramDataBaseFileName>$(OutDir)ris-acceptance-test.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)bundle.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>DEBUG;_DEBUG;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bundle.lib</OutputFile>
+    </Lib>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(OutDir)ris-acceptance-test.exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -103,33 +98,22 @@
       <PreprocessorDefinitions>RELEASE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>D:\Software\boost\boost_1_56_0;..\Catch\single_include;..\picojson;..\picojson_serializer;..\bundle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <Lib>
+      <OutputFile>$(OutDir)bundle.lib</OutputFile>
+    </Lib>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <OutputFile>$(OutDir)ris-acceptance-test.exe</OutputFile>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\acceptance_test\resource.h" />
+    <ClInclude Include="..\bundle\bundle.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\acceptance_test\acceptance_test.cpp">
+    <ClCompile Include="..\bundle\bundle.cpp">
     </ClCompile>
-    <ClCompile Include="..\acceptance_test\resource.cpp">
-    </ClCompile>
-    <ClCompile Include="..\acceptance_test\test.cpp">
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\acceptance_test\test.json" />
-    <None Include="..\acceptance_test\test.lua" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

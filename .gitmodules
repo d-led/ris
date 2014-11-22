@@ -10,3 +10,6 @@
 [submodule "picojson"]
 	path = picojson
 	url = https://github.com/kazuho/picojson.git
+[submodule "bundle"]
+	path = bundle
+	url = https://github.com/r-lyeh/bundle.git

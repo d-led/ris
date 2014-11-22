@@ -2,6 +2,7 @@
 
 #include <picojson_vector_serializer.h>
 #include <picojson.h>
+#include <vector>
 
 namespace ris {
 
@@ -9,6 +10,7 @@ namespace ris {
         std::string name;
         std::string source_type;
         std::string source;
+        std::string compression;
 
         template<class Archive>
         void json(Archive & ar)
@@ -16,6 +18,7 @@ namespace ris {
             ar & picojson::convert::member("name", name);
             ar & picojson::convert::member("source_type", source_type);
             ar & picojson::convert::member("source", source);
+            ar & picojson::convert::member("compression", compression);
         }
     };
 
