@@ -20,11 +20,11 @@ ris-test: bundle
 	@echo "==== Building ris-test ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ris-test.make
 
-ris: 
+ris: bundle
 	@echo "==== Building ris ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ris.make
 
-ris-acceptance-test: 
+ris-acceptance-test: bundle
 	@echo "==== Building ris-acceptance-test ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ris-acceptance-test.make
 

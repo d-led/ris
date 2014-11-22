@@ -29,8 +29,8 @@ ifeq ($(config),debug)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L.
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Debug
+  LDDEPS    += ../linux/bin/Debug/libbundle.a
   LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -53,8 +53,8 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v -fPIC -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -s
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Release -s
+  LDDEPS    += ../linux/bin/Release/libbundle.a
   LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
