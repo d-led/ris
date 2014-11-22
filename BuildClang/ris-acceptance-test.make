@@ -20,9 +20,9 @@ ifndef RESCOMP
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = Debug/obj/Debug/ris
+  OBJDIR     = Debug/obj/Debug/ris-acceptance-test
   TARGETDIR  = ../macosx/bin/Debug
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   += -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -38,15 +38,13 @@ ifeq ($(config),debug)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = Release/obj/Release/ris
+  OBJDIR     = Release/obj/Release/ris-acceptance-test
   TARGETDIR  = ../macosx/bin/Release
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   += -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -62,13 +60,13 @@ ifeq ($(config),release)
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 OBJECTS := \
-	$(OBJDIR)/ris.o \
+	$(OBJDIR)/acceptance_test.o \
+	$(OBJDIR)/resource.o \
+	$(OBJDIR)/test.o \
 
 RESOURCES := \
 
@@ -86,7 +84,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking ris
+	@echo Linking ris-acceptance-test
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -107,7 +105,7 @@ else
 endif
 
 clean:
-	@echo Cleaning ris
+	@echo Cleaning ris-acceptance-test
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -128,7 +126,15 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/ris.o: ../ris_app/ris.cpp
+$(OBJDIR)/acceptance_test.o: ../acceptance_test/acceptance_test.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/resource.o: ../acceptance_test/resource.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/test.o: ../acceptance_test/test.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 

@@ -20,55 +20,51 @@ ifndef RESCOMP
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = Debug/obj/Debug/ris
+  OBJDIR     = Debug/obj/Debug/bundle
   TARGETDIR  = ../macosx/bin/Debug
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   += -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Debug
-  LDDEPS    += ../macosx/bin/Debug/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L.
+  LDDEPS    +=
+  LIBS      += $(LDDEPS) -lpthread -lc++
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = Release/obj/Release/ris
+  OBJDIR     = Release/obj/Release/bundle
   TARGETDIR  = ../macosx/bin/Release
-  TARGET     = $(TARGETDIR)/ris
+  TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   += -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
   INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Release -Wl,-x
-  LDDEPS    += ../macosx/bin/Release/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem
-  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -Wl,-x
+  LDDEPS    +=
+  LIBS      += $(LDDEPS) -lpthread -lc++
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
   endef
   define POSTBUILDCMDS
-	@echo Running post-build commands
-	$(TARGET)
   endef
 endif
 
 OBJECTS := \
-	$(OBJDIR)/ris.o \
+	$(OBJDIR)/bundle.o \
 
 RESOURCES := \
 
@@ -86,7 +82,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking ris
+	@echo Linking bundle
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -107,7 +103,7 @@ else
 endif
 
 clean:
-	@echo Cleaning ris
+	@echo Cleaning bundle
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -128,7 +124,7 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/ris.o: ../ris_app/ris.cpp
+$(OBJDIR)/bundle.o: ../bundle/bundle.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 

@@ -24,13 +24,13 @@ ifeq ($(config),debug)
   TARGETDIR  = ../macosx/bin/Debug
   TARGET     = $(TARGETDIR)/ris-test
   DEFINES   += -DDEBUG -D_DEBUG -DGTEST_USE_OWN_TR1_TUPLE=1
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I/usr/local/include
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L.
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Debug
+  LDDEPS    += ../macosx/bin/Debug/libbundle.a
   LIBS      += $(LDDEPS) -lpthread -lc++
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -48,13 +48,13 @@ ifeq ($(config),release)
   TARGETDIR  = ../macosx/bin/Release
   TARGET     = $(TARGETDIR)/ris-test
   DEFINES   += -DRELEASE -DGTEST_USE_OWN_TR1_TUPLE=1
-  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I/usr/local/include
+  INCLUDES  += -I.. -I../Catch/single_include -I../picojson -I../picojson_serializer -I../bundle -I/usr/local/include
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -Wl,-x
-  LDDEPS    +=
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Release -Wl,-x
+  LDDEPS    += ../macosx/bin/Release/libbundle.a
   LIBS      += $(LDDEPS) -lpthread -lc++
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
