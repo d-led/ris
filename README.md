@@ -41,6 +41,22 @@ Furthermore, `name` should be a valid c++ identifier, as it will be translated i
 ```cpp
 std::string res = test::Resource::string_test();
 ```
+or
+```cpp
+std::string res = test::Resource::Get("string_test");
+```
+
+key query
+---------
+
+Resource keys in the compiled resource can be enumerated passing a callable to `GetKeys`:
+
+```cpp
+std::vector<std::string> keys;
+test::Resource::GetKeys([&keys](char const* key){
+    keys.emplace_back(key);
+});
+```
 
 compression with bundle
 -----------------------
