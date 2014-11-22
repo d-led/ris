@@ -1,5 +1,7 @@
 #include <catch.hpp>
 
+#include "resource.h"
+
 #include <boost/filesystem.hpp>
 
 #include "../ris_lib/ris_json_resources.h"
@@ -29,5 +31,24 @@ public:
 
 TEST_CASE_METHOD(fixture,"loading the resource") {
     auto r = ris::json_resources((test_data / "test.json").generic_string());
-    CHECK(r.resources().resources.size() > 0);
+
+    auto& resources = r.resources().resources;
+
+    REQUIRE(resources.size() > 0);
+
+    std::vector<std::string> keys;
+    test::Resource::GetKeys([&keys](const char* key){
+        keys.emplace_back(key);
+    });
+
+    CHECK(resources.size() == keys.size());
+
+    SECTION("resource fidelity") {
+        for (auto& res : resources) {
+            auto reference_data = ris::resource_loader(res,test_data.generic_string()).get();
+            auto resource_data = test::Resource::Get(res.name);
+            INFO(res.name);
+            CHECK(reference_data == resource_data);
+        }
+    }
 }
