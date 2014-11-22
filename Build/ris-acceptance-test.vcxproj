@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3D32B17C-77AA-424C-829B-B1506AF89E97}</ProjectGuid>
+    <ProjectGuid>{861A57AF-77EA-C649-B8EC-67328853A484}</ProjectGuid>
     <RootNamespace>ris-acceptance-test</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -79,9 +79,6 @@
       <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -112,9 +109,6 @@
       <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\stage\lib;D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
-    <PostBuildEvent>
-      <Command>"$(TargetPath)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\acceptance_test\resource.h" />
@@ -133,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">
-      <Project>{BC1C9BB2-7DFC-DF41-ABD4-A0D923741DC7}</Project>
+      <Project>{846F6741-7463-7949-B7D2-AB7D33FD603D}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

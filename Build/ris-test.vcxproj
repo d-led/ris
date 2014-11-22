@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BFC8EC37-867E-E54D-B10C-01E12AEE60E0}</ProjectGuid>
+    <ProjectGuid>{EEB67F2C-DE49-EE40-9899-174D2F487E5E}</ProjectGuid>
     <RootNamespace>ris-test</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">
-      <Project>{BC1C9BB2-7DFC-DF41-ABD4-A0D923741DC7}</Project>
+      <Project>{846F6741-7463-7949-B7D2-AB7D33FD603D}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
