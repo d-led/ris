@@ -6,7 +6,7 @@ ifndef config
 endif
 export config
 
-PROJECTS := ris-test ris
+PROJECTS := ris-test ris ris-acceptance-test
 
 .PHONY: all clean help $(PROJECTS)
 
@@ -20,9 +20,14 @@ ris:
 	@echo "==== Building ris ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f ris.make
 
+ris-acceptance-test: 
+	@echo "==== Building ris-acceptance-test ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f ris-acceptance-test.make
+
 clean:
 	@${MAKE} --no-print-directory -C . -f ris-test.make clean
 	@${MAKE} --no-print-directory -C . -f ris.make clean
+	@${MAKE} --no-print-directory -C . -f ris-acceptance-test.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -36,5 +41,6 @@ help:
 	@echo "   clean"
 	@echo "   ris-test"
 	@echo "   ris"
+	@echo "   ris-acceptance-test"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"
