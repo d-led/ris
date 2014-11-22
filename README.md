@@ -73,4 +73,5 @@ license
 
 - Copyright 2014, Dmitry Ledentsov
 - [MIT License](http://www.opensource.org/licenses/mit-license.php)
+- Generated code is not licensed
 - Dependencies retain their respective licenses
