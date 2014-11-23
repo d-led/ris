@@ -6,6 +6,8 @@
 #include <fstream>
 #include <string>
 
+#include <boost/filesystem/path.hpp>
+
 void print_usage() {
     std::cout
         <<"USAGE:"<<std::endl
@@ -14,8 +16,11 @@ void print_usage() {
 }
 
 void process(char const* path) {
-    std::cout << "processing " << path << std::endl;
+    auto full_path = absolute(boost::filesystem::path(path));
+    full_path.make_preferred();
+    std::cout << "processing " << full_path.generic_string() << std::endl;
     auto r = ris::json_resources(path);
+    std::cout << "read " << r.resources().resources.size() << " resources" << std::endl;
     auto c = ris::bundle_compression();
     auto g = ris::get_generator(r,c);
 
