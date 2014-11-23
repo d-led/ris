@@ -50,7 +50,7 @@ platform_specifics()
 make_console_app('ris-test', { './test/*.cpp' })
 platform_specifics()
 run_target_after_build()
-links {'bundle'}
+links{settings.links[OS],'bundle'}
 
 make_console_app('ris', {
  './ris_app/*.cpp',
