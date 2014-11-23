@@ -122,6 +122,7 @@
     <ClInclude Include="..\ris_lib\ris_json_resources.h" />
     <ClInclude Include="..\ris_lib\ris_resources.h" />
     <ClInclude Include="..\ris_lib\ris_resource_loader.h" />
+    <ClInclude Include="..\ris_lib\ris_writing_files.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">
