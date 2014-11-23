@@ -34,6 +34,7 @@ public:
             throw std::runtime_error(std::string("cannot write ") + temp_file.generic_string());
         action(s);
         s.close();
+        std::cout << "writing " << absolute(target_file).make_preferred().generic_string() << std::endl;
         rename(temp_file, target_file);
     }
 
@@ -51,7 +52,7 @@ public:
 void process(char const* path) {
     auto full_path = absolute(boost::filesystem::path(path));
     full_path.make_preferred();
-    std::cout << "processing " << full_path.generic_string() << std::endl;
+    std::cout << "reading " << full_path.generic_string() << std::endl;
     auto r = ris::json_resources(path);
     std::cout << "read " << r.resources().resources.size() << " resources" << std::endl;
     auto c = ris::bundle_compression();
