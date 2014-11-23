@@ -5,8 +5,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <functional>
 
-#include <boost/filesystem/path.hpp>
+#include <boost/filesystem.hpp>
 
 void print_usage() {
     std::cout
@@ -14,6 +15,38 @@ void print_usage() {
         <<"       ris <path_to>/ris.json"<<std::endl
     ;	
 }
+
+class write_to_temp_first_then_move {
+    std::function<void(std::ostream&)> action;
+    boost::filesystem::path temp_file;
+    boost::filesystem::path target_file;
+public:
+    template<typename TAction>
+    write_to_temp_first_then_move(TAction a,std::string const& filename) :
+        action(a),
+        target_file(filename),
+        temp_file(filename + "_")
+    {}
+
+    void start() {
+        std::ofstream s(temp_file.generic_string());
+        if (!s)
+            throw std::runtime_error(std::string("cannot write ") + temp_file.generic_string());
+        action(s);
+        s.close();
+        rename(temp_file, target_file);
+    }
+
+    ~write_to_temp_first_then_move() {
+        try {
+            if (exists(temp_file))
+                remove(temp_file);
+        }
+        catch (std::exception& e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
+};
 
 void process(char const* path) {
     auto full_path = absolute(boost::filesystem::path(path));
@@ -24,19 +57,15 @@ void process(char const* path) {
     auto c = ris::bundle_compression();
     auto g = ris::get_generator(r,c);
 
-    std::ofstream header(r.header());
-    if (!header)
-        throw std::runtime_error(std::string("cannot write ")+r.header());
+    write_to_temp_first_then_move header([&g](std::ostream& s) {
+        g.generate_header(s);
+    }, r.header());
+    header.start();
 
-    g.generate_header(header);
-    header.close();
-
-    std::ofstream source(r.source());
-    if (!source)
-        throw std::runtime_error(std::string("cannot write ")+r.source());
-
-    g.generate_source(source);
-    source.close();
+    write_to_temp_first_then_move source([&g](std::ostream& s) {
+        g.generate_source(s);
+    }, r.source());
+    source.start();
 }
 
 int main(int argc, char ** argv) {
