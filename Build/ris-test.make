@@ -31,7 +31,7 @@ ifeq ($(config),debug)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Debug
   LDDEPS    += ../linux/bin/Debug/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread
+  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -55,7 +55,7 @@ ifeq ($(config),release)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L. -L../linux/bin/Release -s
   LDDEPS    += ../linux/bin/Release/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread
+  LIBS      += $(LDDEPS) -lpthread -lboost_system -lboost_filesystem -ldl
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -69,6 +69,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/test.o \
+	$(OBJDIR)/writing_files.o \
 	$(OBJDIR)/concepts.o \
 
 RESOURCES := \
@@ -130,6 +131,10 @@ $(GCH): $(PCH)
 endif
 
 $(OBJDIR)/test.o: ../test/test.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/writing_files.o: ../test/writing_files.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 

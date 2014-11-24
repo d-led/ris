@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EBEF99D1-FD1A-4142-84BF-E5BE765F7679}</ProjectGuid>
+    <ProjectGuid>{8105BE56-6925-1841-9379-E43061132AD7}</ProjectGuid>
     <RootNamespace>ris</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -122,14 +122,23 @@
     <ClInclude Include="..\ris_lib\ris_json_resources.h" />
     <ClInclude Include="..\ris_lib\ris_resources.h" />
     <ClInclude Include="..\ris_lib\ris_resource_loader.h" />
+    <ClInclude Include="..\ris_lib\ris_writing_files.h" />
+    <ClInclude Include="..\ris_lib\template.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">
     </ClCompile>
+    <ClCompile Include="..\ris_lib\template.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ris_lib\template.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">
-      <Project>{846F6741-7463-7949-B7D2-AB7D33FD603D}</Project>
+      <Project>{AFD946C8-33DE-A04E-8003-3BD6B540692E}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

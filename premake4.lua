@@ -50,11 +50,11 @@ platform_specifics()
 make_console_app('ris-test', { './test/*.cpp' })
 platform_specifics()
 run_target_after_build()
-links {'bundle'}
+links{settings.links[OS],'bundle'}
 
 make_console_app('ris', {
  './ris_app/*.cpp',
- './ris_lib/*.h'
+ './ris_lib/*.*'
 })
 platform_specifics()
 run_target_after_build()
@@ -68,3 +68,41 @@ make_console_app('ris-acceptance-test', {
 })
 platform_specifics()
 links{settings.links[OS],'bundle'}
+
+--- http://stackoverflow.com/a/4991602/847349 ---
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+--- http://stackoverflow.com/a/9676174/847349 ---
+function exec(command)
+	local handle = io.popen(command)
+	local result = handle:read("*a")
+	handle:close()
+end
+
+newaction {
+   trigger     = "template",
+   description = "generate the default code template",
+   execute     = function ()
+   		local ok = false
+		for _,os in ipairs { 'windows', 'macosx', 'linux' } do
+			for __, build in ipairs { 'Debug', 'Release' } do
+				for ___, extension in ipairs { '' , '.exe' } do
+					local candidate = path.join(os, 'bin', build, 'ris' .. extension)
+					if file_exists(candidate) then
+						local command = candidate .. ' ris_lib/template.json'
+						if OS=='windows' then command=command:gsub('/','\\') end
+						print(command .. ' ...')
+						exec(command)
+						ok = true
+					end
+					if ok then return end
+				end
+			end
+		end
+		-- last try with global path
+		exec('ris' .. ' ris_lib/template.json')
+   end
+}

@@ -1,9 +1,12 @@
 #pragma once
 
 #include "ris_resource_loader.h"
+#include "template.h"
 
 #include <string>
 #include <algorithm>
+
+#include <boost/filesystem/path.hpp>
 
 namespace ris {
 
@@ -36,26 +39,20 @@ namespace ris {
                 s << "namespace " << resources.namespace_ << " {\n";
 
             s
-                << "class Resource /*final*/ {\n"
+                << Resource::header_class()
                 << "public:\n"
-                << "    typedef std::string(*ResourceGetter)();\n"
-                << "public:\n"
-                ;
+            ;
 
             stream_resource_members(s);
 
             stream_keys_getter(s);
 
             s
-                << "public: // key/value api\n"
-                << "    static std::string Get(std::string const& key);\n"
-                << "public:\n"
-                << "    static std::string OnNoKey() {\n"
-                << "        // could be configured to throw\n"
-                << "        return \"\";\n"
-                << "    }\n"
-                << "};\n"
+                << Resource::header_key_value_getter()
+                << Resource::header_on_no_key()
                 ;
+
+            s << Resource::header_class_end();
 
             if (!resources.namespace_.empty())
                 s << "}\n";
@@ -66,9 +63,11 @@ namespace ris {
             auto& resources = source.resources();
 
             s
-
-                << "#include \"resource.h\"\n"
-                << "#include <unordered_map>\n"
+                << Resource::source_preamble()
+                << "#include \""
+                << boost::filesystem::path(resources.header).filename().generic_string()
+                << "\"\n"
+                << Resource::source_includes()
                 ;
 
             if (!resources.namespace_.empty())
@@ -79,9 +78,8 @@ namespace ris {
             }
 
             s
-                << "std::string Resource::Get(std::string const& key) {\n"
-                << "    static std::unordered_map<std::string,ResourceGetter> getters = {\n"
-                ;
+                << Resource::source_getters_begin()
+            ;
 
             for (auto& resource : resources.resources) {
                 s
@@ -90,13 +88,8 @@ namespace ris {
             }
 
             s
-                << "    };\n"
-                << "    auto getter = getters.find(key);\n"
-                << "    if (getter == getters.end())\n"
-                << "         return OnNoKey();\n"
-                << "    return getter->second();\n"
-                << "}\n"
-                ;
+                << Resource::source_getters_end()
+            ;
 
             if (!resources.namespace_.empty())
                 s << "}\n";
@@ -105,14 +98,14 @@ namespace ris {
     private:
         template <typename TStream>
         void stream_head(TStream& s) {
-            s
+            s 
                 << "#pragma once\n"
-                << "#include <string>\n"
+                << Resource::header_preamble()
+                << Resource::header_includes()
             ;
 
             if (any_with_compression) {
                 s
-                    << "#include <cstring>\n"
                     << "#include <bundle.hpp>\n"
                 ;
             }
@@ -129,10 +122,7 @@ namespace ris {
         template <typename TStream>
         void stream_keys_getter(TStream& s) {
             s
-                << "public: // key/value api\n"
-                << "template <typename TInserter>\n"
-                << "static void GetKeys(TInserter inserter) {\n"
-                << "    static const char* keys[] = {\n"
+                << Resource::header_key_getter_begin()
             ;
             
             for (auto& resource : source.resources().resources) {
@@ -141,11 +131,7 @@ namespace ris {
             }
             
             s
-                << "    };\n"
-                << "    for (auto key : keys) {\n"
-                << "        inserter(key);\n"
-                << "    }\n"
-                << "}\n"
+                << Resource::header_key_getter_end()
             ;
         }
 

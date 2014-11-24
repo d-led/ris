@@ -49,8 +49,6 @@ namespace ris {
                 throw std::runtime_error(json_path + ": " + err);
 
             picojson::convert::from_value(v, collection);
-
-            std::cout << "read " << collection.resources.size() << " resources" << std::endl;
         }
     };
 }

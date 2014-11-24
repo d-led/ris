@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{27DECAA7-D37E-D54A-828B-07C6FA313EAB}</UniqueIdentifier>
+      <UniqueIdentifier>{C2D3FF0B-FB7C-B649-9D24-6D6CF6FE07E4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -10,6 +10,9 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\test\test.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\writing_files.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

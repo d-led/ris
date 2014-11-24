@@ -1,1 +1,2 @@
 acceptance_test/*.bin binary
+acceptance_test/*.json text eol-lf
