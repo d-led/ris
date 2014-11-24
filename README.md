@@ -74,6 +74,11 @@ The compression algorithm enums as strings can be used in the resource definitio
 }
 ```
 
+customization
+-------------
+
+`ris` uses text resources generated and bootstrapped by its own early version. The goal is to make the code generator customizable. At the moment, the template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris_generator.h`](ris_lib/ris_generator.h).
+
 now and then
 ------------
 
