@@ -2,9 +2,12 @@
 
 #include "ris_resources.h"
 #include "ris_resource_loader.h"
+#include "template.h"
 
 #include <string>
 #include <algorithm>
+
+#include <boost/filesystem/path.hpp>
 
 namespace ris {
 
@@ -37,29 +40,20 @@ namespace ris {
                 s << "namespace " << resources.namespace_ << " {\n";
 
             s
-                << "class Resource /*final*/ {\n"
-                << "public:\n"
-                << "    typedef std::string(*ResourceGetter)();\n"
-                << "public:\n"
-                ;
+                << Resource::header_class()
+            ;
 
             stream_resource_members(s);
 
             stream_keys_getter(s);
 
             s
-                << "public: // key/value api\n"
-                << "    static std::string Get(std::string const& key);\n"
-                << "public:\n"
-                << "    static std::string OnNoKey() {\n"
-                << "        // could be configured to throw\n"
-                << "        return \"\";\n"
-                << "    }\n"
-                << "};\n"
+                << Resource::header_key_value_getter()
+                << Resource::header_on_no_key()
                 ;
 
             if (!resources.namespace_.empty())
-                s << "}\n";
+                s << Resource::header_class_end;
         }
 
         template <typename TStream>
@@ -67,8 +61,10 @@ namespace ris {
             auto& resources = source.resources();
 
             s
-
-                << "#include \"resource.h\"\n"
+                << Resource::source_preamble()
+                << "#include \""
+                << boost::filesystem::path(resources.header).filename().generic_string()
+                << "\"\n"
                 << "#include <unordered_map>\n"
                 ;
 
@@ -106,14 +102,14 @@ namespace ris {
     private:
         template <typename TStream>
         void stream_head(TStream& s) {
-            s
+            s 
                 << "#pragma once\n"
-                << "#include <string>\n"
+                << Resource::header_preamble()
+                << Resource::header_includes()
             ;
 
             if (any_with_compression) {
                 s
-                    << "#include <cstring>\n"
                     << "#include <bundle.hpp>\n"
                 ;
             }
@@ -130,10 +126,7 @@ namespace ris {
         template <typename TStream>
         void stream_keys_getter(TStream& s) {
             s
-                << "public: // key/value api\n"
-                << "template <typename TInserter>\n"
-                << "static void GetKeys(TInserter inserter) {\n"
-                << "    static const char* keys[] = {\n"
+                << Resource::header_key_getter_begin()
             ;
             
             for (auto& resource : source.resources().resources) {
@@ -142,11 +135,7 @@ namespace ris {
             }
             
             s
-                << "    };\n"
-                << "    for (auto key : keys) {\n"
-                << "        inserter(key);\n"
-                << "    }\n"
-                << "}\n"
+                << Resource::header_key_getter_end()
             ;
         }
 

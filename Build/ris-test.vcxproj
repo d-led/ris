@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EEB67F2C-DE49-EE40-9899-174D2F487E5E}</ProjectGuid>
+    <ProjectGuid>{CA2D9D48-BCE0-9442-9053-9AC47B251467}</ProjectGuid>
     <RootNamespace>ris-test</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -121,11 +121,12 @@
     </ClCompile>
     <ClCompile Include="..\test\test.cpp">
     </ClCompile>
-    <ClCompile Include="..\test\writing_files.cpp" />
+    <ClCompile Include="..\test\writing_files.cpp">
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">
-      <Project>{846F6741-7463-7949-B7D2-AB7D33FD603D}</Project>
+      <Project>{AFD946C8-33DE-A04E-8003-3BD6B540692E}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

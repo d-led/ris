@@ -1,0 +1,57 @@
+{
+   "header" : "ris_lib/template.h",
+   "namespace" : "ris",
+   "resources" : [
+      {
+         "name" : "header_preamble",
+         "source" : "/* This file has been generated using ris, do not modify! */\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_includes",
+         "source" : "#include <string>\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_class",
+         "source" : "class Resource /*final*/ {\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_key_getter_begin",
+         "source" : "public:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_key_getter_end",
+         "source" : "    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_key_value_getter",
+         "source" : "public: // key/value api\n    static std::string Get(std::string const& key);\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_on_no_key",
+         "source" : "public:\n    static std::string OnNoKey() {\n        // could be configured to throw\n        return \"\";\n    }\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_class_end",
+         "source" : "};\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_preamble",
+         "source" : "/* This file has been generated using ris, do not modify! */\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_includes",
+         "source" : "#include <unordered_map>\r\n",
+         "source_type" : "string"
+      }
+   ],
+   "source" : "ris_lib/template.cpp"
+}
