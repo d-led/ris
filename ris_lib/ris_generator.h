@@ -41,6 +41,7 @@ namespace ris {
 
             s
                 << Resource::header_class()
+                << "public:\n"
             ;
 
             stream_resource_members(s);
@@ -52,8 +53,10 @@ namespace ris {
                 << Resource::header_on_no_key()
                 ;
 
+            s << Resource::header_class_end();
+
             if (!resources.namespace_.empty())
-                s << Resource::header_class_end;
+                s << "}\n";
         }
 
         template <typename TStream>
@@ -65,7 +68,7 @@ namespace ris {
                 << "#include \""
                 << boost::filesystem::path(resources.header).filename().generic_string()
                 << "\"\n"
-                << "#include <unordered_map>\n"
+                << Resource::source_includes()
                 ;
 
             if (!resources.namespace_.empty())
@@ -88,6 +91,9 @@ namespace ris {
             s
                 << Resource::source_getters_end()
             ;
+
+            if (!resources.namespace_.empty())
+                s << "}\n";
         }
 
     private:
