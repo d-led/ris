@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ris_resources.h"
 #include "ris_resource_loader.h"
 
 #include <string>
