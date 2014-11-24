@@ -49,7 +49,17 @@
       },
       {
          "name" : "source_includes",
-         "source" : "#include <unordered_map>\r\n",
+         "source" : "#include <unordered_map>\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_getters_begin",
+         "source" : "std::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_getters_end",
+         "source" : "    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey();\n    return getter->second();\n}\n",
          "source_type" : "string"
       }
    ],

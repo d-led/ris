@@ -58,6 +58,26 @@ std::string Resource::source_preamble() {
     };
     return {literal, sizeof(literal)/sizeof(char)};
 }
+std::string Resource::source_includes() {
+    static char const literal[] =  {
+        35, 105, 110, 99, 108, 117, 100, 101, 32, 60, 117, 110, 111, 114, 100, 101, 114, 101, 100, 95, 109, 97, 112, 62, 10, 
+    };
+    return {literal, sizeof(literal)/sizeof(char)};
+}
+std::string Resource::source_getters_begin() {
+    static char const literal[] =  {
+        115, 116, 100, 58, 58, 115, 116, 114, 105, 110, 103, 32, 82, 101, 115, 111, 117, 114, 99, 101, 58, 58, 71, 101, 116, 40, 115, 116, 100, 58, 58, 115, 116, 114, 105, 110, 103, 32, 99, 111, 110, 115, 116, 38, 32, 107, 101, 121, 41, 32, 123, 10, 32, 32, 32, 32, 115, 116, 97, 116, 105, 99, 32, 115, 116, 100, 58, 58, 117, 110, 111, 114, 100, 101, 114, 101, 100, 95, 109, 97, 112, 60, 115, 116, 100, 58, 58, 115, 116, 114, 105, 110, 103, 44, 82, 101, 115, 111, 117, 114, 99, 
+        101, 71, 101, 116, 116, 101, 114, 62, 32, 103, 101, 116, 116, 101, 114, 115, 32, 61, 32, 123, 10, 
+    };
+    return {literal, sizeof(literal)/sizeof(char)};
+}
+std::string Resource::source_getters_end() {
+    static char const literal[] =  {
+        32, 32, 32, 32, 125, 59, 10, 32, 32, 32, 32, 97, 117, 116, 111, 32, 103, 101, 116, 116, 101, 114, 32, 61, 32, 103, 101, 116, 116, 101, 114, 115, 46, 102, 105, 110, 100, 40, 107, 101, 121, 41, 59, 10, 32, 32, 32, 32, 105, 102, 32, 40, 103, 101, 116, 116, 101, 114, 32, 61, 61, 32, 103, 101, 116, 116, 101, 114, 115, 46, 101, 110, 100, 40, 41, 41, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 114, 101, 116, 117, 114, 110, 32, 79, 110, 78, 111, 75, 101, 121, 40, 
+        41, 59, 10, 32, 32, 32, 32, 114, 101, 116, 117, 114, 110, 32, 103, 101, 116, 116, 101, 114, 45, 62, 115, 101, 99, 111, 110, 100, 40, 41, 59, 10, 125, 10, 
+    };
+    return {literal, sizeof(literal)/sizeof(char)};
+}
 std::string Resource::Get(std::string const& key) {
     static std::unordered_map<std::string,ResourceGetter> getters = {
         { "header_preamble", Resource::header_preamble },
@@ -69,6 +89,9 @@ std::string Resource::Get(std::string const& key) {
         { "header_on_no_key", Resource::header_on_no_key },
         { "header_class_end", Resource::header_class_end },
         { "source_preamble", Resource::source_preamble },
+        { "source_includes", Resource::source_includes },
+        { "source_getters_begin", Resource::source_getters_begin },
+        { "source_getters_end", Resource::source_getters_end },
     };
     auto getter = getters.find(key);
     if (getter == getters.end())

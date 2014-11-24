@@ -76,9 +76,8 @@ namespace ris {
             }
 
             s
-                << "std::string Resource::Get(std::string const& key) {\n"
-                << "    static std::unordered_map<std::string,ResourceGetter> getters = {\n"
-                ;
+                << Resource::source_getters_begin()
+            ;
 
             for (auto& resource : resources.resources) {
                 s
@@ -87,16 +86,8 @@ namespace ris {
             }
 
             s
-                << "    };\n"
-                << "    auto getter = getters.find(key);\n"
-                << "    if (getter == getters.end())\n"
-                << "         return OnNoKey();\n"
-                << "    return getter->second();\n"
-                << "}\n"
-                ;
-
-            if (!resources.namespace_.empty())
-                s << "}\n";
+                << Resource::source_getters_end()
+            ;
         }
 
     private:
