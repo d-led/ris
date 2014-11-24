@@ -1,3 +1,4 @@
+/* This file has been generated using ris, do not modify! */
 #include "resource.h"
 #include <unordered_map>
 namespace test {

@@ -1,16 +1,16 @@
 #pragma once
+/* This file has been generated using ris, do not modify! */
 #include <string>
-#include <cstring>
 #include <bundle.hpp>
 namespace test {
 class Resource /*final*/ {
-public:
-    typedef std::string(*ResourceGetter)();
 public:
     static std::string string_test();
     static std::string binary_file_test();
     static std::string itself();
     static std::string itself_packed_lz4();
+public:
+    typedef std::string(*ResourceGetter)();
 public: // key/value api
 template <typename TInserter>
 static void GetKeys(TInserter inserter) {
