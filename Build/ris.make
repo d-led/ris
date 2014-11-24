@@ -69,6 +69,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/ris.o \
+	$(OBJDIR)/template.o \
 
 RESOURCES := \
 
@@ -129,6 +130,10 @@ $(GCH): $(PCH)
 endif
 
 $(OBJDIR)/ris.o: ../ris_app/ris.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
+
+$(OBJDIR)/template.o: ../ris_lib/template.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
 
