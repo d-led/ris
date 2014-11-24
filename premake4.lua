@@ -75,6 +75,13 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
+--- http://stackoverflow.com/a/9676174/847349 ---
+function exec(command)
+	local handle = io.popen(command)
+	local result = handle:read("*a")
+	handle:close()
+end
+
 newaction {
    trigger     = "template",
    description = "generate the default code template",
@@ -88,7 +95,7 @@ newaction {
 						local command = candidate .. ' ris_lib/template.json'
 						if OS=='windows' then command=command:gsub('/','\\') end
 						print(command .. ' ...')
-						io.popen(command)
+						exec(command)
 						ok = true
 					end
 					if ok then return end
@@ -96,6 +103,6 @@ newaction {
 			end
 		end
 		-- last try with global path
-		io.popen('ris' .. ' ris_lib/template.json')
+		exec('ris' .. ' ris_lib/template.json')
    end
 }
