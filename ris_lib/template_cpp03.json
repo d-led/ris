@@ -12,12 +12,12 @@
       },
       {
          "name" : "source_getters_begin",
-         "source" : "namespace {\nstruct dict { std::string key, value; };\nstruct key_is : std::unary_function<dict const&,bool> {\n    std::string seeking;\npublic:\n    key_is(std::string const& s):seeking(s){}\n    bool operator()(dict const& d) const {\n        return d.key == seeking;\n    }\n};\n}\n\nstd::string Resource::Get(std::string const& key) {\n    static dict getters[] = {\n",
+         "source" : "namespace internal {\nstruct dict { std::string key; Resource::ResourceGetter getter; };\nstruct key_is : std::unary_function<internal::dict const&,bool> {\n    std::string seeking;\npublic:\n    key_is(std::string const& s):seeking(s){}\n    bool operator()(internal::dict const& d) const {\n        return d.key == seeking;\n    }\n};\n}\n\nstd::string Resource::Get(std::string const& key) {\n    static internal::dict getters[] = {\n",
          "source_type" : "string"
       },
       {
          "name" : "source_getters_end",
-         "source" : "    };\n        dict* end = getters+sizeof(getters)/sizeof(dict);\n    dict* found = std::find_if(getters,end,key_is(\"c\"));\n    if (found!=end)\n        return found->getter;\n    else\n        return OnNoKey(key);\n\n",
+         "source" : "    };\n        internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);\n    internal::dict* found = std::find_if(getters,end,internal::key_is(\"c\"));\n    if (found!=end)\n        return found->getter();\n    else\n        return OnNoKey(key);\n}\n",
          "source_type" : "string"
       }
    ],
