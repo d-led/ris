@@ -34,7 +34,7 @@
       },
       {
          "name" : "header_on_no_key",
-         "source" : "public:\n    static std::string OnNoKey() {\n        // could be configured to throw\n        return \"\";\n    }\n",
+         "source" : "public:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        // could be configured to throw\n        return \"\";\n    }\n",
          "source_type" : "string"
       },
       {
@@ -59,7 +59,7 @@
       },
       {
          "name" : "source_getters_end",
-         "source" : "    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey();\n    return getter->second();\n}\n",
+         "source" : "    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n",
          "source_type" : "string"
       }
    ],

@@ -7,7 +7,7 @@
       },
       {
          "name" : "header_on_no_key",
-         "source" : "public:\n    static std::string OnNoKey() {\n        throw std::runtime_error(\"no such key\");\n    }\n",
+         "source" : "public:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        throw std::runtime_error(std::string(\"no such key: \")+key);\n    }\n",
          "source_type" : "string"
       }
    ]

@@ -42,7 +42,7 @@ static void GetKeys(TInserter inserter) {
 public: // key/value api
     static std::string Get(std::string const& key);
 public:
-    static std::string OnNoKey() {
+    static std::string OnNoKey(std::string const& key="") {
         // could be configured to throw
         return "";
     }

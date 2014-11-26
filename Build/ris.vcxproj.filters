@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Sources">
-      <UniqueIdentifier>{FCD2AEBE-87C8-AF43-A811-F37BDD06545A}</UniqueIdentifier>
+      <UniqueIdentifier>{316FE505-DA1E-6B45-9B32-C81AFE84F615}</UniqueIdentifier>
     </Filter>
     <Filter Include="Headers">
-      <UniqueIdentifier>{E4BBFC22-356A-0A4F-9C20-7C35BC0184FA}</UniqueIdentifier>
+      <UniqueIdentifier>{90F4E910-06CE-654D-837A-7A83F4D77608}</UniqueIdentifier>
     </Filter>
     <Filter Include="ris_lib">
-      <UniqueIdentifier>{D3178349-A516-6140-AA23-09866DEE351A}</UniqueIdentifier>
+      <UniqueIdentifier>{C48A6A19-0F18-D84D-BEAC-0538A822FD58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\ris_lib\template.json">
+      <Filter>ris_lib</Filter>
+    </None>
+    <None Include="..\ris_lib\template_throwing.json">
+      <Filter>ris_lib</Filter>
+    </None>
+    <None Include="..\ris_lib\template_cpp03.json">
       <Filter>ris_lib</Filter>
     </None>
   </ItemGroup>

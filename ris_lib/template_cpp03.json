@@ -1,0 +1,25 @@
+{
+   "resources" : [
+      {
+         "name" : "header_key_getter_end",
+         "source" : "    };\n    for (size_t i=0; i<sizeof(keys)/sizeof(char); i++) {\n        inserter(keys[i]);\n    }\n}\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_includes",
+         "source" : "#include <algorithm>\n#include <functional>\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_getters_begin",
+         "source" : "namespace {\nstruct dict { std::string key, value; };\nstruct key_is : std::unary_function<dict const&,bool> {\n    std::string seeking;\npublic:\n    key_is(std::string const& s):seeking(s){}\n    bool operator()(dict const& d) const {\n        return d.key == seeking;\n    }\n};\n}\n\nstd::string Resource::Get(std::string const& key) {\n    static dict getters[] = {\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_getters_end",
+         "source" : "    };\n        dict* end = getters+sizeof(getters)/sizeof(dict);\n    dict* found = std::find_if(getters,end,key_is(\"c\"));\n    if (found!=end)\n        return found->getter;\n    else\n        return OnNoKey(key);\n\n",
+         "source_type" : "string"
+      }
+   ],
+   "source" : "ris_lib/template.cpp"
+}
