@@ -43,7 +43,7 @@ std::string Resource::Get(std::string const& key) {
     };
     auto getter = getters.find(key);
     if (getter == getters.end())
-         return OnNoKey();
+         return OnNoKey(key);
     return getter->second();
 }
 }

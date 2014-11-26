@@ -4,10 +4,10 @@
 #include "../ris_lib/ris_writing_files.h"
 #include "../ris_lib/template.h"
 #include "../ris_lib/ris_resource_loader.h"
+#include "../ris_lib/ris_default_or_from_file.h"
 
 #include <iostream>
 #include <string>
-#include <unordered_map>
 #include <stdexcept>
 
 #include <boost/filesystem.hpp>
@@ -19,38 +19,6 @@ void print_usage() {
         ;
 }
 
-struct default_or_from_file {
-    std::unordered_map<std::string, std::string> resources;
-public:
-    default_or_from_file(std::string const& t) {
-        try_loading_resources(t);
-    }
-
-    std::string Get(std::string const& key) const {
-        auto found = resources.find(key);
-        return found != resources.end() ?
-            found->second
-            :
-            ris::Resource::Get(key)
-            ;
-    }
-
-private:
-    void try_loading_resources(std::string const& json_path) {
-        try {
-            auto base_dir = boost::filesystem::path(json_path).parent_path().generic_string();
-            auto r = ris::json_resources(json_path);
-            for (auto& res : r.resources().resources) {
-                resources[res.name] = ris::resource_loader(res, base_dir).get();
-            }
-            std::cout << "loaded " << resources.size() << " code generator overrides" << std::endl;
-        }
-        catch (std::exception& e) {
-            std::cerr << "could not load " << json_path << ": " << e.what() << std::endl;
-        }
-    }
-};
-
 void process(std::string const& path, std::string const& source_template) {
     auto full_path = absolute(boost::filesystem::path(path));
     full_path.make_preferred();
@@ -58,7 +26,7 @@ void process(std::string const& path, std::string const& source_template) {
     auto r = ris::json_resources(path);
     std::cout << "read " << r.resources().resources.size() << " resources" << std::endl;
     auto c = ris::bundle_compression();
-    auto t = default_or_from_file(source_template);
+    auto t = ris::default_or_from_file<ris::Resource>(source_template);
     auto g = ris::get_generator(r, c, t);
 
     ris::write_to_temp_first_then_move header([&g](std::ostream& s) {
@@ -78,6 +46,7 @@ int main(int argc, char ** argv) {
     switch (argc) {
         case 3:
             source_template = argv[2];
+            // fall through
         case 2:
             try {
                 process(argv[1], source_template);
