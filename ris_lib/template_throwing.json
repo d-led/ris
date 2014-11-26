@@ -1,0 +1,14 @@
+{
+   "resources" : [
+      {
+         "name" : "header_includes",
+         "source" : "#include <string>\n#include <stdexcept>\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_on_no_key",
+         "source" : "public:\n    static std::string OnNoKey() {\n        throw std::runtime_error(\"no such key\");\n    }\n",
+         "source_type" : "string"
+      }
+   ]
+}

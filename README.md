@@ -81,11 +81,15 @@ if the present build files do not suit your platform:
 - check [premake4.lua](premake4.lua) if the dependencies are ok
 - `premake/premake4[.*] <build_system>`
 - check out [premake4 documentation](http://industriousone.com/premake-quick-start) if in doubt
+- if the default code generator template should be regenerated: `premake/premake4 template`
+- build using the build system of choice
 
 customization
 -------------
 
-`ris` uses text resources generated and bootstrapped by its own early version. The goal is to make the code generator customizable. At the moment, the template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris_generator.h`](ris_lib/ris_generator.h).
+`ris` uses text resources generated and bootstrapped by its own early version. The code generator customizable. At the moment, the template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris_generator.h`](ris_lib/ris_generator.h).
+
+To override the template, define a template file based on [`template.json`](ris_lib/template.json). If values are omitted, they will be taken from the default template. Thus, if I were to make a version of `ris` that would throw on a missing template resource string, I would generate `template.*` from [`template_throwing.json`](ris_lib/template_throwing.json): `ris ris_lib/template_throwing.json`.
 
 now and then
 ------------
