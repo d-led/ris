@@ -74,6 +74,14 @@ The compression algorithm enums as strings can be used in the resource definitio
 }
 ```
 
+building
+--------
+
+if the present build files do not suit your platform:
+- check [premake4.lua](premake4.lua) if the dependencies are ok
+- `premake/premake4[.*] <build_system>`
+- check out [premake4 documentation](http://industriousone.com/premake-quick-start) if in doubt
+
 customization
 -------------
 
