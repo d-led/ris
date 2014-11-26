@@ -3,7 +3,7 @@ ris
 
 [![Build Status](https://travis-ci.org/d-led/ris.svg?branch=master)](https://travis-ci.org/d-led/ris)
 
-**ris** strives to be a simple-to-use cross-platform resource compiler for c++11 projects
+**ris** strives to be a simple-to-use cross-platform resource compiler for c++ projects
 
 usage
 -----
@@ -90,6 +90,11 @@ customization
 `ris` uses text resources generated and bootstrapped by its own early version. The code generator customizable. At the moment, the template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris_generator.h`](ris_lib/ris_generator.h).
 
 To override the template, define a template file based on [`template.json`](ris_lib/template.json). If values are omitted, they will be taken from the default template. Thus, if I were to make a version of `ris` that would throw on a missing template resource string, I would generate `template.*` from [`template_throwing.json`](ris_lib/template_throwing.json): `ris ris_lib/template_throwing.json`.
+
+c++03
+-----
+
+A `C++03` override template is provided: [template_cpp03.json](template_cpp03.json) with a linear search instead of an `unordered_map` for the key/value API. Base your override code template upon that 
 
 now and then
 ------------
