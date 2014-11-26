@@ -20,6 +20,5 @@
          "source" : "    };\n        internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);\n    internal::dict* found = std::find_if(getters,end,internal::key_is(\"c\"));\n    if (found!=end)\n        return found->getter();\n    else\n        return OnNoKey(key);\n}\n",
          "source_type" : "string"
       }
-   ],
-   "source" : "ris_lib/template.cpp"
+   ]
 }

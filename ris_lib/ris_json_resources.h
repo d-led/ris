@@ -41,21 +41,6 @@ namespace ris {
             return collection.namespace_;
         }
 
-        void override_header_if_not_empty(std::string const& h) {
-            if (!h.empty())
-                collection.header = h;
-        }
-
-        void override_source_if_not_empty(std::string const& s) {
-            if (!s.empty())
-                collection.source = s;
-        }
-
-        void override_namespace_if_not_empty(std::string const& n) {
-            if (!n.empty())
-                collection.namespace_ = n;
-        }
-
     private:
         void read_from_file(std::string const& json_path) {
             std::ifstream json_file(json_path);
