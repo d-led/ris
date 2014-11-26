@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ris_resource_loader.h"
-#include "template.h"
 
 #include <string>
 #include <algorithm>
@@ -10,17 +9,19 @@
 
 namespace ris {
 
-    template <typename TSource,typename TCompression>
+    template <typename TSource,typename TCompression,typename TTemplate>
     class generator {
         TSource&& source;
         TCompression&& compression;
+        TTemplate&& generator_template;
 
         bool any_with_compression;
 
     public:
-        generator(TSource&& s, TCompression&& c) :
+        generator(TSource&& s, TCompression&& c, TTemplate&& t) :
             source(s),
             compression(c),
+            generator_template(std::forward<TTemplate>(t)),
             any_with_compression(std::any_of(std::begin(source.resources().resources),
                                          std::end(source.resources().resources),
                                          [this](resource const& res) {
@@ -39,7 +40,7 @@ namespace ris {
                 s << "namespace " << resources.namespace_ << " {\n";
 
             s
-                << Resource::header_class()
+                << generator_template.Get("header_class")
                 << "public:\n"
             ;
 
@@ -48,11 +49,11 @@ namespace ris {
             stream_keys_getter(s);
 
             s
-                << Resource::header_key_value_getter()
-                << Resource::header_on_no_key()
+                << generator_template.Get("header_key_value_getter")
+                << generator_template.Get("header_on_no_key")
                 ;
 
-            s << Resource::header_class_end();
+            s << generator_template.Get("header_class_end");
 
             if (!resources.namespace_.empty())
                 s << "}\n";
@@ -63,11 +64,11 @@ namespace ris {
             auto& resources = source.resources();
 
             s
-                << Resource::source_preamble()
+                << generator_template.Get("source_preamble")
                 << "#include \""
                 << boost::filesystem::path(resources.header).filename().generic_string()
                 << "\"\n"
-                << Resource::source_includes()
+                << generator_template.Get("source_includes")
                 ;
 
             if (!resources.namespace_.empty())
@@ -78,7 +79,7 @@ namespace ris {
             }
 
             s
-                << Resource::source_getters_begin()
+                << generator_template.Get("source_getters_begin")
             ;
 
             for (auto& resource : resources.resources) {
@@ -88,7 +89,7 @@ namespace ris {
             }
 
             s
-                << Resource::source_getters_end()
+                << generator_template.Get("source_getters_end")
             ;
 
             if (!resources.namespace_.empty())
@@ -100,8 +101,8 @@ namespace ris {
         void stream_head(TStream& s) {
             s 
                 << "#pragma once\n"
-                << Resource::header_preamble()
-                << Resource::header_includes()
+                << generator_template.Get("header_preamble")
+                << generator_template.Get("header_includes")
             ;
 
             if (any_with_compression) {
@@ -122,7 +123,7 @@ namespace ris {
         template <typename TStream>
         void stream_keys_getter(TStream& s) {
             s
-                << Resource::header_key_getter_begin()
+                << generator_template.Get("header_key_getter_begin")
             ;
             
             for (auto& resource : source.resources().resources) {
@@ -131,7 +132,7 @@ namespace ris {
             }
             
             s
-                << Resource::header_key_getter_end()
+                << generator_template.Get("header_key_getter_end")
             ;
         }
 
@@ -183,8 +184,8 @@ namespace ris {
         }
     };
 
-    template <typename TSource, typename TCompression>
-    generator<TSource, TCompression> get_generator(TSource&& s,TCompression&& c) {
-        return generator<TSource,TCompression>(s,c);
+    template <typename TSource, typename TCompression, typename TTemplate>
+    generator<TSource, TCompression, TTemplate> get_generator(TSource&& s,TCompression&& c,TTemplate&& t) {
+        return generator<TSource,TCompression,TTemplate>(s,c,t);
     }
 }
