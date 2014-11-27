@@ -6,13 +6,13 @@ std::string Resource::string_test() {
     static char const literal[] =  {
         112, 108, 97, 105, 110, 32, 116, 101, 120, 116, 
     };
-    return {literal, sizeof(literal)/sizeof(char)};
+    return std::string(literal, sizeof(literal)/sizeof(char));
 }
 std::string Resource::binary_file_test() {
     static char const literal[] =  {
         49, 50, 51, 10, 49, 50, 51, 10, 
     };
-    return {literal, sizeof(literal)/sizeof(char)};
+    return std::string(literal, sizeof(literal)/sizeof(char));
 }
 std::string Resource::itself() {
     static char const literal[] =  {
@@ -24,7 +24,7 @@ std::string Resource::itself() {
         101, 115, 116, 46, 106, 115, 111, 110, 34, 10, 32, 32, 32, 32, 32, 32, 32, 32, 125, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 34, 110, 97, 109, 101, 34, 32, 58, 32, 34, 105, 116, 115, 101, 108, 102, 95, 112, 97, 99, 107, 101, 100, 95, 108, 122, 52, 34, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 34, 115, 111, 117, 114, 99, 101, 95, 116, 121, 112, 101, 34, 32, 58, 32, 
         34, 102, 105, 108, 101, 34, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 34, 115, 111, 117, 114, 99, 101, 34, 58, 32, 34, 116, 101, 115, 116, 46, 106, 115, 111, 110, 34, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 34, 99, 111, 109, 112, 114, 101, 115, 115, 105, 111, 110, 34, 32, 58, 32, 34, 76, 90, 52, 72, 67, 34, 10, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 93, 10, 125, 10, 
     };
-    return {literal, sizeof(literal)/sizeof(char)};
+    return std::string(literal, sizeof(literal)/sizeof(char));
 }
 std::string Resource::itself_packed_lz4() {
     static char const literal[] =  {
