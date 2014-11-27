@@ -174,7 +174,7 @@ namespace ris {
                 ?
                 "    return bundle::unpack(std::string(literal, sizeof(literal)/sizeof(char)));\n"
                 :
-                "    return {literal, sizeof(literal)/sizeof(char)};\n"
+                "    return std::string(literal, sizeof(literal)/sizeof(char));\n"
             ;
 
             s
