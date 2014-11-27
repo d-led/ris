@@ -112,6 +112,11 @@ now and then
 - Resource names are not validated at the moment. The C++ compiler will ultimately validate them.
 - the generator is not using any template engine, and is thus not very flexible at the moment.
 
+why c++
+-------
+
+Such code generator as `ris` could most probably be developed more rapidly using any other programming language with a huge framework and a ton of libraries behind them. My personal preference for certain kinds of small projects lies in the area of self-contained single-binary/single-file executables or libraries, such as [Lua](http://www.lua.org). Lua is the primary motivation for this project, as it is itself a compact library for building flexible and extensible prototypes and tools. `ris` can act as a bootstrapping component to embed resources for building specialized shell-scripting replacements, i.e. for massive scripted file operations.
+
 dependencies
 ------------
 
