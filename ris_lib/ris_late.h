@@ -9,17 +9,21 @@ namespace ris {
     class late {
         //{{\s*[#/^!>]?\s*([\w\.]+)\s*[\?]?\s*}}
         TContext&& context;
+        std::string late_;
     public:
-        late(TContext&& c) :context(std::forward<TContext>(c)) {}
+        late(std::string const& tmp,TContext&& c) :
+            late_(tmp),
+            context(std::forward<TContext>(c))
+        {}
     public:
-        std::string render(std::string const& what) {
-            return "";
+        template <typename TStream>
+        void render(TStream& s) {
         }
     };
 
-    template <typename TString,typename TContext>
-    std::string render(TString const& s,TContext&& c) {
-        auto temp = late<TContext>(c);
-        return temp.render(s);
+    template <typename TString,typename TContext,typename TStream>
+    void render(TString const& tmp,TContext&& ctx,TStream& s) {
+        auto temp = late<TContext>(tmp,ctx);
+        temp.render(s);
     }
 }

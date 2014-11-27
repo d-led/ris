@@ -2,6 +2,7 @@
 #include "../ris_lib/ris_late.h"
 
 #include <unordered_map>
+#include <sstream>
 
 TEST_CASE("splitting along simple mustache tags") {
     const char* temp = R"(Hello {{name}}
@@ -24,7 +25,9 @@ You have just won 33 dollars!
         { "value", "33" }
     };
 
-    auto output = ris::render(temp, context);
 
-    WARN(output.empty());
+    std::stringstream output;
+    ris::render(temp, context, output);
+
+    WARN(output.str().empty());
 }
