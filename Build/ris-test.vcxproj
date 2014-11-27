@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="..\test\concepts.cpp">
     </ClCompile>
+    <ClCompile Include="..\test\late_test.cpp" />
     <ClCompile Include="..\test\test.cpp">
     </ClCompile>
     <ClCompile Include="..\test\writing_files.cpp">

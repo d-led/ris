@@ -47,6 +47,9 @@
     <ClInclude Include="..\ris_lib\ris_default_or_from_file.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\ris_lib\ris_late.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">
