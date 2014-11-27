@@ -2,7 +2,7 @@
    "resources" : [
       {
          "name" : "header_key_getter_end",
-         "source" : "    };\n    for (size_t i=0; i<sizeof(keys)/sizeof(char); i++) {\n        inserter(keys[i]);\n    }\n}\n",
+         "source" : "    };\n    for (size_t i=0; i<sizeof(keys)/sizeof(char*); i++) {\n        inserter(keys[i]);\n    }\n}\n",
          "source_type" : "string"
       },
       {
