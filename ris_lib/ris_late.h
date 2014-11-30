@@ -12,6 +12,7 @@ namespace ris {
         std::string late_;
         boost::regex simple_placeholder;
         boost::regex all_placeholders;
+        late(late const&);
     public:
         late(std::string const& tmp,TContext&& c) :
             late_(tmp),
@@ -52,7 +53,6 @@ namespace ris {
 
     template <typename TContext,typename TStream>
     void render(std::string const& tmp,TContext ctx,TStream& s) {
-        auto temp = late<TContext>(tmp,std::forward<TContext>(ctx));
-        temp.render(s);
+        late<TContext>(tmp,std::forward<TContext>(ctx)).render(s);
     }
 }
