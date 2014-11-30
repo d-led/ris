@@ -5,7 +5,7 @@
 #include <boost/regex.hpp>
 
 namespace ris {
-    /// mustache/ctemplate inspired
+    /// mustache/ctemplate inspired (http://mustache.github.io/mustache.5.html)
     template <typename TContext>
     class late {
         TContext&& context;
