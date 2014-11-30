@@ -31,7 +31,7 @@ ifeq ($(config),debug)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Debug
   LDDEPS    += ../macosx/bin/Debug/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem
+  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem -lboost_regex
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -53,7 +53,7 @@ ifeq ($(config),release)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Release -Wl,-x
   LDDEPS    += ../macosx/bin/Release/libbundle.a
-  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem
+  LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem -lboost_regex
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
