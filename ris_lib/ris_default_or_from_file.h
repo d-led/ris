@@ -17,6 +17,9 @@ namespace ris {
         std::unordered_map<std::string, std::string> resources;
     public:
         default_or_from_file(std::string const& t) {
+            Resource::GetKeys([this](std::string const& key){
+                resources[key] = Resource::Get(key);
+            });
             try_loading_resources(t);
         }
 
@@ -25,8 +28,12 @@ namespace ris {
             return found != resources.end() ?
                 found->second
                 :
-                TResource::Get(key)
+                ""
                 ;
+        }
+
+        bool Has(std::string const& key) const {
+            return resources.find(key) != resources.end();
         }
 
     private:
