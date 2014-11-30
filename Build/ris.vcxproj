@@ -125,6 +125,7 @@
     <ClInclude Include="..\ris_lib\ris_late_context.h" />
     <ClInclude Include="..\ris_lib\ris_resources.h" />
     <ClInclude Include="..\ris_lib\ris_resource_loader.h" />
+    <ClInclude Include="..\ris_lib\ris_resource_snapshot.h" />
     <ClInclude Include="..\ris_lib\ris_writing_files.h" />
     <ClInclude Include="..\ris_lib\template.h" />
   </ItemGroup>

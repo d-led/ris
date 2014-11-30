@@ -40,6 +40,13 @@ namespace ris {
             s << this->Get(key);
         }
 
+        template<typename OnKey>
+        void GetKeys(OnKey on_key) const {
+            for (auto const& kv : resources) {
+                on_key(kv.first);
+            }
+        }
+
     private:
         void try_loading_resources(std::string const& json_path) {
             if (json_path.empty())

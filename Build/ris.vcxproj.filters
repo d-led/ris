@@ -53,6 +53,9 @@
     <ClInclude Include="..\ris_lib\ris_late_context.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\ris_lib\ris_resource_snapshot.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ris_app\ris.cpp">

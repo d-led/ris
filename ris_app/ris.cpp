@@ -5,6 +5,8 @@
 #include "../ris_lib/template.h"
 #include "../ris_lib/ris_resource_loader.h"
 #include "../ris_lib/ris_default_or_from_file.h"
+#include "../ris_lib/ris_resource_snapshot.h"
+#include "../ris_lib/ris_late_context.h"
 
 #include <iostream>
 #include <string>
@@ -26,8 +28,9 @@ void process(std::string const& path, std::string const& source_template) {
     auto r = ris::json_resources(path);
     std::cout << "read " << r.resources().resources.size() << " resources" << std::endl;
     auto c = ris::bundle_compression();
-    auto t = ris::default_or_from_file<ris::Resource>(source_template);
-    auto g = ris::get_generator(r, c, t);
+    auto template_snapshot = ris::resource_snapshot(ris::default_or_from_file<ris::Resource>(source_template));
+    auto lazy_resources(ris::get_context(template_snapshot));
+    auto g = ris::get_generator(r, c, lazy_resources);
 
     ris::write_to_temp_first_then_move header([&g](std::ostream& s) {
         g.generate_header(s);
