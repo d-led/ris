@@ -60,3 +60,15 @@ TEST_CASE("empty templates are ok") {
 
     CHECK(output.str() == "");
 }
+
+TEST_CASE("confusion avoidance") {
+    std::stringstream output;
+    default_context_t context;
+    ris::render("{{{a}}", context, output);
+
+    CHECK(output.str() == "{");
+    
+    output.str("");
+    ris::render("{{{a }}}", context, output);
+    CHECK(output.str() == "{}");
+}
