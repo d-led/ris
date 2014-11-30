@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <sstream>
 
-TEST_CASE("splitting along simple mustache tags") {
+TEST_CASE("splitting along simple mustache tags and skipping others") {
     const char* temp = R"(Hello {{name}}
 You have just won {{value }} dollars!
 {{#in_ca}}
@@ -29,5 +29,6 @@ You have just won 33 dollars!
     std::stringstream output;
     ris::render(temp, context, output);
 
-    WARN(output.str().empty());
+    std::string output_str(output.str());
+    CHECK(output_str == expected);
 }
