@@ -15,7 +15,7 @@
 void print_usage() {
     std::cout
         << "USAGE:" << std::endl
-        << "       ris <path_to>/ris.json" << std::endl
+        << "       ris <path_to>/<resources>.json [<template_overrides>.json]" << std::endl
         ;
 }
 
