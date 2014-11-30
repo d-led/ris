@@ -16,8 +16,8 @@ namespace ris {
         late(std::string const& tmp,TContext&& c) :
             late_(tmp),
             context(std::forward<TContext>(c)),
-            simple_placeholder("\\{\\{\\s*([\\w\\.]+)\\s*\\}\\}"),
-            all_placeholders("\\{\\{\\s*[#/^!>]?\\s*([\\w\\.]+)\\s*[\\?]?\\s*\\}\\}")
+            simple_placeholder("\\{\\{\\s*([\\w_-]+)\\s*\\}\\}"),
+            all_placeholders("\\{\\{\\s*[#/^!>]?\\s*([\\w_-]+)\\s*[\\?]?\\s*\\}\\}")
         {}
     public:
         template <typename TStream>
