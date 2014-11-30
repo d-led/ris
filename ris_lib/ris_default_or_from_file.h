@@ -35,6 +35,10 @@ namespace ris {
         bool Has(std::string const& key) const {
             return resources.find(key) != resources.end();
         }
+        
+        void stream(std::string const& key, std::ostream& s) {
+            s << this->Get(key);
+        }
 
     private:
         void try_loading_resources(std::string const& json_path) {
@@ -47,7 +51,7 @@ namespace ris {
                 for (auto& res : r.resources().resources) {
                     resources[res.name] = resource_loader(res, base_dir).get();
                 }
-                std::cout << "loaded " << resources.size() << " code generator overrides" << std::endl;
+                std::cout << "loaded " << resources.size() << " resources" << std::endl;
             }
             catch (std::exception& e) {
                 std::cerr << "could not load " << json_path << ": " << e.what() << std::endl;

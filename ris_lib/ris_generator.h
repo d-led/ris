@@ -39,8 +39,9 @@ namespace ris {
             if (!resources.namespace_.empty())
                 s << "namespace " << resources.namespace_ << " {\n";
 
+            generator_template.stream("header_class",s);
+
             s
-                << generator_template.Get("header_class")
                 << "public:\n"
             ;
 
@@ -48,12 +49,12 @@ namespace ris {
 
             stream_keys_getter(s);
 
-            s
-                << generator_template.Get("header_key_value_getter")
-                << generator_template.Get("header_on_no_key")
-                ;
+            
+            generator_template.stream("header_key_value_getter",s);
+            generator_template.stream("header_on_no_key",s);
+            
 
-            s << generator_template.Get("header_class_end");
+            generator_template.stream("header_class_end",s);
 
             if (!resources.namespace_.empty())
                 s << "}\n";
@@ -63,13 +64,15 @@ namespace ris {
         void generate_source(TStream& s) {
             auto& resources = source.resources();
 
+            generator_template.stream("source_preamble",s);
+
             s
-                << generator_template.Get("source_preamble")
                 << "#include \""
                 << boost::filesystem::path(resources.header).filename().generic_string()
                 << "\"\n"
-                << generator_template.Get("source_includes")
-                ;
+            ;
+            
+            generator_template.stream("source_includes",s);
 
             if (!resources.namespace_.empty())
                 s << "namespace " << resources.namespace_ << " {\n";
@@ -78,9 +81,9 @@ namespace ris {
                 stream_resource(s, resource);
             }
 
-            s
-                << generator_template.Get("source_getters_begin")
-            ;
+            
+            generator_template.stream("source_getters_begin",s);
+            
 
             for (auto& resource : resources.resources) {
                 s
@@ -88,9 +91,9 @@ namespace ris {
                     ;
             }
 
-            s
-                << generator_template.Get("source_getters_end")
-            ;
+            
+            generator_template.stream("source_getters_end",s);
+            
 
             if (!resources.namespace_.empty())
                 s << "}\n";
@@ -101,10 +104,11 @@ namespace ris {
         void stream_head(TStream& s) {
             s 
                 << "#pragma once\n"
-                << generator_template.Get("header_preamble")
-                << generator_template.Get("header_includes")
             ;
-
+            
+            generator_template.stream("header_preamble",s);
+            generator_template.stream("header_includes",s);
+            
             if (any_with_compression) {
                 s
                     << "#include <bundle.hpp>\n"
@@ -122,18 +126,16 @@ namespace ris {
 
         template <typename TStream>
         void stream_keys_getter(TStream& s) {
-            s
-                << generator_template.Get("header_key_getter_begin")
-            ;
+            
+            generator_template.stream("header_key_getter_begin",s);
             
             for (auto& resource : source.resources().resources) {
                 s
                     << "        \"" << resource.name << "\",\n";
             }
             
-            s
-                << generator_template.Get("header_key_getter_end")
-            ;
+            
+            generator_template.stream("header_key_getter_end",s);
         }
 
         template <typename TStream>
