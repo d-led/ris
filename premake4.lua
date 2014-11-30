@@ -5,9 +5,9 @@ assert( require 'premake.quickstart' )
 local OS = os.get()
 local settings = {
 	links = {
-		linux = { 'boost_system', 'boost_filesystem', 'dl', 'pthread' },
+		linux = { 'boost_system', 'boost_filesystem', 'boost_regex', 'dl', 'pthread' },
 		windows = {  },
-		macosx = { 'boost_system', 'boost_filesystem' }
+		macosx = { 'boost_system', 'boost_filesystem', 'boost_regex' }
 	}
 }
 
