@@ -64,12 +64,12 @@ TEST_CASE("empty templates are ok") {
 TEST_CASE("non-word characters in tags") {
     std::stringstream output;
     default_context_t context{
-        { "a_-", "42" },
-        { "a.b", "33" }
+        { "a_", "42" },
+        { "a.b", "33" } // . or - not allowed 
     };
-    REQUIRE_NOTHROW(ris::render("{{a_-}}{{a.b}}", ris::get_context(context), output));
+    REQUIRE_NOTHROW(ris::render("{{a_}}{{a.b}}", ris::get_context(context), output));
 
-    CHECK(output.str() == "42{{a.b}}");
+    CHECK(output.str() == "42");
 }
 
 TEST_CASE("confusion avoidance") {
