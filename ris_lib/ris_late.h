@@ -36,7 +36,7 @@ namespace ris {
                 boost::smatch capture;
                 std::string token = current->str();
                 if (boost::regex_match(token, capture, simple_placeholder)) {
-                    s << context[capture[1].str()];
+                    context.stream(capture[1].str(), s);
                 }
                 else if (boost::regex_match(token, capture, all_placeholders)) {
                     s << "";
@@ -50,9 +50,9 @@ namespace ris {
         }
     };
 
-    template <typename TString,typename TContext,typename TStream>
-    void render(TString const& tmp,TContext&& ctx,TStream& s) {
-        auto temp = late<TContext>(tmp,ctx);
+    template <typename TContext,typename TStream>
+    void render(std::string const& tmp,TContext ctx,TStream& s) {
+        auto temp = late<TContext>(tmp,std::forward<TContext>(ctx));
         temp.render(s);
     }
 }

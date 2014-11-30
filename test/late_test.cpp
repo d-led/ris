@@ -1,5 +1,6 @@
 #include <catch.hpp>
 #include "../ris_lib/ris_late.h"
+#include "../ris_lib/ris_late_context.h"
 
 #include <unordered_map>
 #include <sstream>
@@ -27,9 +28,8 @@ You have just won 33 dollars!
         { "value", "33" }
     };
 
-
     std::stringstream output;
-    ris::render(temp, context, output);
+    ris::render(temp, ris::get_context(context), output);
 
     std::string output_str(output.str());
     CHECK(output_str == expected);
@@ -38,7 +38,7 @@ You have just won 33 dollars!
 TEST_CASE("newlines are preserved and non-variables are ignored") {
     std::stringstream output;
     default_context_t context;
-    ris::render("\n{{#a}}\n", context, output);
+    ris::render("\n{{#a}}\n", ris::get_context(context), output);
 
     CHECK(output.str() == "\n\n");
 }
@@ -48,7 +48,7 @@ TEST_CASE("spaces in tags are allowed") {
     default_context_t context{ 
         { "a", "42" }
     };
-    ris::render("{{a}}{{  a   }}", context, output);
+    ris::render("{{a}}{{  a   }}", ris::get_context(context), output);
 
     CHECK(output.str() == "4242");
 }
@@ -56,7 +56,7 @@ TEST_CASE("spaces in tags are allowed") {
 TEST_CASE("empty templates are ok") {
     std::stringstream output;
     default_context_t context;
-    REQUIRE_NOTHROW(ris::render("", context, output));
+    REQUIRE_NOTHROW(ris::render("", ris::get_context(context), output));
 
     CHECK(output.str() == "");
 }
@@ -64,11 +64,25 @@ TEST_CASE("empty templates are ok") {
 TEST_CASE("confusion avoidance") {
     std::stringstream output;
     default_context_t context;
-    ris::render("{{{a}}", context, output);
+    ris::render("{{{a}}", ris::get_context(context), output);
 
     CHECK(output.str() == "{");
     
     output.str("");
-    ris::render("{{{a }}}", context, output);
+    ris::render("{{{a }}}", ris::get_context(context), output);
     CHECK(output.str() == "{}");
+}
+
+TEST_CASE("late replacements have preference") {
+    std::stringstream output;
+    default_context_t context{
+        { "a", "33" }
+    };
+
+    auto context_late = ris::get_context(context);
+    context_late
+        .lazy("a", [](std::ostream& s) { s << 42; });
+    ris::render("{{a}}", context_late, output);
+
+    CHECK(output.str() == "42");
 }
