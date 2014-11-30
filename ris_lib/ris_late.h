@@ -40,7 +40,7 @@ namespace ris {
                     context.stream(capture[1].str(), s);
                 }
                 else if (boost::regex_match(token, capture, all_placeholders)) {
-                    s << "";
+                    // stream nothing
                 }
                 else {
                     s << token;
