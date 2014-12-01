@@ -67,7 +67,7 @@ TEST_CASE("non-word characters in tags") {
         { "a_", "42" },
         { "a.b", "33" } // . or - not allowed 
     };
-    REQUIRE_NOTHROW(ris::render("{{a_}}{{a.b}}", ris::get_context(context), output));
+    ris::render("{{a_}}{{a.b}}", ris::get_context(context), output);
 
     CHECK(output.str() == "42");
 }
