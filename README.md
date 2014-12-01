@@ -8,6 +8,8 @@ ris
 usage
 -----
 
+an example project: [self_contained_lua_example](https://github.com/d-led/self_contained_lua_example)
+
 `ris <path_to>/<resources>.json`
 
 where `<resources>.json` is the resource definition, i.e [test.json](acceptance_test/test.json).
