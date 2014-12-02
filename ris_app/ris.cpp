@@ -16,6 +16,9 @@
 
 void print_usage() {
     std::cout
+        << "---      ris v0.0.1            ---" << std::endl
+        << "a simple resource compiler for c++" << std::endl
+        << "https://github.com/d-led/ris" << std::endl
         << "USAGE:" << std::endl
         << "       ris <path_to>/<resources>.json [<template_overrides>.json]" << std::endl
         ;

@@ -75,11 +75,12 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
---- http://stackoverflow.com/a/9676174/847349 ---
 function exec(command)
 	local handle = io.popen(command)
 	local result = handle:read("*a")
+	print(result)
 	handle:close()
+	return result
 end
 
 newaction {
@@ -104,5 +105,30 @@ newaction {
 		end
 		-- last try with global path
 		exec('ris' .. ' ris_lib/template.json')
+   end
+}
+
+newaction {
+   trigger     = "pack",
+   description = "produce a binary distribution",
+   execute     = function ()
+   		local uname = exec 'uname'
+   		uname = uname or 'windows'
+   		uname = uname:lower()
+
+		local release_dir = 'distribution'
+		os.mkdir(release_dir)
+		os.copyfile('README.md',path.join(release_dir,'README.md'))
+   		
+   		if uname == 'macosx' or uname == 'darwin' then
+			exec[[make -C BuildClang config=release]]
+			os.copyfile('macosx/bin/Release/ris',path.join(release_dir,'ris.osx'))
+		elseif uname == 'linux' then
+			exec[[make -C Build config=release]]
+			os.copyfile('linux/bin/Release/ris',path.join(release_dir,'ris.osx'))
+		elseif uname == 'windows' or uname:find('mingw') then
+			exec [[msbuild Build\ris.sln /p:Configuration=Release]]
+			os.copyfile([[windows\bin\Release\ris.exe]],path.join(release_dir,'ris.exe'))
+		end
    end
 }
