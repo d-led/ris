@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -Wl,-x
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L.
   LDDEPS    +=
   LIBS      += $(LDDEPS) -lpthread -lc++
   LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)

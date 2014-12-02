@@ -51,7 +51,7 @@ ifeq ($(config),release)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2 -v  -fPIC -std=c++0x -stdlib=libc++ -std=c++11
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Release -Wl,-x
+  ALL_LDFLAGS   += $(LDFLAGS) -L.. -L/usr/local/lib -L. -L../macosx/bin/Release
   LDDEPS    += ../macosx/bin/Release/libbundle.a
   LIBS      += $(LDDEPS) -lpthread -lc++ -lboost_system -lboost_filesystem -lboost_regex
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
