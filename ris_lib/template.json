@@ -64,7 +64,7 @@
       },
       {
          "name" : "header",
-         "source" : "#pragma once\n{{header.preamble}}\n{{header.includes}}\nnamespace {{namespace.name}} {\nclass {{class.name}} /*final*/ {\npublic:\n    {{header.declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n        {{header.resource.names}}\n    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
+         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace.name}} {\nclass {{class.name}} /*final*/ {\npublic:\n    {{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n        {{header_resource.names}}\n    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
          "source_type" : "string"
       },
       {
@@ -73,42 +73,42 @@
          "source_type" : "string"
       },
       {
-         "name" : "header.single.declaration",
+         "name" : "header_single_declaration",
          "source" : "    static std::string {{resource.name}}();",
          "source_type" : "string"
       },
       {
-         "name" : "header.preamble",
+         "name" : "header_preamble",
          "source" : "/* This file has been generated using ris, do not modify! */\n",
          "source_type" : "string"
       },
       {
-         "name" : "header.includes",
+         "name" : "header_includes",
          "source" : "#include <string>\n",
          "source_type" : "string"
       },
       {
-         "name" : "source.preamble",
+         "name" : "source_preamble",
          "source" : "/* This file has been generated using ris, do not modify! */\n",
          "source_type" : "string"
       },
       {
-         "name" : "source.includes",
+         "name" : "source_includes",
          "source" : "#include <unordered_map>\n",
          "source_type" : "string"
       },
       {
-         "name" : "source.single.definition",
+         "name" : "source_single_definition",
          "source" : "std::string Resource::binary_file_test() {\n    static char const literal[] =  {\n{{source.literal.bytes}}\n    };\n    return std::string(literal, sizeof(literal)/sizeof(char));\n}",
          "source_type" : "string"
       },
       {
-         "name" : "source.single.getter",
+         "name" : "source_single_getter",
          "source" : "        { \"{{resource.name}}\", {{class.name}}::{{resource.name}} },",
          "source_type" : "string"
       },
       {
-         "name" : "header.single.resource.name",
+         "name" : "header_single_resource_name",
          "source" : "        \"{{resource.name}}\",",
          "source_type" : "string"
       }

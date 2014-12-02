@@ -87,7 +87,7 @@ namespace ris {
 
             for (auto& resource : resources.resources) {
                 s
-                    << "        { \"" << resource.name << "\", Resource::" << resource.name << " },\n"
+                    << "        { \"" << resource.name << "\", Resource::" << member_name(resource) << " },\n"
                     ;
             }
 
@@ -120,7 +120,7 @@ namespace ris {
         void stream_resource_members(TStream& s) {
             for (auto& resource : source.resources().resources) {
                 s
-                    << "    static std::string " << resource.name << "();\n";
+                    << "    static std::string " << member_name(resource) << "();\n";
             }
         }
 
@@ -141,7 +141,7 @@ namespace ris {
         template <typename TStream>
         void stream_resource(TStream& s, resource const& res) {
             s
-                << "std::string Resource::" << res.name << "() {\n"
+                << "std::string Resource::" << member_name(res) << "() {\n"
                 << "    static char const literal[] = "
             ;
 
@@ -183,6 +183,13 @@ namespace ris {
                 << return_statement
                 << "}\n"
             ;
+        }
+
+        template <typename TResource>
+        std::string member_name(TResource const& res) {
+            if (!res.member_name.empty())
+                return res.member_name;
+            return res.name;
         }
     };
 

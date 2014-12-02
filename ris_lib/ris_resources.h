@@ -8,6 +8,7 @@ namespace ris {
 
     struct resource {
         std::string name;
+        std::string member_name; //optional
         std::string source_type;
         std::string source;
         std::string compression;
@@ -16,6 +17,7 @@ namespace ris {
         void json(Archive & ar)
         {
             ar & picojson::convert::member("name", name);
+            ar & picojson::convert::member("member_name", member_name);
             ar & picojson::convert::member("source_type", source_type);
             ar & picojson::convert::member("source", source);
             ar & picojson::convert::member("compression", compression);
