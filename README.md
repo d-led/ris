@@ -60,10 +60,25 @@ test::Resource::GetKeys([&keys](char const* key){
 });
 ```
 
+custom member names
+-------------------
+
+Sometimes it may be beneficial to give resources names that wouldn't be valid C++ identifiers, such as paths. These resources can be given custom member names with an optional parameter as in:
+
+```json
+{
+ "member_name" : "custom_member_name",
+ "name" : "custom.member/name",
+  ...
+}
+```
+
+If it's not present, the `name` parameter will be used for members.
+
 compression with bundle
 -----------------------
 
-Resources can optionally be commpressed with [bundle](https://github.com/r-lyeh/bundle.git). The resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git) as well. Bundle is easy to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
+Resources can optionally be compressed with [bundle](https://github.com/r-lyeh/bundle.git). The resulting resources should be linked with [bundle](https://github.com/r-lyeh/bundle.git) as well. Bundle is easy to build in its amalgamated form, containing multiple compression algorithms and a benchmarking infrastructure.
 
 The compression algorithm enums as strings can be used in the resource definition, i.e.:
 

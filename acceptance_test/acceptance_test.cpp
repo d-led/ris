@@ -52,3 +52,9 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
         }
     }
 }
+
+TEST_CASE("custom member names") {
+    auto res = test::Resource::custom_member_name();
+    CHECK(!res.empty());
+    CHECK(res == test::Resource::Get("custom.member/name"));
+}

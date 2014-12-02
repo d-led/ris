@@ -1,28 +1,34 @@
 {
-    "namespace" : "test",
-    "header" : "acceptance_test/resource.h",
-    "source" : "acceptance_test/resource.cpp",
-    "resources" : [
-        {
-            "name" : "string_test",
-            "source_type" : "string",
-            "source" : "plain text"
-        },
-        {
-            "name" : "binary_file_test",
-            "source_type" : "file",
-            "source" : "test.bin"
-        },
-        {
-            "name" : "itself",
-            "source_type" : "file",
-            "source" : "test.json"
-        },
-        {
-            "name" : "itself_packed_lz4",
-            "source_type" : "file",
-            "source": "test.json",
-            "compression" : "LZ4HC"
-        }
-    ]
+   "header" : "acceptance_test/resource.h",
+   "namespace" : "test",
+   "resources" : [
+      {
+         "name" : "string_test",
+         "source" : "plain text",
+         "source_type" : "string"
+      },
+      {
+         "name" : "binary_file_test",
+         "source" : "test.bin",
+         "source_type" : "file"
+      },
+      {
+         "name" : "itself",
+         "source" : "test.json",
+         "source_type" : "file"
+      },
+      {
+         "compression" : "LZ4HC",
+         "name" : "itself_packed_lz4",
+         "source" : "test.json",
+         "source_type" : "file"
+      },
+      {
+         "member_name" : "custom_member_name",
+         "name" : "custom.member/name",
+         "source" : "test",
+         "source_type" : "string"
+      }
+   ],
+   "source" : "acceptance_test/resource.cpp"
 }
