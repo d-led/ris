@@ -16,6 +16,12 @@ public:
     static std::string source_includes();
     static std::string source_getters_begin();
     static std::string source_getters_end();
+    static std::string header();
+    static std::string source();
+    static std::string header_single_declaration();
+    static std::string source_single_definition();
+    static std::string source_single_getter();
+    static std::string header_single_resource_name();
 public:
     typedef std::string(*ResourceGetter)();
 public: // key/value api
@@ -34,6 +40,12 @@ static void GetKeys(TInserter inserter) {
         "source_includes",
         "source_getters_begin",
         "source_getters_end",
+        "header",
+        "source",
+        "header_single_declaration",
+        "source_single_definition",
+        "source_single_getter",
+        "header_single_resource_name",
     };
     for (auto key : keys) {
         inserter(key);

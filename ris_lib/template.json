@@ -78,26 +78,6 @@
          "source_type" : "string"
       },
       {
-         "name" : "header_preamble",
-         "source" : "/* This file has been generated using ris, do not modify! */\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_includes",
-         "source" : "#include <string>\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "source_preamble",
-         "source" : "/* This file has been generated using ris, do not modify! */\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "source_includes",
-         "source" : "#include <unordered_map>\n",
-         "source_type" : "string"
-      },
-      {
          "name" : "source_single_definition",
          "source" : "std::string Resource::binary_file_test() {\n    static char const literal[] =  {\n{{source.literal.bytes}}\n    };\n    return std::string(literal, sizeof(literal)/sizeof(char));\n}",
          "source_type" : "string"
