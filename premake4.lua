@@ -114,18 +114,18 @@ newaction {
    execute     = function ()
    		local uname = exec 'uname'
    		uname = uname or 'windows'
-   		uname = uname:lower()
+   		uname = uname:lower():gsub("^%s*(.-)%s*$", "%1") --trimmed--
 
 		local release_dir = 'distribution'
 		os.mkdir(release_dir)
 		os.copyfile('README.md',path.join(release_dir,'README.md'))
-   		
+
    		if uname == 'macosx' or uname == 'darwin' then
 			exec[[make -C BuildClang config=release]]
 			os.copyfile('macosx/bin/Release/ris',path.join(release_dir,'ris.osx'))
 		elseif uname == 'linux' then
 			exec[[make -C Build config=release]]
-			os.copyfile('linux/bin/Release/ris',path.join(release_dir,'ris.osx'))
+			os.copyfile('linux/bin/Release/ris',path.join(release_dir,'ris'))
 		elseif uname == 'windows' or uname:find('mingw') then
 			exec [[msbuild Build\ris.sln /p:Configuration=Release]]
 			os.copyfile([[windows\bin\Release\ris.exe]],path.join(release_dir,'ris.exe'))
