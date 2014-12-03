@@ -83,6 +83,13 @@ function exec(command)
 	return result
 end
 
+function get_uname()
+	local uname = exec 'uname'
+	uname = uname or 'windows'
+	uname = uname:lower():gsub("^%s*(.-)%s*$", "%1") --trimmed--
+	return uname
+end
+
 newaction {
    trigger     = "template",
    description = "generate the default code template",
@@ -112,14 +119,10 @@ newaction {
    trigger     = "pack",
    description = "produce a binary distribution",
    execute     = function ()
-   		local uname = exec 'uname'
-   		uname = uname or 'windows'
-   		uname = uname:lower():gsub("^%s*(.-)%s*$", "%1") --trimmed--
-
 		local release_dir = 'distribution'
 		os.mkdir(release_dir)
 		os.copyfile('README.md',path.join(release_dir,'README.md'))
-
+		local uname = get_uname()
    		if uname == 'macosx' or uname == 'darwin' then
 			exec[[make -C BuildClang config=release]]
 			os.copyfile('macosx/bin/Release/ris',path.join(release_dir,'ris.osx'))
