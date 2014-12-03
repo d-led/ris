@@ -4,6 +4,7 @@
 
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 #include <boost/filesystem/path.hpp>
 
@@ -149,8 +150,16 @@ namespace ris {
             static const unsigned MAX_IN_ONE_LINE = 100;
             std::string data = resource_loader(res, source.base_path()).get();
 
-            if (compression.is_legal(res.compression))
+            auto raw_size = data.size();
+
+            if (compression.is_legal(res.compression)) {
                 data = compression.pack(res.compression, data);
+                auto new_size = data.size();
+                std::cout << "[" << res.compression << "] "
+                    << res.name << ": "
+                    << new_size << "/" << raw_size
+                    << " (" << ((double)new_size/raw_size*100.0) << "%)" << std::endl;
+            }
 
             s << " {";
             int count = 0;
