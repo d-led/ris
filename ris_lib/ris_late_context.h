@@ -7,11 +7,18 @@
 
 namespace ris {
 
+    struct empty_context {
+        inline std::string operator[](std::string const&) const {
+            return "";
+        }
+    };
+
     template<typename TMap>
     class late_context {
     public:
         typedef std::function<void(std::ostream&)> lazy_stream_t;
         typedef std::unordered_map<std::string, lazy_stream_t> lazy_streams_t;
+        typedef TMap non_lazy_t;
     private:
         lazy_streams_t lazy_streams;
         TMap&& non_lazy;

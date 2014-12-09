@@ -100,9 +100,9 @@ TEST_CASE("late replacements have preference") {
 
 TEST_CASE("recursive lazy replacement") {
     std::stringstream output;
-    default_context_t context{};
 
-    auto context_late = ris::get_context(context);
+    auto _ = ris::empty_context();
+    auto context_late = ris::get_context(_);
     context_late
        .lazy("a", [&context_late](std::ostream& s) {
             ris::render("{{b}}=42", context_late, s);
