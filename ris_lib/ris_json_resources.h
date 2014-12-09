@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <unordered_map>
 
 #include <boost/filesystem.hpp>
 
@@ -16,6 +17,8 @@ namespace ris {
         std::string root_path;
 
     public:
+        typedef std::unordered_map<std::string, resource> lookup_t;
+
         json_resources(std::string const& json_path) {
             read_from_file(json_path);
             root_path = boost::filesystem::path(json_path).parent_path().generic_string();
@@ -23,6 +26,14 @@ namespace ris {
 
         resource_collection const& resources() const {
             return collection;
+        }
+
+        lookup_t to_lookup() const {
+            lookup_t lookup;
+            for (auto& res : collection.resources) {
+                lookup[res.name] = res;
+            }
+            return lookup;
         }
 
         std::string base_path() const {
@@ -39,6 +50,10 @@ namespace ris {
 
         std::string namespace_() const {
             return collection.namespace_;
+        }
+
+        std::string class_() const {
+            return collection.class_;
         }
 
     private:
