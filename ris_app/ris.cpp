@@ -26,6 +26,13 @@ void print_usage() {
         ;
 }
 
+template <typename TResource>
+std::string member_name(TResource const& res) {
+    if (!res.member_name.empty())
+        return res.member_name;
+    return res.name;
+}
+
 void process(std::string const& path, std::string const& source_template) {
     auto full_path = absolute(boost::filesystem::path(path));
     full_path.make_preferred();
@@ -46,6 +53,22 @@ void process(std::string const& path, std::string const& source_template) {
         lazy
             .lazy("header", [&lazy, &ris_res](std::ostream& s) {
                 ris::render(ris_res.Get("header"), lazy, s);
+            })
+            .lazy("header_declarations", [&ris_res,&user_resources,&lazy](std::ostream& s) {
+                for (auto& resource : user_resources.resources().resources) {
+                    lazy.lazy("resource_member_name", [&resource](std::ostream& s){
+                        s << member_name(resource);
+                    });
+                    ris::render(ris_res.Get("header_single_declaration"), lazy, s);
+                }
+            })
+            .lazy("header_resource_names", [&ris_res, &user_resources, &lazy](std::ostream& s) {
+                for (auto& resource : user_resources.resources().resources) {
+                    lazy.lazy("resource_name", [&resource](std::ostream& s){
+                        s << resource.name;
+                    });
+                    ris::render(ris_res.Get("header_single_resource_name"), lazy, s);
+                }
             })
         ;
         ris::render("{{header}}", lazy, s);
