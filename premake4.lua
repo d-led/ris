@@ -121,7 +121,12 @@ newaction {
    execute     = function ()
 		local release_dir = 'distribution'
 		os.mkdir(release_dir)
-		os.copyfile('README.md',path.join(release_dir,'README.md'))
+		for _,filename in ipairs {
+			'README.md',
+			'LICENSE'
+		} do
+			os.copyfile(filename,path.join(release_dir,filename))
+		end
 		local uname = get_uname()
    		if uname == 'macosx' or uname == 'darwin' then
 			exec[[make -C BuildClang config=release]]
