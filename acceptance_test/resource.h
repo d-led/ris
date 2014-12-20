@@ -1,7 +1,8 @@
 #pragma once
 /* This file has been generated using ris, do not modify! */
+
 #include <string>
-#include <bundle.hpp>
+
 namespace test {
 class Resource /*final*/ {
 public:
@@ -10,6 +11,7 @@ public:
     static std::string itself();
     static std::string itself_packed_lz4();
     static std::string custom_member_name();
+
 public:
     typedef std::string(*ResourceGetter)();
 public: // key/value api
@@ -30,7 +32,6 @@ public: // key/value api
     static std::string Get(std::string const& key);
 public:
     static std::string OnNoKey(std::string const& key="") {
-        // could be configured to throw
         return "";
     }
 };
