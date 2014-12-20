@@ -20,12 +20,12 @@
       },
       {
          "name" : "source_preamble",
-         "source" : "/* This file has been generated using ris, do not modify! */\n",
+         "source" : "/* This file has been generated using ris, do not modify! */",
          "source_type" : "string"
       },
       {
          "name" : "source_includes",
-         "source" : "#include <unordered_map>\n",
+         "source" : "#include <unordered_map>",
          "source_type" : "string"
       },
       {

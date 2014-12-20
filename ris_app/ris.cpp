@@ -75,10 +75,37 @@ void process(std::string const& path, std::string const& source_template) {
     }, user_resources.header());
     header.start();
 
-    //ris::write_to_temp_first_then_move source([&g](std::ostream& s) {
-    //    g.generate_source(s);
-    //}, user_resources.source());
-    //source.start();
+    ris::write_to_temp_first_then_move source([&ris_res, &template_snapshot, &user_resources, &lookup](std::ostream& s) {
+        template_snapshot["namespace_name"] = user_resources.namespace_();
+        template_snapshot["class_name"] = user_resources.class_();
+        auto lazy = ris::get_context(template_snapshot);
+        lazy
+            .lazy("source", [&lazy, &ris_res](std::ostream& s) {
+                ris::render(ris_res.Get("source"), lazy, s);
+            })
+            .lazy("source_default_include", [&lazy, &ris_res, &user_resources](std::ostream& s) {
+                s << "#include \"" << boost::filesystem::path(user_resources.header()).filename().generic_string() << "\"";
+            })
+            //.lazy("source_declarations", [&ris_res, &user_resources, &lazy](std::ostream& s) {
+            //    for (auto& resource : user_resources.resources().resources) {
+            //        lazy.lazy("resource_member_name", [&resource](std::ostream& s){
+            //            s << member_name(resource);
+            //        });
+            //        ris::render(ris_res.Get("source_single_declaration"), lazy, s);
+            //    }
+            //})
+            //.lazy("source_resource_names", [&ris_res, &user_resources, &lazy](std::ostream& s) {
+            //    for (auto& resource : user_resources.resources().resources) {
+            //        lazy.lazy("resource_name", [&resource](std::ostream& s){
+            //            s << resource.name;
+            //        });
+            //        ris::render(ris_res.Get("source_single_resource_name"), lazy, s);
+            //    }
+            //})
+        ;
+        ris::render("{{source}}", lazy, s);
+    }, user_resources.source());
+    source.start();
 }
 
 int main(int argc, char ** argv) {
