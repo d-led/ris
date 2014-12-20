@@ -1,8 +1,8 @@
 {
    "resources" : [
       {
-         "name" : "header_key_getter_end",
-         "source" : "    };\n    for (size_t i=0; i<sizeof(keys)/sizeof(char*); i++) {\n        inserter(keys[i]);\n    }\n}\n",
+         "name" : "header",
+         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace_name}} {\nclass {{class_name}} /*final*/ {\npublic:\n{{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n{{header_resource_names}}    };\n    for (size_t i=0; i<sizeof(keys)/sizeof(char*); i++) {\n        inserter(keys[i]);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
          "source_type" : "string"
       },
       {
@@ -11,13 +11,8 @@
          "source_type" : "string"
       },
       {
-         "name" : "source_getters_begin",
-         "source" : "namespace internal {\nstruct dict { std::string key; Resource::ResourceGetter getter; };\nstruct key_is : std::unary_function<internal::dict const&,bool> {\n    std::string seeking;\npublic:\n    key_is(std::string const& s):seeking(s){}\n    bool operator()(internal::dict const& d) const {\n        return d.key == seeking;\n    }\n};\n}\n\nstd::string Resource::Get(std::string const& key) {\n    static internal::dict getters[] = {\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "source_getters_end",
-         "source" : "    };\n        internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);\n    internal::dict* found = std::find_if(getters,end,internal::key_is(key));\n    if (found!=end)\n        return found->getter();\n    else\n        return OnNoKey(key);\n}\n",
+         "name" : "source",
+         "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\n{{optional_compression_header}}namespace {{namespace_name}} {\n{{source_definitions}}\nnamespace internal {\nstruct dict { std::string key; Resource::ResourceGetter getter; };\nstruct key_is : std::unary_function<internal::dict const&,bool> {\n    std::string seeking;\npublic:\n    key_is(std::string const& s):seeking(s){}\n    bool operator()(internal::dict const& d) const {\n        return d.key == seeking;\n    }\n};\n}\nstd::string Resource::Get(std::string const& key) {\n    static internal::dict getters[] = {\n{{source_getters}}    };\n    internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);\n    internal::dict* found = std::find_if(getters,end,internal::key_is(key));\n    if (found!=end)\n        return found->getter();\n    else\n        return OnNoKey(key);\n}\n}\n",
          "source_type" : "string"
       }
    ]

@@ -26,9 +26,6 @@
     <ClInclude Include="..\ris_lib\ris_bundle_compression.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\ris_lib\ris_generator.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\ris_lib\ris_json_resources.h">
       <Filter>Headers</Filter>
     </ClInclude>

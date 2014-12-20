@@ -119,7 +119,6 @@
   <ItemGroup>
     <ClInclude Include="..\ris_lib\ris_default_or_from_file.h" />
     <ClInclude Include="..\ris_lib\ris_bundle_compression.h" />
-    <ClInclude Include="..\ris_lib\ris_generator.h" />
     <ClInclude Include="..\ris_lib\ris_json_resources.h" />
     <ClInclude Include="..\ris_lib\ris_late.h" />
     <ClInclude Include="..\ris_lib\ris_late_context.h" />

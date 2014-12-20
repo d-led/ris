@@ -1,4 +1,5 @@
 {
+   "class" : "Resource",
    "header" : "ris_lib/template.h",
    "namespace" : "ris",
    "resources" : [
@@ -13,83 +14,58 @@
          "source_type" : "string"
       },
       {
-         "name" : "header_class",
-         "source" : "class Resource /*final*/ {\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_key_getter_begin",
-         "source" : "public:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_key_getter_end",
-         "source" : "    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_key_value_getter",
-         "source" : "public: // key/value api\n    static std::string Get(std::string const& key);\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_on_no_key",
-         "source" : "public:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        // could be configured to throw\n        return \"\";\n    }\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "header_class_end",
-         "source" : "};\n",
+         "name" : "class_name",
+         "source" : "Resource",
          "source_type" : "string"
       },
       {
          "name" : "source_preamble",
-         "source" : "/* This file has been generated using ris, do not modify! */\n",
+         "source" : "/* This file has been generated using ris, do not modify! */",
          "source_type" : "string"
       },
       {
          "name" : "source_includes",
-         "source" : "#include <unordered_map>\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "source_getters_begin",
-         "source" : "std::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n",
-         "source_type" : "string"
-      },
-      {
-         "name" : "source_getters_end",
-         "source" : "    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n",
+         "source" : "#include <unordered_map>",
          "source_type" : "string"
       },
       {
          "name" : "header",
-         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace_name}} {\nclass {{class_name}} /*final*/ {\npublic:\n    {{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n        {{header_resource_names}}\n    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
+         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace_name}} {\nclass {{class_name}} /*final*/ {\npublic:\n{{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n{{header_resource_names}}    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
          "source_type" : "string"
       },
       {
          "name" : "source",
-         "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\nnamespace {{namespace_name}} {\n{{source_definitions}}\nstd::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n{{source_getters}}\n    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n}\n",
+         "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\n{{optional_compression_header}}namespace {{namespace_name}} {\n{{source_definitions}}std::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n{{source_getters}}    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n}\n",
          "source_type" : "string"
       },
       {
          "name" : "header_single_declaration",
-         "source" : "    static std::string {{resource_name}}();",
+         "source" : "    static std::string {{resource_member_name}}();\n",
          "source_type" : "string"
       },
       {
          "name" : "source_single_definition",
-         "source" : "std::string Resource::binary_file_test() {\n    static char const literal[] =  {\n{{source_literal_bytes}}\n    };\n    return std::string(literal, sizeof(literal)/sizeof(char));\n}",
+         "source" : "std::string Resource::{{resource_member_name}}() {\n    static char const literal[] =  {\n{{source_literal_bytes}}\n    };\n{{source_return_literal}}\n}\n",
          "source_type" : "string"
       },
       {
          "name" : "source_single_getter",
-         "source" : "        { \"{{resource_name}}\", {{class_name}}::{{resource_name}} },",
+         "source" : "        { \"{{resource_name}}\", {{class_name}}::{{resource_member_name}} },\n",
          "source_type" : "string"
       },
       {
          "name" : "header_single_resource_name",
-         "source" : "        \"{{resource_name}}\",",
+         "source" : "        \"{{resource_name}}\",\n",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_return_plain_literal",
+         "source" : "    return std::string(literal, sizeof(literal)/sizeof(char));",
+         "source_type" : "string"
+      },
+      {
+         "name" : "source_return_compressed_literal",
+         "source" : "    return bundle::unpack(std::string(literal, sizeof(literal)/sizeof(char)));",
          "source_type" : "string"
       }
    ],
