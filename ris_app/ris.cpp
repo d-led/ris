@@ -127,14 +127,19 @@ void process(std::string const& path, std::string const& source_template) {
                     ris::render(ris_res.Get("source_single_definition"), lazy, s);
                 }
             })
-            //.lazy("source_resource_names", [&ris_res, &user_resources, &lazy](std::ostream& s) {
-            //    for (auto& resource : user_resources.resources().resources) {
-            //        lazy.lazy("resource_name", [&resource](std::ostream& s){
-            //            s << resource.name;
-            //        });
-            //        ris::render(ris_res.Get("source_single_resource_name"), lazy, s);
-            //    }
-            //})
+            .lazy("source_getters", [&](std::ostream& s) {
+                for (auto& resource : user_resources.resources().resources) {
+                    lazy
+                    .lazy("resource_name", [&resource](std::ostream& s){
+                        s << resource.name;
+                    })
+                    .lazy("resource_member_name", [&](std::ostream& s){
+                        s << member_name(resource);
+                    })
+                    ;
+                    ris::render(ris_res.Get("source_single_getter"), lazy, s);
+                }
+            })
         ;
         ris::render("{{source}}", lazy, s);
     }, user_resources.source());

@@ -11,8 +11,6 @@ public:
     static std::string class_name();
     static std::string source_preamble();
     static std::string source_includes();
-    static std::string source_getters_begin();
-    static std::string source_getters_end();
     static std::string header();
     static std::string source();
     static std::string header_single_declaration();
@@ -31,8 +29,6 @@ static void GetKeys(TInserter inserter) {
         "class_name",
         "source_preamble",
         "source_includes",
-        "source_getters_begin",
-        "source_getters_end",
         "header",
         "source",
         "header_single_declaration",
