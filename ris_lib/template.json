@@ -36,7 +36,8 @@
       {
          "name" : "source",
          "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\nnamespace {{namespace_name}} {\n{{source_definitions}}std::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n{{source_getters}}    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n}\n",
-         "source_type" : "string"
+         "source_type" : "string",
+         "compression" : "LZ4HC"
       },
       {
          "name" : "header_single_declaration",
