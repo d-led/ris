@@ -55,7 +55,7 @@
       },
       {
          "name" : "source_single_definition",
-         "source" : "std::string Resource::binary_file_test() {\n    static char const literal[] =  {\n{{source_literal_bytes}}\n    };\n    return std::string(literal, sizeof(literal)/sizeof(char));\n}",
+         "source" : "std::string Resource::{{resource_member_name}}() {\n    static char const literal[] =  {\n{{source_literal_bytes}}\n    };\n    return std::string(literal, sizeof(literal)/sizeof(char));\n}\n",
          "source_type" : "string"
       },
       {

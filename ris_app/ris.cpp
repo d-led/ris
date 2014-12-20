@@ -42,7 +42,7 @@ void process(std::string const& path, std::string const& source_template) {
     auto lookup = user_resources.to_lookup();
     std::cout << "read " << user_resources.resources().resources.size() << " resources" << std::endl;
 
-    auto c = ris::bundle_compression();
+    auto compression = ris::bundle_compression();
     auto ris_res = ris::default_or_from_file<ris::Resource>(source_template);
     auto template_snapshot = ris::resource_snapshot(ris_res);
 
@@ -75,7 +75,7 @@ void process(std::string const& path, std::string const& source_template) {
     }, user_resources.header());
     header.start();
 
-    ris::write_to_temp_first_then_move source([&ris_res, &template_snapshot, &user_resources, &lookup](std::ostream& s) {
+    ris::write_to_temp_first_then_move source([&](std::ostream& s) {
         template_snapshot["namespace_name"] = user_resources.namespace_();
         template_snapshot["class_name"] = user_resources.class_();
         auto lazy = ris::get_context(template_snapshot);
@@ -83,17 +83,50 @@ void process(std::string const& path, std::string const& source_template) {
             .lazy("source", [&lazy, &ris_res](std::ostream& s) {
                 ris::render(ris_res.Get("source"), lazy, s);
             })
-            .lazy("source_default_include", [&lazy, &ris_res, &user_resources](std::ostream& s) {
+            .lazy("source_default_include", [&](std::ostream& s) {
                 s << "#include \"" << boost::filesystem::path(user_resources.header()).filename().generic_string() << "\"";
             })
-            //.lazy("source_declarations", [&ris_res, &user_resources, &lazy](std::ostream& s) {
-            //    for (auto& resource : user_resources.resources().resources) {
-            //        lazy.lazy("resource_member_name", [&resource](std::ostream& s){
-            //            s << member_name(resource);
-            //        });
-            //        ris::render(ris_res.Get("source_single_declaration"), lazy, s);
-            //    }
-            //})
+            .lazy("source_definitions", [&](std::ostream& s) {
+                for (auto& resource : user_resources.resources().resources) {
+                    lazy
+                    .lazy("resource_member_name", [&](std::ostream& s){
+                        s << member_name(resource);
+                    })
+                    .lazy("source_literal_bytes", [&](std::ostream& s){
+                        static const unsigned MAX_IN_ONE_LINE = 100;
+                        std::string data = ris::resource_loader(resource, user_resources.base_path()).get();
+
+                        auto raw_size = data.size();
+
+                        if (compression.is_legal(resource.compression)) {
+                            data = compression.pack(resource.compression, data);
+                            auto new_size = data.size();
+                            std::cout << "[" << resource.compression << "] "
+                                << resource.name << ": "
+                                << new_size << "/" << raw_size
+                                << " (" << ((double)new_size / raw_size*100.0) << "%)" << std::endl;
+                        }
+
+                        int count = 0;
+
+                        for (char c : data) {
+                            if (count > MAX_IN_ONE_LINE) {
+                                count = 0;
+                            }
+
+                            if (count == 0) {
+                                s << "        ";
+                            }
+
+                            s << static_cast<short>(c) << ", ";
+
+                            count++;
+                        }
+                    })
+                    ;
+                    ris::render(ris_res.Get("source_single_definition"), lazy, s);
+                }
+            })
             //.lazy("source_resource_names", [&ris_res, &user_resources, &lazy](std::ostream& s) {
             //    for (auto& resource : user_resources.resources().resources) {
             //        lazy.lazy("resource_name", [&resource](std::ostream& s){
