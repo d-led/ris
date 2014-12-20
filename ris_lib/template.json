@@ -30,7 +30,7 @@
       },
       {
          "name" : "header",
-         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace_name}} {\nclass {{class_name}} /*final*/ {\npublic:\n{{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n{{header_resource_names}}    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\npublic:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n};\n}\n",
+         "source" : "#pragma once\n{{header_preamble}}\n{{header_includes}}\nnamespace {{namespace_name}} {\nclass {{class_name}} /*final*/ {\npublic:\n{{header_declarations}}\npublic:\n    typedef std::string(*ResourceGetter)();\npublic: // key/value api\ntemplate <typename TInserter>\nstatic void GetKeys(TInserter inserter) {\n    static const char* keys[] = {\n{{header_resource_names}}    };\n    for (auto key : keys) {\n        inserter(key);\n    }\n}\npublic: // key/value api\n    static std::string Get(std::string const& key);\n{{header_on_no_key}}};\n}\n",
          "source_type" : "string"
       },
       {
@@ -66,6 +66,11 @@
       {
          "name" : "source_return_compressed_literal",
          "source" : "    return bundle::unpack(std::string(literal, sizeof(literal)/sizeof(char)));",
+         "source_type" : "string"
+      },
+      {
+         "name" : "header_on_no_key",
+         "source" : "public:\n    static std::string OnNoKey(std::string const& key=\"\") {\n        return \"\";\n    }\n",
          "source_type" : "string"
       }
    ],
