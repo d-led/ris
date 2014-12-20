@@ -17,6 +17,7 @@ where `<resources>.json` is the resource definition, i.e [test.json](acceptance_
 ```json
 {
     "namespace" : "test",
+    "class" : "Resource",
     "header" : "acceptance_test/resource.h",
     "source" : "acceptance_test/resource.cpp",
     "resources" : [
@@ -104,7 +105,7 @@ if the present build files do not suit your platform:
 customization
 -------------
 
-`ris` uses text resources generated and bootstrapped by its own early version. The code generator is customizable via code generator template overrides. At the moment, the default template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris_generator.h`](ris_lib/ris_generator.h).
+`ris` uses text resources generated and bootstrapped by its own early version. The code generator is customizable via code generator template overrides. The default template can be seen in [`template.json`](ris_lib/template.json), and the generated header in [`template.h`](ris_lib/template.h). The generation sequence can be seen in [`ris.cpp`](ris_app/ris.cpp).
 
 To override the template, define a template file based on [`template.json`](ris_lib/template.json). If values are omitted, they will be taken from the default template. Thus, if I were to make a version of `ris` that would throw on a missing template resource string, I would generate `template.*` from [`template_throwing.json`](ris_lib/template_throwing.json):
 
@@ -148,6 +149,6 @@ license
 =======
 
 - Copyright 2014, Dmitry Ledentsov
-- [MIT License](http://www.opensource.org/licenses/mit-license.php)
+- [MIT License](LICENSE)
 - Generated code is not licensed
 - Dependencies retain their respective licenses
