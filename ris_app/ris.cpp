@@ -45,6 +45,11 @@ void process(std::string const& path, std::string const& source_template) {
     auto compression = ris::bundle_compression();
     auto ris_res = ris::default_or_from_file<ris::Resource>(source_template);
     auto template_snapshot = ris::resource_snapshot(ris_res);
+    bool any_with_compression = std::any_of(std::begin(user_resources.resources().resources),
+        std::end(user_resources.resources().resources),
+        [&compression](ris::resource const& res) {
+        return compression.is_legal(res.compression);
+    });
 
     ris::write_to_temp_first_then_move header([&ris_res, &template_snapshot, &user_resources,&lookup](std::ostream& s) {
         template_snapshot["namespace_name"] = user_resources.namespace_();
@@ -82,6 +87,10 @@ void process(std::string const& path, std::string const& source_template) {
         lazy
             .lazy("source", [&lazy, &ris_res](std::ostream& s) {
                 ris::render(ris_res.Get("source"), lazy, s);
+            })
+            .lazy("optional_compression_header", [&](std::ostream& s) {
+                if (any_with_compression)
+                    s << "#include <bundle.hpp>\n";
             })
             .lazy("source_default_include", [&](std::ostream& s) {
                 s << "#include \"" << boost::filesystem::path(user_resources.header()).filename().generic_string() << "\"";
@@ -121,6 +130,14 @@ void process(std::string const& path, std::string const& source_template) {
                             s << static_cast<short>(c) << ", ";
 
                             count++;
+                        }
+                    })
+                    .lazy("source_return_literal", [&](std::ostream& s) {
+                        if (compression.is_legal(resource.compression)) {
+                            ris::render(ris_res.Get("source_return_compressed_literal"), lazy, s);
+                        }
+                        else {
+                            ris::render(ris_res.Get("source_return_plain_literal"), lazy, s);
                         }
                     })
                     ;

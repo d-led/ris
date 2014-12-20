@@ -1,6 +1,7 @@
 {
    "header" : "acceptance_test/resource.h",
    "namespace" : "test",
+	"class" : "Resource",
    "resources" : [
       {
          "name" : "string_test",

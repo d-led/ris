@@ -17,6 +17,8 @@ public:
     static std::string source_single_definition();
     static std::string source_single_getter();
     static std::string header_single_resource_name();
+    static std::string source_return_plain_literal();
+    static std::string source_return_compressed_literal();
 
 public:
     typedef std::string(*ResourceGetter)();
@@ -35,6 +37,8 @@ static void GetKeys(TInserter inserter) {
         "source_single_definition",
         "source_single_getter",
         "header_single_resource_name",
+        "source_return_plain_literal",
+        "source_return_compressed_literal",
     };
     for (auto key : keys) {
         inserter(key);
