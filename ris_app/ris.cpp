@@ -118,12 +118,12 @@ void process(std::string const& path, std::string const& source_template) {
                         int count = 0;
 
                         for (char c : data) {
-                            if (count > MAX_IN_ONE_LINE) {
+                            if (count > MAX_IN_ONE_LINE - 1) {
                                 count = 0;
                             }
 
                             if (count == 0) {
-                                s << "        ";
+                                s << "\n        ";
                             }
 
                             s << static_cast<short>(c) << ", ";
