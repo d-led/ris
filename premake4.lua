@@ -137,8 +137,8 @@ newaction {
 			exec[[make -C Build config=release]]
 			os.copyfile('linux/bin/Release/ris',path.join(release_dir,'ris'))
 		elseif uname == 'windows' or uname:find('mingw') then
-			exec [[msbuild Build\ris.sln /p:Configuration=Release]]
-			os.copyfile([[windows\bin\Release\ris.exe]],path.join(release_dir,'ris.exe'))
+			exec [[msbuild Build\windows\vs2013\ris.sln /p:Configuration=Release]]
+			os.copyfile('./bin/windows/vs2013/Release/ris.exe',path.join(release_dir,'ris.exe'))
 		end
    end
 }
