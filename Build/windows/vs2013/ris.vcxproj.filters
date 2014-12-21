@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ris_app">
+      <UniqueIdentifier>{D31A7348-3FFA-F1E3-4812-7DBAB4705845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ris_lib">
+      <UniqueIdentifier>{A9487348-1528-F2E3-1E40-7DBA8A9E5845}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\ris_lib\template.json">
+      <Filter>ris_lib</Filter>
+    </None>
+    <None Include="..\..\..\ris_lib\template_cpp03.json">
+      <Filter>ris_lib</Filter>
+    </None>
+    <None Include="..\..\..\ris_lib\template_throwing.json">
+      <Filter>ris_lib</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\ris_lib\ris_bundle_compression.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_default_or_from_file.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_json_resources.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_late.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_late_context.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_resource_loader.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_resource_snapshot.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_resources.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_writing_files.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\template.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\ris_app\ris.cpp">
+      <Filter>ris_app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\ris_lib\template.cpp">
+      <Filter>ris_lib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
