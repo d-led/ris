@@ -11,6 +11,6 @@ before_install:
 
 script:
   - make -C Build/linux/gmake config=release32
-  - lua acceptance_test/test.lua ./bin/linux/gmake/x32/release/ris
+  - lua acceptance_test/test.lua ./bin/linux/gmake/x32/Release/ris
   - make -C Build/linux/gmake config=release32
-  - ./bin/linux/gmake/x32/release/ris-acceptance-test
+  - ./bin/linux/gmake/x32/Release/ris-acceptance-test
