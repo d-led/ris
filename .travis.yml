@@ -10,7 +10,7 @@ before_install:
  - sudo apt-get install lua5.1 liblua5.1-dev
 
 script:
-  - make -C Build/linux/gmake config=release32
-  - lua acceptance_test/test.lua ./bin/linux/gmake/x32/Release/ris
-  - make -C Build/linux/gmake config=release32
-  - ./bin/linux/gmake/x32/Release/ris-acceptance-test
+  - make -C Build/linux/gmake config=release64
+  - lua acceptance_test/test.lua ./bin/linux/gmake/x64/Release/ris
+  - make -C Build/linux/gmake config=release64
+  - ./bin/linux/gmake/x64/Release/ris-acceptance-test
