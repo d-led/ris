@@ -84,6 +84,10 @@ function exec(command)
 end
 
 function get_uname()
+	if os.get then
+		return os.get()
+	end
+	
 	local uname = exec 'uname'
 	uname = uname or 'windows'
 	uname = uname:lower():gsub("^%s*(.-)%s*$", "%1") --trimmed--
