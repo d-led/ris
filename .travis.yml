@@ -10,7 +10,7 @@ before_install:
  - sudo apt-get install lua5.1 liblua5.1-dev
 
 script:
-  - make -C Build config=release
-  - lua acceptance_test/test.lua linux/bin/Release/ris
-  - make -C Build config=release
-  - ./linux/bin/Release/ris-acceptance-test
+  - make -C Build/linux/gmake config=release
+  - lua acceptance_test/test.lua ./bin/linux/gmake/ris
+  - make -C Build/linux/gmake config=release
+  - ./bin/linux/gmake/ris-acceptance-test
