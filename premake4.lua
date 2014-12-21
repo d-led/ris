@@ -131,11 +131,11 @@ newaction {
 		end
 		local uname = get_uname()
    		if uname == 'macosx' or uname == 'darwin' then
-			exec[[make -C BuildClang config=release32]]
-			os.copyfile('macosx/bin/x32/Release/ris',path.join(release_dir,'ris.osx'))
+			exec[[make -C Build/macosx/gmake config=release32]]
+			os.copyfile('bin/macosx/gmake/x32/Release/ris',path.join(release_dir,'ris.osx'))
 		elseif uname == 'linux' then
-			exec[[make -C Build config=release32]]
-			os.copyfile('linux/bin/x32/Release/ris',path.join(release_dir,'ris'))
+			exec[[make -C Build/linux/gmake config=release32]]
+			os.copyfile('bin/linux/gmake/x32/Release/ris',path.join(release_dir,'ris'))
 		elseif uname == 'windows' or uname:find('mingw') then
 			exec [[msbuild Build\windows\vs2013\ris.sln /p:Configuration=Release]]
 			os.copyfile('./bin/windows/vs2013/x32/Release/ris.exe',path.join(release_dir,'ris.exe'))
