@@ -26,7 +26,7 @@ ifeq ($(config),debug32)
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++11
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
@@ -48,7 +48,7 @@ ifeq ($(config),release32)
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++11
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m32 -L/usr/lib32
@@ -70,7 +70,7 @@ ifeq ($(config),debug64)
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++11
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
@@ -92,7 +92,7 @@ ifeq ($(config),release64)
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++11
+  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
   ALL_LDFLAGS   += $(LDFLAGS) -s -m64 -L/usr/lib64
