@@ -21,7 +21,7 @@ endif
 
 ifeq ($(config),debug32)
   OBJDIR     = obj/x32/Debug/ris-acceptance-test
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x32/Debug
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -29,8 +29,8 @@ ifeq ($(config),debug32)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake -s -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/libbundle.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x32/Debug -s -m32 -L/usr/lib32
+  LDDEPS    += ../../../bin/linux/gmake/x32/Debug/libbundle.a
   LIBS      += $(LDDEPS) -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -43,7 +43,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR     = obj/x32/Release/ris-acceptance-test
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x32/Release
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -51,8 +51,8 @@ ifeq ($(config),release32)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m32 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake -s -m32 -L/usr/lib32
-  LDDEPS    += ../../../bin/linux/gmake/libbundle.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x32/Release -s -m32 -L/usr/lib32
+  LDDEPS    += ../../../bin/linux/gmake/x32/Release/libbundle.a
   LIBS      += $(LDDEPS) -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -65,7 +65,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR     = obj/x64/Debug/ris-acceptance-test
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x64/Debug
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -73,8 +73,8 @@ ifeq ($(config),debug64)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake -s -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/libbundle.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x64/Debug -s -m64 -L/usr/lib64
+  LDDEPS    += ../../../bin/linux/gmake/x64/Debug/libbundle.a
   LIBS      += $(LDDEPS) -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
@@ -87,7 +87,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR     = obj/x64/Release/ris-acceptance-test
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x64/Release
   TARGET     = $(TARGETDIR)/ris-acceptance-test
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -95,8 +95,8 @@ ifeq ($(config),release64)
   ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -m64 -std=c++0x
   ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake -s -m64 -L/usr/lib64
-  LDDEPS    += ../../../bin/linux/gmake/libbundle.a
+  ALL_LDFLAGS   += $(LDFLAGS) -L. -L../../../bin/linux/gmake/x64/Release -s -m64 -L/usr/lib64
+  LDDEPS    += ../../../bin/linux/gmake/x64/Release/libbundle.a
   LIBS      += $(LDDEPS) -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS

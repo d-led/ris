@@ -21,7 +21,7 @@ endif
 
 ifeq ($(config),debug32)
   OBJDIR     = obj/x32/Debug/bundle
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x32/Debug
   TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -43,7 +43,7 @@ endif
 
 ifeq ($(config),release32)
   OBJDIR     = obj/x32/Release/bundle
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x32/Release
   TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -65,7 +65,7 @@ endif
 
 ifeq ($(config),debug64)
   OBJDIR     = obj/x64/Debug/bundle
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x64/Debug
   TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
@@ -87,7 +87,7 @@ endif
 
 ifeq ($(config),release64)
   OBJDIR     = obj/x64/Release/bundle
-  TARGETDIR  = ../../../bin/linux/gmake
+  TARGETDIR  = ../../../bin/linux/gmake/x64/Release
   TARGET     = $(TARGETDIR)/libbundle.a
   DEFINES   +=
   INCLUDES  += -I../../../Catch/single_include -I../../../picojson -I../../../picojson_serializer -I../../../bundle
