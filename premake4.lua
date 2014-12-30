@@ -23,6 +23,8 @@ end
 
 make_solution 'ris'
 
+platforms 'native'
+
 includedirs {
 	'./Catch/single_include',
 	'./picojson',
