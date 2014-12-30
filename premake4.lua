@@ -5,7 +5,7 @@ local settings = {
 	links = {
 		linux = { 'boost_system', 'boost_filesystem', 'boost_regex', 'dl', 'pthread' },
 		windows = {  },
-		macosx = { 'boost_system', 'boost_filesystem', 'boost_regex' }
+		macosx = { 'boost_system', 'boost_filesystem', 'boost_regex', 'c++' }
 	}
 }
 
@@ -133,8 +133,8 @@ newaction {
 		end
 		local uname = get_uname()
    		if uname == 'macosx' or uname == 'darwin' then
-			exec[[make -C Build/macosx/gmake config=release32]]
-			os.copyfile('bin/macosx/gmake/x32/Release/ris',path.join(release_dir,'ris.osx'))
+			exec[[make -C Build/macosx/gmake config=release_native]]
+			os.copyfile('bin/macosx/gmake/native/Release/ris',path.join(release_dir,'ris.osx'))
 		elseif uname == 'linux' then
 			exec[[make -C Build/linux/gmake config=release32]]
 			os.copyfile('bin/linux/gmake/x32/Release/ris',path.join(release_dir,'ris'))

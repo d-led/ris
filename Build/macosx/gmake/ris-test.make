@@ -22,7 +22,7 @@ ifeq ($(config),debug_x32)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -m32 -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/x32/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/x32/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x32/Debug/libbundle.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -L/usr/local/lib -m32
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),debug_x64)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -m64 -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/x64/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/x64/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x64/Debug/libbundle.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -L/usr/local/lib -m64
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
@@ -80,7 +80,7 @@ ifeq ($(config),debug_native)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/native/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/native/Debug/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/native/Debug/libbundle.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/local/lib
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
@@ -109,9 +109,9 @@ ifeq ($(config),release_x32)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O2 -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/x32/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/x32/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x32/Release/libbundle.a
-  ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -L/usr/local/lib -Wl,-x -m32
+  ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -L/usr/local/lib -m32
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -138,9 +138,9 @@ ifeq ($(config),release_x64)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/x64/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/x64/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x64/Release/libbundle.a
-  ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -L/usr/local/lib -Wl,-x -m64
+  ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -L/usr/local/lib -m64
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -167,9 +167,9 @@ ifeq ($(config),release_native)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++0x
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/macosx/gmake/native/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex
+  LIBS += ../../../bin/macosx/gmake/native/Release/libbundle.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/native/Release/libbundle.a
-  ALL_LDFLAGS += $(LDFLAGS) -L/usr/local/lib -Wl,-x
+  ALL_LDFLAGS += $(LDFLAGS) -L/usr/local/lib
   LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
