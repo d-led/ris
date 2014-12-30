@@ -11,5 +11,5 @@
 	path = deps/picojson
 	url = https://github.com/kazuho/picojson.git
 [submodule "bundle"]
-	path = bundle
+	path = deps/bundle
 	url = https://github.com/r-lyeh/bundle.git

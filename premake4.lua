@@ -29,12 +29,12 @@ includedirs {
 	'./deps/Catch/single_include',
 	'./deps/picojson',
 	'./deps/picojson_serializer',
-	'./bundle'
+	'./deps/bundle'
 }
 
 make_static_lib('bundle',{
-	'./bundle/bundle.cpp',
-	'./bundle/bundle.hpp'
+	'./deps/bundle/bundle.cpp',
+	'./deps/bundle/bundle.hpp'
 })
 platform_specifics()
 
