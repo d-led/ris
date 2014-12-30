@@ -26,9 +26,9 @@ make_solution 'ris'
 platforms 'native'
 
 includedirs {
-	'./Catch/single_include',
-	'./picojson',
-	'./picojson_serializer',
+	'./deps/Catch/single_include',
+	'./deps/picojson',
+	'./deps/picojson_serializer',
 	'./bundle'
 }
 
