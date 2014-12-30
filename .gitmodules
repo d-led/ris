@@ -2,13 +2,13 @@
 	path = premake
 	url = https://github.com/d-led/premake-meta-cpp.git
 [submodule "Catch"]
-	path = Catch
+	path = deps/Catch
 	url = https://github.com/philsquared/Catch.git
 [submodule "picojson_serializer"]
-	path = picojson_serializer
+	path = deps/picojson_serializer
 	url = https://github.com/d-led/picojson_serializer.git
 [submodule "picojson"]
-	path = picojson
+	path = deps/picojson
 	url = https://github.com/kazuho/picojson.git
 [submodule "bundle"]
 	path = bundle
