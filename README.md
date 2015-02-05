@@ -3,7 +3,9 @@ ris
 
 [![Build Status](https://travis-ci.org/d-led/ris.svg?branch=master)](https://travis-ci.org/d-led/ris)
 
-[**ris**](https://github.com/d-led/ris) strives to be a simple-to-use cross-platform resource compiler for c++ projects
+[**ris**](https://github.com/d-led/ris) strives to be a simple-to-use cross-platform resource compiler for c++ projects.
+
+**ris** allows embedding (potentially compressed) blobs of data into executables, which can be queried at runtime
 
 usage
 -----
