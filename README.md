@@ -143,6 +143,11 @@ dependencies
 - [picojson](https://github.com/kazuho/picojson), json serialization
 - [picojson_serializer](https://github.com/d-led/picojson_serializer) json serialization wrappers for fast prototyping
 - [bundle](https://github.com/r-lyeh/bundle), compression
+ 
+alternatives
+------------
+
+ - [incbin](https://github.com/graphitemaster/incbin)
 
 license
 =======
