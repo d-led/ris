@@ -139,6 +139,10 @@ Such code generator as `ris` could most probably be developed more rapidly using
 dependencies
 ------------
 
+The generated code is self-contained and uses the standard library only, unless compression ([bundle](https://github.com/r-lyeh/bundle)) is used, or the template is customized with another dependency.
+
+To rebuild `ris` from scratch, the following dependencies are needed:
+
 - [Boost](http://www.boost.org/), filesystem api
 - [Premake4](https://bitbucket.org/premake/premake-dev/wiki/Home), meta-build
 - [Catch](https://github.com/philsquared/Catch), testing
