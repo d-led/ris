@@ -1,4 +1,4 @@
-#include "../ris_lib/ris_json_resources.h"
+#include "../ris_lib/ris_resources_from_file.h"
 #include "../ris_lib/ris_bundle_compression.h"
 #include "../ris_lib/ris_writing_files.h"
 #include "../ris_lib/template.h"
@@ -12,16 +12,17 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <unordered_map>
 
 #include <boost/filesystem.hpp>
 
 void print_usage() {
     std::cout
-        << "---      ris v0.1.1            ---" << std::endl
+        << "---      ris v0.2.0            ---" << std::endl
         << "a simple resource compiler for c++" << std::endl
         << "https://github.com/d-led/ris" << std::endl
         << "USAGE:" << std::endl
-        << "       ris <path_to>/<resources>.json [<template_overrides>.json]" << std::endl
+        << "       ris <path_to>/<resources>.[json/yml/yaml] [<template_overrides>.[json/yml/yaml]]" << std::endl
         ;
 }
 
@@ -37,7 +38,7 @@ void process(std::string const& path, std::string const& source_template) {
     full_path.make_preferred();
     std::cout << "reading " << full_path.generic_string() << std::endl;
 
-    auto user_resources = ris::json_resources(path);
+    auto user_resources = ris::load_resources_from_file(path);
     auto lookup = user_resources.to_lookup();
     std::cout << "read " << user_resources.resources().resources.size() << " resources" << std::endl;
 

@@ -1,0 +1,65 @@
+--- 
+resources: 
+  - 
+    name: header
+    source: |
+        #pragma once
+        {{header_preamble}}
+        {{header_includes}}
+        namespace {{namespace_name}} {
+        class {{class_name}} /*final*/ {
+        public:
+        {{header_declarations}}
+        public:
+            typedef std::string(*ResourceGetter)();
+        public: // key/value api
+        template <typename TInserter>
+        static void GetKeys(TInserter inserter) {
+            static const char* keys[] = {
+        {{header_resource_names}}    };
+            for (size_t i=0; i<sizeof(keys)/sizeof(char*); i++) {
+                inserter(keys[i]);
+            }
+        }
+        public: // key/value api
+            static std::string Get(std::string const& key);
+        {{header_on_no_key}}};
+        }
+    source_type: string
+  - 
+    name: source_includes
+    source: |
+        #include <algorithm>
+        #include <functional>
+    source_type: string
+  - 
+    name: source
+    source: |
+        {{source_preamble}}
+        {{source_default_include}}
+        {{source_includes}}
+        {{optional_compression_header}}namespace {{namespace_name}} {
+        {{source_definitions}}
+        namespace internal {
+        struct dict { std::string key; Resource::ResourceGetter getter; };
+        struct key_is : std::unary_function<internal::dict const&,bool> {
+            std::string seeking;
+        public:
+            key_is(std::string const& s):seeking(s){}
+            bool operator()(internal::dict const& d) const {
+                return d.key == seeking;
+            }
+        };
+        }
+        std::string Resource::Get(std::string const& key) {
+            static internal::dict getters[] = {
+        {{source_getters}}    };
+            internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);
+            internal::dict* found = std::find_if(getters,end,internal::key_is(key));
+            if (found!=end)
+                return found->getter();
+            else
+                return OnNoKey(key);
+        }
+        }
+    source_type: string

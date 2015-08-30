@@ -11,6 +11,7 @@ public:
     static std::string itself();
     static std::string itself_packed_lz4();
     static std::string custom_member_name();
+    static std::string multiline_example();
 
 public:
     typedef std::string(*ResourceGetter)();
@@ -23,6 +24,7 @@ static void GetKeys(TInserter inserter) {
         "itself",
         "itself_packed_lz4",
         "custom.member/name",
+        "multiline_example",
     };
     for (auto key : keys) {
         inserter(key);

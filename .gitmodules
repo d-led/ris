@@ -13,3 +13,6 @@
 [submodule "bundle"]
 	path = deps/bundle
 	url = https://github.com/r-lyeh/bundle.git
+[submodule "deps/yaml-cpp"]
+	path = deps/yaml-cpp
+	url = https://github.com/jbeder/yaml-cpp.git

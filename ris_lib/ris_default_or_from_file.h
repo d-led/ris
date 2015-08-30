@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ris_json_resources.h"
 #include "ris_resource_loader.h"
+#include "ris_resources_from_file.h"
 
 #include <unordered_map>
 #include <string>
@@ -54,7 +54,7 @@ namespace ris {
 
             try {
                 auto base_dir = boost::filesystem::path(json_path).parent_path().generic_string();
-                auto r = json_resources(json_path);
+                auto r = load_resources_from_file(json_path);
                 for (auto& res : r.resources().resources) {
                     resources[res.name] = resource_loader(res, base_dir).get();
                 }

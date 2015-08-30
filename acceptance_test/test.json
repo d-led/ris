@@ -1,35 +1,40 @@
 {
-   "header" : "acceptance_test/resource.h",
-   "namespace" : "test",
-	"class" : "Resource",
-   "resources" : [
+   "header": "acceptance_test/resource.h",
+   "namespace": "test",
+   "class": "Resource",
+   "resources": [
       {
-         "name" : "string_test",
-         "source" : "plain text",
-         "source_type" : "string"
+         "name": "string_test",
+         "source": "plain text",
+         "source_type": "string"
       },
       {
-         "name" : "binary_file_test",
-         "source" : "test.bin",
-         "source_type" : "file"
+         "name": "binary_file_test",
+         "source": "test.bin",
+         "source_type": "file"
       },
       {
-         "name" : "itself",
-         "source" : "test.json",
-         "source_type" : "file"
+         "name": "itself",
+         "source": "test.json",
+         "source_type": "file"
       },
       {
-         "compression" : "LZ4HC",
-         "name" : "itself_packed_lz4",
-         "source" : "test.json",
-         "source_type" : "file"
+         "compression": "LZ4HC",
+         "name": "itself_packed_lz4",
+         "source": "test.json",
+         "source_type": "file"
       },
       {
-         "member_name" : "custom_member_name",
-         "name" : "custom.member/name",
-         "source" : "test",
-         "source_type" : "string"
+         "member_name": "custom_member_name",
+         "name": "custom.member/name",
+         "source": "test",
+         "source_type": "string"
+      },
+      {
+         "name": "multiline_example",
+         "source": "these are\n\nthree lines",
+         "source_type": "string"
       }
    ],
-   "source" : "acceptance_test/resource.cpp"
+   "source": "acceptance_test/resource.cpp"
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="contrib">
+      <UniqueIdentifier>{16D079D3-82AF-F86E-8BC7-8345F7255FD0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\collectionstack.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilderadapter.h">
+      <Filter>contrib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\directives.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\emitterstate.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\emitterutils.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\exp.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\indentation.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\nodebuilder.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\nodeevents.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\ptr_stack.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\ptr_vector.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\regex_yaml.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\regeximpl.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scanner.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scanscalar.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scantag.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\setting.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\singledocparser.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\stream.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\streamcharsource.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\stringsource.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\tag.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\token.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\binary.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilder.cpp">
+      <Filter>contrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilderadapter.cpp">
+      <Filter>contrib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\convert.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\directives.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emit.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitfromevents.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitter.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitterstate.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitterutils.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\exp.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\memory.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\node.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\node_data.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\nodebuilder.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\nodeevents.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\null.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\ostream_wrapper.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\parse.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\parser.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\regex_yaml.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scanner.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scanscalar.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scantag.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scantoken.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\simplekey.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\singledocparser.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\stream.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\tag.cpp" />
+  </ItemGroup>
+</Project>

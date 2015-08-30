@@ -35,44 +35,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{147F620B-80E0-3F19-094E-86CB75AE76D8}</ProjectGuid>
+    <ProjectGuid>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ris-acceptance-test</RootNamespace>
+    <RootNamespace>yaml-cpp</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
@@ -100,46 +100,40 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x32\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x32\Debug\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x32\Debug\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x64\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x64\Debug\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x64\Debug\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\native\Debug\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\native\Debug\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\native\Debug\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x32\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x32\Release\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x32\Release\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\x64\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\x64\Release\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\x64\Release\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\bin\windows\vs2013\native\Release\</OutDir>
-    <IntDir>..\..\..\obj\windows\vs2013\native\Release\ris-acceptance-test\</IntDir>
-    <TargetName>ris-acceptance-test</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <IntDir>..\..\..\obj\windows\vs2013\native\Release\yaml-cpp\</IntDir>
+    <TargetName>yaml-cpp</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -151,10 +145,8 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -167,10 +159,8 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug native|Win32'">
@@ -183,10 +173,8 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -201,12 +189,10 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -221,12 +207,10 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release native|Win32'">
@@ -241,34 +225,67 @@
       <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Software\boost\boost_1_56_0\lib32-msvc-12.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\acceptance_test\resource.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\collectionstack.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilderadapter.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\directives.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\emitterstate.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\emitterutils.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\exp.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\indentation.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\nodebuilder.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\nodeevents.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\ptr_stack.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\ptr_vector.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\regex_yaml.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\regeximpl.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scanner.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scanscalar.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\scantag.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\setting.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\singledocparser.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\stream.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\streamcharsource.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\stringsource.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\tag.h" />
+    <ClInclude Include="..\..\..\deps\yaml-cpp\src\token.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\acceptance_test\acceptance_test.cpp" />
-    <ClCompile Include="..\..\..\acceptance_test\resource.cpp" />
-    <ClCompile Include="..\..\..\acceptance_test\test.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\acceptance_test\test.json" />
-    <None Include="..\..\..\acceptance_test\test.lua" />
-    <None Include="..\..\..\acceptance_test\test.yml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="bundle.vcxproj">
-      <Project>{BFCEFBF4-AB70-26CB-942B-3A1F806CAD1B}</Project>
-    </ProjectReference>
-    <ProjectReference Include="yaml-cpp.vcxproj">
-      <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
-    </ProjectReference>
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\binary.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilder.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\contrib\graphbuilderadapter.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\convert.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\directives.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emit.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitfromevents.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitter.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitterstate.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\emitterutils.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\exp.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\memory.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\node.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\node_data.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\nodebuilder.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\nodeevents.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\null.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\ostream_wrapper.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\parse.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\parser.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\regex_yaml.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scanner.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scanscalar.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scantag.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\scantoken.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\simplekey.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\singledocparser.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\stream.cpp" />
+    <ClCompile Include="..\..\..\deps\yaml-cpp\src\tag.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

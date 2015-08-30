@@ -21,6 +21,6 @@ before_script:
 
 script:
   - make -C Build/linux/gmake config=release_x64
-  - lua acceptance_test/test.lua ./bin/linux/gmake/x64/Release/ris
+  - lua acceptance_test/test.lua ./bin/linux/gmake/x64/Release/ris #embed acceptance_test/test.json into ris-acceptance-test
   - make -C Build/linux/gmake config=release_x64
   - ./bin/linux/gmake/x64/Release/ris-acceptance-test
