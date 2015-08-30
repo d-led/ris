@@ -260,6 +260,7 @@
   <ItemGroup>
     <None Include="..\..\..\acceptance_test\test.json" />
     <None Include="..\..\..\acceptance_test\test.lua" />
+    <None Include="..\..\..\acceptance_test\test.yml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">

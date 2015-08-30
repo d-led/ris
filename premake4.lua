@@ -62,6 +62,7 @@ make_console_app('ris-acceptance-test', {
  './acceptance_test/*.h',
  './acceptance_test/*.json',
  './acceptance_test/*.lua',
+ './acceptance_test/*.yml',
 })
 platform_specifics()
 links{settings.links[OS],'bundle','yaml-cpp'}

@@ -47,6 +47,9 @@
     <ClInclude Include="..\..\..\ris_lib\ris_writing_files.h">
       <Filter>ris_lib</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_yaml_resources.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\ris_lib\template.h">
       <Filter>ris_lib</Filter>
     </ClInclude>

@@ -277,6 +277,7 @@
     <ClInclude Include="..\..\..\ris_lib\ris_resource_snapshot.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resources.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_writing_files.h" />
+    <ClInclude Include="..\..\..\ris_lib\ris_yaml_resources.h" />
     <ClInclude Include="..\..\..\ris_lib\template.h" />
   </ItemGroup>
   <ItemGroup>

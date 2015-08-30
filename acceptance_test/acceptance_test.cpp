@@ -5,6 +5,7 @@
 #include <boost/filesystem.hpp>
 
 #include "../ris_lib/ris_json_resources.h"
+#include "../ris_lib/ris_yaml_resources.h"
 #include "../ris_lib/ris_resource_loader.h"
 #include "../ris_lib/ris_resources.h"
 
@@ -31,8 +32,10 @@ public:
 
 TEST_CASE_METHOD(fixture,"loading the resource") {
     auto r = ris::json_resources((test_data / "test.json").generic_string());
+    auto yr = ris::yaml_resources((test_data / "test.yml").generic_string());
 
     auto& resources = r.resources().resources;
+    auto& yresources = yr.resources().resources;
 
     REQUIRE(resources.size() > 0);
 
@@ -43,12 +46,23 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
 
     CHECK(resources.size() == keys.size());
 
+    CHECK(resources.size() == yresources.size());
+
+    std::unordered_map<std::string, ris::resource> yres;
+    for (auto& res : yresources)
+        yres.emplace(res.name, res);
+
     SECTION("resource fidelity") {
         for (auto& res : resources) {
             auto reference_data = ris::resource_loader(res,test_data.generic_string()).get();
             auto resource_data = test::Resource::Get(res.name);
             INFO(res.name);
             CHECK(reference_data == resource_data);
+
+            SECTION("yaml should work the same way") {
+                auto yreference_data = ris::resource_loader(yres[res.name], test_data.generic_string()).get();
+                CHECK(reference_data == yreference_data);
+            }
         }
     }
 }
