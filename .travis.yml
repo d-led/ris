@@ -12,13 +12,12 @@ addons:
       - libboost1.55-all-dev
       - liblua5.1-0
       - lua5.1
-#      - luarocks
 
 cache:
   - apt
 
-compiler:
-  - clang
+before_script:
+  - export CXX="g++-5"
 
 script:
   - make -C Build/linux/gmake config=release_x64
