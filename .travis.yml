@@ -21,7 +21,7 @@ compiler:
   - clang
 
 script:
-  - make -C Build/linux/gmake config=release64
+  - make -C Build/linux/gmake config=release_x64
   - lua acceptance_test/test.lua ./bin/linux/gmake/x64/Release/ris
-  - make -C Build/linux/gmake config=release64
+  - make -C Build/linux/gmake config=release_x64
   - ./bin/linux/gmake/x64/Release/ris-acceptance-test
