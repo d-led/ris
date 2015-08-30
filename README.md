@@ -37,11 +37,17 @@ where `<resources>.json` is the resource definition, i.e [test.json](acceptance_
 }
 ```
 
+### YAML support ###
+
 The definition can also be written in a more multi-line friendly [YAML](http://yaml.org/) format (via [yaml-cpp](https://github.com/jbeder/yaml-cpp)). I.e. see [acceptance_test/test.yml](acceptance_test/test.yml). YAML format is deliberately held structurally compatible with JSON and not idiomatical YAML.
+
+### output ###
 
 Two c++11 files ([.h](acceptance_test/resource.h) and [.cpp](acceptance_test/resource.h)) containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources. 
 
 Strings are single-byte `char`s and are treated agnostically with respect to their meaning/encoding. 
+
+### getters ###
 
 `name` should be a valid c++ identifier, as it will be translated into the resource getter, i.e.:
 
