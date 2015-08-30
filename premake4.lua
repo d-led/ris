@@ -10,7 +10,7 @@ local settings = {
 }
 
 local function platform_specifics()
-	use_standard('c++0x')
+	use_standard('c++11')
 	configuration 'macosx'
 		includedirs {'/usr/local/include' }
 		libdirs { '/usr/local/lib' }
