@@ -72,7 +72,7 @@ namespace ris {
                 optional_get(collection.source, "source", root_node);
                 optional_get(collection.class_, "class", root_node);
 
-                for (auto& res : root_node["resources"]) {
+                for (auto res : root_node["resources"]) {
                     ris::resource r = {};
                     optional_get(r.name, "name", res);
                     optional_get(r.member_name, "member_name", res);

@@ -173,6 +173,35 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/binary.o \
+	$(OBJDIR)/graphbuilder.o \
+	$(OBJDIR)/graphbuilderadapter.o \
+	$(OBJDIR)/convert.o \
+	$(OBJDIR)/directives.o \
+	$(OBJDIR)/emit.o \
+	$(OBJDIR)/emitfromevents.o \
+	$(OBJDIR)/emitter.o \
+	$(OBJDIR)/emitterstate.o \
+	$(OBJDIR)/emitterutils.o \
+	$(OBJDIR)/exp.o \
+	$(OBJDIR)/memory.o \
+	$(OBJDIR)/node.o \
+	$(OBJDIR)/node_data.o \
+	$(OBJDIR)/nodebuilder.o \
+	$(OBJDIR)/nodeevents.o \
+	$(OBJDIR)/null.o \
+	$(OBJDIR)/ostream_wrapper.o \
+	$(OBJDIR)/parse.o \
+	$(OBJDIR)/parser.o \
+	$(OBJDIR)/regex_yaml.o \
+	$(OBJDIR)/scanner.o \
+	$(OBJDIR)/scanscalar.o \
+	$(OBJDIR)/scantag.o \
+	$(OBJDIR)/scantoken.o \
+	$(OBJDIR)/simplekey.o \
+	$(OBJDIR)/singledocparser.o \
+	$(OBJDIR)/stream.o \
+	$(OBJDIR)/tag.o \
 
 RESOURCES := \
 
@@ -230,6 +259,93 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
+$(OBJDIR)/binary.o: ../../../deps/yaml-cpp/src/binary.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/graphbuilder.o: ../../../deps/yaml-cpp/src/contrib/graphbuilder.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/graphbuilderadapter.o: ../../../deps/yaml-cpp/src/contrib/graphbuilderadapter.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/convert.o: ../../../deps/yaml-cpp/src/convert.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/directives.o: ../../../deps/yaml-cpp/src/directives.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/emit.o: ../../../deps/yaml-cpp/src/emit.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/emitfromevents.o: ../../../deps/yaml-cpp/src/emitfromevents.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/emitter.o: ../../../deps/yaml-cpp/src/emitter.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/emitterstate.o: ../../../deps/yaml-cpp/src/emitterstate.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/emitterutils.o: ../../../deps/yaml-cpp/src/emitterutils.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/exp.o: ../../../deps/yaml-cpp/src/exp.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/memory.o: ../../../deps/yaml-cpp/src/memory.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/node.o: ../../../deps/yaml-cpp/src/node.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/node_data.o: ../../../deps/yaml-cpp/src/node_data.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/nodebuilder.o: ../../../deps/yaml-cpp/src/nodebuilder.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/nodeevents.o: ../../../deps/yaml-cpp/src/nodeevents.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/null.o: ../../../deps/yaml-cpp/src/null.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/ostream_wrapper.o: ../../../deps/yaml-cpp/src/ostream_wrapper.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/parse.o: ../../../deps/yaml-cpp/src/parse.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/parser.o: ../../../deps/yaml-cpp/src/parser.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/regex_yaml.o: ../../../deps/yaml-cpp/src/regex_yaml.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/scanner.o: ../../../deps/yaml-cpp/src/scanner.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/scanscalar.o: ../../../deps/yaml-cpp/src/scanscalar.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/scantag.o: ../../../deps/yaml-cpp/src/scantag.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/scantoken.o: ../../../deps/yaml-cpp/src/scantoken.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/simplekey.o: ../../../deps/yaml-cpp/src/simplekey.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/singledocparser.o: ../../../deps/yaml-cpp/src/singledocparser.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/stream.o: ../../../deps/yaml-cpp/src/stream.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/tag.o: ../../../deps/yaml-cpp/src/tag.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
