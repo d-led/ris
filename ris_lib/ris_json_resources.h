@@ -5,11 +5,9 @@
 #include <picojson_serializer.h>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <stdexcept>
-#include <unordered_map>
 
-#include <boost/filesystem.hpp>
+
 
 namespace ris {
     struct json_resources : queryable_resources<json_resources> {

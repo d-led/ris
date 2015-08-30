@@ -5,11 +5,8 @@
 #include <yaml-cpp/yaml.h>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <stdexcept>
 #include <unordered_map>
-
-#include <boost/filesystem.hpp>
 
 namespace ris {
     struct yaml_resources : queryable_resources<yaml_resources> {

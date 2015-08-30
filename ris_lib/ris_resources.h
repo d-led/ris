@@ -4,6 +4,7 @@
 #include <picojson.h>
 #include <vector>
 #include <unordered_map>
+#include <boost/filesystem.hpp>
 
 namespace ris {
 
