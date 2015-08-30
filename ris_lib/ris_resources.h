@@ -44,7 +44,8 @@ namespace ris {
         }
     };
 
-    template <typename TResourceLoader>
+    typedef void(*file_resources_loader)(std::string const& path, resource_collection& collection);
+
     class queryable_resources {
         resource_collection collection;
         std::string root_path;
@@ -52,8 +53,8 @@ namespace ris {
     public:
         typedef std::unordered_map<std::string, resource> lookup_t;
 
-        queryable_resources(std::string const& source_path) {
-            TResourceLoader::read_from_file(source_path, collection);
+        queryable_resources(std::string const& source_path, file_resources_loader read_from_file) {
+            read_from_file(source_path, collection);
             root_path = boost::filesystem::path(source_path).parent_path().generic_string();
         }
 

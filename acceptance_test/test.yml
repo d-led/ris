@@ -35,4 +35,5 @@ resources:
       
       three lines
     source_type: "string"
+
 source: "acceptance_test/resource.cpp"

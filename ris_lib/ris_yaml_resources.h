@@ -6,12 +6,9 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
-#include <unordered_map>
 
 namespace ris {
-    struct yaml_resources : queryable_resources<yaml_resources> {
-        yaml_resources(std::string const& yaml_path) : queryable_resources<yaml_resources>(yaml_path){}
-
+    struct yaml_resources {
         static void read_from_file(std::string const& yaml_path, resource_collection& collection) {
             try {
                 auto root_node = YAML::LoadFile(yaml_path);

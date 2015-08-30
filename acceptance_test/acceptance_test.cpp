@@ -31,8 +31,8 @@ public:
 };
 
 TEST_CASE_METHOD(fixture,"loading the resource") {
-    auto r = ris::json_resources((test_data / "test.json").generic_string());
-    auto yr = ris::yaml_resources((test_data / "test.yml").generic_string());
+    auto r = ris::queryable_resources((test_data / "test.json").generic_string(), ris::json_resources::read_from_file);
+    auto yr = ris::queryable_resources((test_data / "test.yml").generic_string(), ris::yaml_resources::read_from_file);
 
     auto& resources = r.resources().resources;
     auto& yresources = yr.resources().resources;

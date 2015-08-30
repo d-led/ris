@@ -12,7 +12,7 @@ usage
 
 an example project: [self_contained_lua_example](https://github.com/d-led/self_contained_lua_example)
 
-`ris <path_to>/<resources>.json`
+`ris <path_to>/<resources>.[json/yml/yaml]`
 
 where `<resources>.json` is the resource definition, i.e [test.json](acceptance_test/test.json).
 
@@ -36,6 +36,8 @@ where `<resources>.json` is the resource definition, i.e [test.json](acceptance_
     ]
 }
 ```
+
+The definition can also be written in a more multi-line friendly [YAML](http://yaml.org/) format (via [yaml-cpp](https://github.com/jbeder/yaml-cpp)). I.e. see [acceptance_test/test.yml](acceptance_test/test.yml). YAML format is deliberately held structurally compatible with JSON and not idiomatical YAML.
 
 Two c++11 files ([.h](acceptance_test/resource.h) and [.cpp](acceptance_test/resource.h)) containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources. 
 
@@ -148,6 +150,7 @@ To rebuild `ris` from scratch, the following dependencies are needed:
 - [Catch](https://github.com/philsquared/Catch), testing
 - [picojson](https://github.com/kazuho/picojson), json serialization
 - [picojson_serializer](https://github.com/d-led/picojson_serializer) json serialization wrappers for fast prototyping
+- [yaml-cpp](https://github.com/jbeder/yaml-cpp) YAML parsing
 - [bundle](https://github.com/r-lyeh/bundle), compression
  
 alternatives

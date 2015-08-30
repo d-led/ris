@@ -273,6 +273,7 @@
     <ClInclude Include="..\..\..\ris_lib\ris_json_resources.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_late.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_late_context.h" />
+    <ClInclude Include="..\..\..\ris_lib\ris_resources_from_file.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resource_loader.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resource_snapshot.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resources.h" />

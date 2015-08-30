@@ -7,12 +7,8 @@
 #include <string>
 #include <stdexcept>
 
-
-
 namespace ris {
-    struct json_resources : queryable_resources<json_resources> {
-        json_resources(std::string const& yaml_path) : queryable_resources<json_resources>(yaml_path){}
-
+    struct json_resources {
         static void read_from_file(std::string const& json_path, resource_collection& collection) {
             std::ifstream json_file(json_path);
             if (!json_file)
