@@ -29,7 +29,8 @@ includedirs {
 	'./deps/Catch/single_include',
 	'./deps/picojson',
 	'./deps/picojson_serializer',
-	'./deps/bundle'
+	'./deps/bundle',
+	'./deps/yaml-cpp/include'
 }
 
 make_static_lib('bundle',{
@@ -38,19 +39,15 @@ make_static_lib('bundle',{
 })
 platform_specifics()
 
--- make_console_app('bundle-sample',{
--- 	'./bundle/sample.cc'
--- })
--- platform_specifics()
--- run_target_after_build()
--- links {
--- 	'bundle'
--- }
+make_static_lib('yaml-cpp',{
+	'./deps/yaml-cpp/src/**.*'
+})
+platform_specifics()
 
 make_console_app('ris-test', { './test/*.cpp' })
 platform_specifics()
 run_target_after_build()
-links{settings.links[OS],'bundle'}
+links{settings.links[OS],'bundle','yaml-cpp'}
 
 make_console_app('ris', {
  './ris_app/*.cpp',
@@ -58,7 +55,7 @@ make_console_app('ris', {
 })
 platform_specifics()
 run_target_after_build()
-links{settings.links[OS],'bundle'}
+links{settings.links[OS],'bundle','yaml-cpp'}
 
 make_console_app('ris-acceptance-test', {
  './acceptance_test/*.cpp',
@@ -67,7 +64,7 @@ make_console_app('ris-acceptance-test', {
  './acceptance_test/*.lua',
 })
 platform_specifics()
-links{settings.links[OS],'bundle'}
+links{settings.links[OS],'bundle','yaml-cpp'}
 
 --- http://stackoverflow.com/a/4991602/847349 ---
 function file_exists(name)

@@ -17,7 +17,7 @@
 
 void print_usage() {
     std::cout
-        << "---      ris v0.1.1            ---" << std::endl
+        << "---      ris v0.2.0            ---" << std::endl
         << "a simple resource compiler for c++" << std::endl
         << "https://github.com/d-led/ris" << std::endl
         << "USAGE:" << std::endl
