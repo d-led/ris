@@ -13,8 +13,8 @@ endif
 ifeq ($(config),debug_x32)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/x32/Debug
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/x32/Debug/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/x32/Debug/yaml-cpp
   DEFINES += -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -22,10 +22,10 @@ ifeq ($(config),debug_x32)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -m32 -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/x32/Debug/libbundle.a ../../../bin/linux/gmake/x32/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/x32/Debug/libbundle.a ../../../bin/linux/gmake/x32/Debug/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -m32
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -40,8 +40,8 @@ endif
 ifeq ($(config),debug_x64)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/x64/Debug
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/x64/Debug/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/x64/Debug/yaml-cpp
   DEFINES += -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -49,10 +49,10 @@ ifeq ($(config),debug_x64)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -m64 -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/x64/Debug/libbundle.a ../../../bin/linux/gmake/x64/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/x64/Debug/libbundle.a ../../../bin/linux/gmake/x64/Debug/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -67,8 +67,8 @@ endif
 ifeq ($(config),debug_native)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/native/Debug
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/native/Debug/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/native/Debug/yaml-cpp
   DEFINES += -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -76,10 +76,10 @@ ifeq ($(config),debug_native)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/native/Debug/libbundle.a ../../../bin/linux/gmake/native/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/native/Debug/libbundle.a ../../../bin/linux/gmake/native/Debug/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS)
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -94,8 +94,8 @@ endif
 ifeq ($(config),release_x32)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/x32/Release
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/x32/Release/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/x32/Release/yaml-cpp
   DEFINES +=
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -103,10 +103,10 @@ ifeq ($(config),release_x32)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m32 -O2 -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/x32/Release/libbundle.a ../../../bin/linux/gmake/x32/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/x32/Release/libbundle.a ../../../bin/linux/gmake/x32/Release/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -s -m32
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -121,8 +121,8 @@ endif
 ifeq ($(config),release_x64)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/x64/Release
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/x64/Release/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/x64/Release/yaml-cpp
   DEFINES +=
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -130,10 +130,10 @@ ifeq ($(config),release_x64)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/x64/Release/libbundle.a ../../../bin/linux/gmake/x64/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/x64/Release/libbundle.a ../../../bin/linux/gmake/x64/Release/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -s -m64
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -148,8 +148,8 @@ endif
 ifeq ($(config),release_native)
   RESCOMP = windres
   TARGETDIR = ../../../bin/linux/gmake/native/Release
-  TARGET = $(TARGETDIR)/ris-acceptance-test
-  OBJDIR = ../../../obj/linux/gmake/native/Release/ris-acceptance-test
+  TARGET = $(TARGETDIR)/libyaml-cpp.a
+  OBJDIR = ../../../obj/linux/gmake/native/Release/yaml-cpp
   DEFINES +=
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include
   FORCE_INCLUDE +=
@@ -157,10 +157,10 @@ ifeq ($(config),release_native)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++11
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CFLAGS)
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../../../bin/linux/gmake/native/Release/libbundle.a ../../../bin/linux/gmake/native/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -ldl -lpthread
-  LDDEPS += ../../../bin/linux/gmake/native/Release/libbundle.a ../../../bin/linux/gmake/native/Release/libyaml-cpp.a
+  LIBS +=
+  LDDEPS +=
   ALL_LDFLAGS += $(LDFLAGS) -s
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -173,9 +173,6 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/acceptance_test.o \
-	$(OBJDIR)/resource.o \
-	$(OBJDIR)/test.o \
 
 RESOURCES := \
 
@@ -190,7 +187,7 @@ ifeq (/bin,$(findstring /bin,$(SHELL)))
 endif
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES) ${CUSTOMFILES}
-	@echo Linking ris-acceptance-test
+	@echo Linking yaml-cpp
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -211,7 +208,7 @@ else
 endif
 
 clean:
-	@echo Cleaning ris-acceptance-test
+	@echo Cleaning yaml-cpp
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -233,15 +230,6 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) -x c++-header $(ALL_CXXFLAGS) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
 endif
 
-$(OBJDIR)/acceptance_test.o: ../../../acceptance_test/acceptance_test.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/resource.o: ../../../acceptance_test/resource.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
-$(OBJDIR)/test.o: ../../../acceptance_test/test.cpp
-	@echo $(notdir $<)
-	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
