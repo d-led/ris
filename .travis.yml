@@ -8,7 +8,7 @@ addons:
       - boost-latest
       - ubuntu-toolchain-r-test
     packages:
-#      - g++-5
+      - g++-5
       - libboost1.55-all-dev
       - liblua5.1-0
       - lua5.1
