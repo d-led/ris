@@ -30,7 +30,7 @@ resources:
 
   -
     name: "multiline_example"
-    source: |
+    source: |-
       these are
       
       three lines

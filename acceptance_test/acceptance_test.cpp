@@ -59,10 +59,9 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
             INFO(res.name);
             CHECK(reference_data == resource_data);
 
-            SECTION("yaml should work the same way") {
-                auto yreference_data = ris::resource_loader(yres[res.name], test_data.generic_string()).get();
-                CHECK(reference_data == yreference_data);
-            }
+            // test.yml should have the same data
+            auto yreference_data = ris::resource_loader(yres[res.name], test_data.generic_string()).get();
+            CHECK(reference_data == yreference_data);
         }
     }
 }
