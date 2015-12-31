@@ -32,7 +32,7 @@ namespace ris {
 
             std::ifstream file(full_filename, std::ios::binary);
             if (!file)
-                throw std::runtime_error(std::string("cannot open " + full_filename));
+                throw std::runtime_error(std::string("cannot open ") + full_filename);
 
             return std::string(std::istreambuf_iterator<char>(file),
                 std::istreambuf_iterator<char>());
