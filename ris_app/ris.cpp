@@ -23,7 +23,22 @@ void print_usage() {
         << "https://github.com/d-led/ris" << std::endl
         << "USAGE:" << std::endl
         << "       ris <path_to>/<resources>.[json/yml/yaml] [<template_overrides>.[json/yml/yaml]]" << std::endl
-        << "Available algorithms: " << ris::bundle_compression().available_algorithms() << std::endl;
+        << "Available algorithms: " << ris::bundle_compression().available_algorithms() << std::endl
+        << "Minimal YAML resource file:"
+        <<
+R"(
+#------------------------
+header: "res.h"
+source: "res.cpp"
+
+resources:
+  -
+    compression: "LZ4F"
+    name: "some_text"
+    source: "some text"
+    source_type: "string"
+#------------------------
+)" << std::endl
         ;
 }
 
