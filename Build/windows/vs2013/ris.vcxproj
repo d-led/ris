@@ -148,6 +148,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\deps\Catch\single_include;..\..\..\deps\picojson;..\..\..\deps\picojson_serializer;..\..\..\deps\bundle;..\..\..\deps\yaml-cpp\include;D:\Software\boost\boost_1_56_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
@@ -167,6 +168,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\deps\Catch\single_include;..\..\..\deps\picojson;..\..\..\deps\picojson_serializer;..\..\..\deps\bundle;..\..\..\deps\yaml-cpp\include;D:\Software\boost\boost_1_56_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
@@ -186,6 +188,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\..\deps\Catch\single_include;..\..\..\deps\picojson;..\..\..\deps\picojson_serializer;..\..\..\deps\bundle;..\..\..\deps\yaml-cpp\include;D:\Software\boost\boost_1_56_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
@@ -273,10 +276,10 @@
     <ClInclude Include="..\..\..\ris_lib\ris_json_resources.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_late.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_late_context.h" />
-    <ClInclude Include="..\..\..\ris_lib\ris_resources_from_file.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resource_loader.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resource_snapshot.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_resources.h" />
+    <ClInclude Include="..\..\..\ris_lib\ris_resources_from_file.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_writing_files.h" />
     <ClInclude Include="..\..\..\ris_lib\ris_yaml_resources.h" />
     <ClInclude Include="..\..\..\ris_lib\template.h" />
@@ -287,8 +290,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\ris_lib\template.json" />
+    <None Include="..\..\..\ris_lib\template.yml" />
     <None Include="..\..\..\ris_lib\template_cpp03.json" />
+    <None Include="..\..\..\ris_lib\template_cpp03.yml" />
     <None Include="..\..\..\ris_lib\template_throwing.json" />
+    <None Include="..\..\..\ris_lib\template_throwing.yml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bundle.vcxproj">

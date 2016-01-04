@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="ris_app">
@@ -12,10 +12,19 @@
     <None Include="..\..\..\ris_lib\template.json">
       <Filter>ris_lib</Filter>
     </None>
+    <None Include="..\..\..\ris_lib\template.yml">
+      <Filter>ris_lib</Filter>
+    </None>
     <None Include="..\..\..\ris_lib\template_cpp03.json">
       <Filter>ris_lib</Filter>
     </None>
+    <None Include="..\..\..\ris_lib\template_cpp03.yml">
+      <Filter>ris_lib</Filter>
+    </None>
     <None Include="..\..\..\ris_lib\template_throwing.json">
+      <Filter>ris_lib</Filter>
+    </None>
+    <None Include="..\..\..\ris_lib\template_throwing.yml">
       <Filter>ris_lib</Filter>
     </None>
   </ItemGroup>
@@ -44,6 +53,9 @@
     <ClInclude Include="..\..\..\ris_lib\ris_resources.h">
       <Filter>ris_lib</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\ris_lib\ris_resources_from_file.h">
+      <Filter>ris_lib</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\ris_lib\ris_writing_files.h">
       <Filter>ris_lib</Filter>
     </ClInclude>
@@ -51,9 +63,6 @@
       <Filter>ris_lib</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\ris_lib\template.h">
-      <Filter>ris_lib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\ris_lib\ris_resources_from_file.h">
       <Filter>ris_lib</Filter>
     </ClInclude>
   </ItemGroup>
