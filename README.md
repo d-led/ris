@@ -95,10 +95,10 @@ The compression algorithm enums as strings can be used in the resource definitio
 
 ```json
 {
-    "name" : "itself_packed_lz4hc",
+    "name" : "itself_packed_lz4",
     "source_type" : "file",
     "source": "test.json",
-    "compression" : "LZ4HC"
+    "compression" : "LZ4F"
 }
 ```
 
