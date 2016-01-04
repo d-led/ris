@@ -22,8 +22,8 @@ void print_usage() {
         << "a simple resource compiler for c++" << std::endl
         << "https://github.com/d-led/ris" << std::endl
         << "USAGE:" << std::endl
-        << "       ris <path_to>/<resources>.[json/yml/yaml] [<template_overrides>.[json/yml/yaml]]" << std::endl
-        << "Available algorithms: " << ris::bundle_compression().available_algorithms() << std::endl
+        << "       ris <path_to>/<resources>.[json/yml/yaml] [<template_overrides>.[json/yml/yaml]]" << std::endl << std::endl
+        << "Available algorithms: " << ris::bundle_compression().available_algorithms() << std::endl << std::endl
         << "Minimal YAML resource file:"
         <<
 R"(
