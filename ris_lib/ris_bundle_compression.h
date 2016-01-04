@@ -29,19 +29,19 @@ namespace ris {
                 { "ZSTDF", bundle::ZSTDF },
                 { "BCM", bundle::BCM },
                 { "ZLING", bundle::ZLING },
-                //{ "MCM", bundle::MCM },
-                //{ "TANGELO", bundle::TANGELO },
+                //{ "MCM", bundle::MCM }, //gpl
+                //{ "TANGELO", bundle::TANGELO }, //gpl
                 { "ZMOLLY", bundle::ZMOLLY },
                 { "CRUSH", bundle::CRUSH },
                 { "LZJB", bundle::LZJB },
         })
         {}
     public:
-        bool is_legal(std::string const& key) const {
+        inline bool is_legal(std::string const& key) const {
             return compression_algos.find(key) != compression_algos.end();
         }
 
-        unsigned int get(std::string const& key) const {
+        inline unsigned int get(std::string const& key) const {
             auto it = compression_algos.find(key);
             if (it != compression_algos.end())
                 return it->second;
@@ -50,8 +50,19 @@ namespace ris {
             // return bundle::NONE;
         }
 
-        std::string pack(std::string const& key, std::string const& data) {
+        inline std::string pack(std::string const& key, std::string const& data) {
             return bundle::pack(this->get(key), data);
+        }
+
+        inline std::string available_algorithms() const {
+            std::string res;
+            const std::string comma(", "), empty;
+            bool first = true;
+            for (auto& kv : compression_algos) {
+                res += (first ? empty : comma) + kv.first;
+                first = false;
+            }
+            return res;
         }
     };
 }
