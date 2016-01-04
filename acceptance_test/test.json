@@ -19,7 +19,7 @@
          "source_type": "file"
       },
       {
-         "compression": "LZ4HC",
+         "compression": "LZ4F",
          "name": "itself_packed_lz4",
          "source": "test.json",
          "source_type": "file"
