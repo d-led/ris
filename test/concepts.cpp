@@ -54,7 +54,7 @@ namespace {
 
     std::string Resource::Compressed() {
         static char const literal[] = "some plain text, some plain text"; // will be compressed
-        std::string packed = bundle::pack(bundle::LZ4HC, std::string(literal));
+        std::string packed = bundle::pack(bundle::LZ4F, std::string(literal));
         return Unpack({ packed });
     }
 

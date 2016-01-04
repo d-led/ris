@@ -11,14 +11,29 @@ namespace ris {
     public:
         bundle_compression() : 
             compression_algos({
-                { "LZ4", bundle::LZ4 },
-                { "LZ4HC", bundle::LZ4HC },
+                { "RAW", bundle::RAW },
                 { "SHOCO", bundle::SHOCO },
+                { "LZ4F", bundle::LZ4F },
                 { "MINIZ", bundle::MINIZ },
                 { "LZIP", bundle::LZIP },
-                { "LZMA", bundle::LZMA },
+                { "LZMA20", bundle::LZMA20 },
                 { "ZPAQ", bundle::ZPAQ },
-                { "BROTLI", bundle::BROTLI },
+                { "LZ4", bundle::LZ4 },
+                { "BROTLI9", bundle::BROTLI9 },
+                { "ZSTD", bundle::ZSTD },
+                { "LZMA25", bundle::LZMA25 },
+                { "BSC", bundle::BSC },
+                { "BROTLI11", bundle::BROTLI11 },
+                { "SHRINKER", bundle::SHRINKER },
+                { "CSC20", bundle::CSC20 },
+                { "ZSTDF", bundle::ZSTDF },
+                { "BCM", bundle::BCM },
+                { "ZLING", bundle::ZLING },
+                { "MCM", bundle::MCM },
+                { "TANGELO", bundle::TANGELO },
+                { "ZMOLLY", bundle::ZMOLLY },
+                { "CRUSH", bundle::CRUSH },
+                { "LZJB", bundle::LZJB },
         })
         {}
     public:
