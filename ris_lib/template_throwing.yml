@@ -1,12 +1,12 @@
---- 
-resources: 
-  - 
+---
+resources:
+  -
     name: header_includes
     source: |
         #include <string>
         #include <stdexcept>
     source_type: string
-  - 
+  -
     name: header_on_no_key
     source: |
         public:

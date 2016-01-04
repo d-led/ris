@@ -41,7 +41,7 @@ resources:
         {{optional_compression_header}}namespace {{namespace_name}} {
         {{source_definitions}}
         namespace internal {
-        struct dict { std::string key; Resource::ResourceGetter getter; };
+        struct dict { std::string key; {{class_name}}::ResourceGetter getter; };
         struct key_is : std::unary_function<internal::dict const&,bool> {
             std::string seeking;
         public:
@@ -51,7 +51,7 @@ resources:
             }
         };
         }
-        std::string Resource::Get(std::string const& key) {
+        std::string {{class_name}}::Get(std::string const& key) {
             static internal::dict getters[] = {
         {{source_getters}}    };
             internal::dict* end = getters+sizeof(getters)/sizeof(internal::dict);

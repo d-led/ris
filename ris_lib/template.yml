@@ -56,7 +56,7 @@ resources:
         {{source_default_include}}
         {{source_includes}}
         {{optional_compression_header}}namespace {{namespace_name}} {
-        {{source_definitions}}std::string Resource::Get(std::string const& key) {
+        {{source_definitions}}std::string {{class_name}}::Get(std::string const& key) {
             static std::unordered_map<std::string,ResourceGetter> getters = {
         {{source_getters}}    };
             auto getter = getters.find(key);
@@ -73,7 +73,7 @@ resources:
   - 
     name: source_single_definition
     source: |
-        std::string Resource::{{resource_member_name}}() {
+        std::string {{class_name}}::{{resource_member_name}}() {
             static char const literal[] = {{{source_literal_bytes}}
             };
         {{source_return_literal}}

@@ -35,7 +35,7 @@
       },
       {
          "name" : "source",
-         "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\n{{optional_compression_header}}namespace {{namespace_name}} {\n{{source_definitions}}std::string Resource::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n{{source_getters}}    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n}\n",
+         "source" : "{{source_preamble}}\n{{source_default_include}}\n{{source_includes}}\n{{optional_compression_header}}namespace {{namespace_name}} {\n{{source_definitions}}std::string {{class_name}}::Get(std::string const& key) {\n    static std::unordered_map<std::string,ResourceGetter> getters = {\n{{source_getters}}    };\n    auto getter = getters.find(key);\n    if (getter == getters.end())\n         return OnNoKey(key);\n    return getter->second();\n}\n}\n",
          "source_type" : "string"
       },
       {
@@ -45,7 +45,7 @@
       },
       {
          "name" : "source_single_definition",
-         "source" : "std::string Resource::{{resource_member_name}}() {\n    static char const literal[] = {{{source_literal_bytes}}\n    };\n{{source_return_literal}}\n}\n",
+         "source" : "std::string {{class_name}}::{{resource_member_name}}() {\n    static char const literal[] = {{{source_literal_bytes}}\n    };\n{{source_return_literal}}\n}\n",
          "source_type" : "string"
       },
       {

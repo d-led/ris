@@ -31,6 +31,7 @@ R"(
 header: "res.h"
 source: "res.cpp"
 namespace: "res"
+class: "data"
 
 resources:
   -
