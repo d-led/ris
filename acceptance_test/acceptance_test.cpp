@@ -40,7 +40,7 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
     REQUIRE(resources.size() > 0);
 
     std::vector<std::string> keys;
-    test::Resource::GetKeys([&keys](const char* key){
+    test::res::GetKeys([&keys](const char* key){
         keys.emplace_back(key);
     });
 
@@ -55,7 +55,7 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
     SECTION("resource fidelity") {
         for (auto& res : resources) {
             auto reference_data = ris::resource_loader(res,test_data.generic_string()).get();
-            auto resource_data = test::Resource::Get(res.name);
+            auto resource_data = test::res::Get(res.name);
             INFO(res.name);
             CHECK(reference_data == resource_data);
 
@@ -67,7 +67,7 @@ TEST_CASE_METHOD(fixture,"loading the resource") {
 }
 
 TEST_CASE("custom member names") {
-    auto res = test::Resource::custom_member_name();
+    auto res = test::res::custom_member_name();
     CHECK(!res.empty());
-    CHECK(res == test::Resource::Get("custom.member/name"));
+    CHECK(res == test::res::Get("custom.member/name"));
 }

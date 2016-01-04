@@ -2,7 +2,7 @@ header: "acceptance_test/resource.h"
 
 namespace: "test"
 
-class: "Resource"
+class: "res"
 
 resources: 
   - 

@@ -4,7 +4,7 @@
 #include <string>
 
 namespace test {
-class Resource /*final*/ {
+class res /*final*/ {
 public:
     static std::string string_test();
     static std::string binary_file_test();
