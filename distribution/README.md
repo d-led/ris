@@ -43,9 +43,9 @@ The definition can also be written in a more multi-line friendly [YAML](http://y
 
 ### output ###
 
-Two c++11 files ([.h](acceptance_test/resource.h) and [.cpp](acceptance_test/resource.h)) containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources. 
+Two c++11 files ([.h](acceptance_test/resource.h) and [.cpp](acceptance_test/resource.h)) containing the resources as string constants will be generated if everything is ok. These can be compiled along with your project and used to retrieve string resources.
 
-Strings are single-byte `char`s and are treated agnostically with respect to their meaning/encoding. 
+Strings are single-byte `char`s and are treated agnostically with respect to their meaning/encoding.
 
 ### getters ###
 
@@ -158,7 +158,7 @@ To rebuild `ris` from scratch, the following dependencies are needed:
 - [picojson_serializer](https://github.com/d-led/picojson_serializer) json serialization wrappers for fast prototyping
 - [yaml-cpp](https://github.com/jbeder/yaml-cpp) YAML parsing
 - [bundle](https://github.com/r-lyeh/bundle), compression
- 
+
 alternatives
 ------------
 
@@ -171,3 +171,5 @@ license
 - [MIT License](LICENSE)
 - Generated code is not licensed
 - Dependencies retain their respective licenses
+ - Licenses of the compression algorithms bundled in [bundle](https://github.com/r-lyeh/bundle) can be viewed in bundle's readme
+ - The available algorithms are displayed upon running ris without arguments
