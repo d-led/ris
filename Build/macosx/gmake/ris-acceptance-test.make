@@ -15,7 +15,7 @@ ifeq ($(config),debug_x32)
   TARGETDIR = ../../../bin/macosx/gmake/x32/Debug
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/x32/Debug/ris-acceptance-test
-  DEFINES += -D_DEBUG
+  DEFINES += -DBUNDLE_NO_GPL -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -25,7 +25,7 @@ ifeq ($(config),debug_x32)
   LIBS += ../../../bin/macosx/gmake/x32/Debug/libbundle.a ../../../bin/macosx/gmake/x32/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x32/Debug/libbundle.a ../../../bin/macosx/gmake/x32/Debug/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -L/usr/local/lib -m32
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -42,7 +42,7 @@ ifeq ($(config),debug_x64)
   TARGETDIR = ../../../bin/macosx/gmake/x64/Debug
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/x64/Debug/ris-acceptance-test
-  DEFINES += -D_DEBUG
+  DEFINES += -DBUNDLE_NO_GPL -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -52,7 +52,7 @@ ifeq ($(config),debug_x64)
   LIBS += ../../../bin/macosx/gmake/x64/Debug/libbundle.a ../../../bin/macosx/gmake/x64/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x64/Debug/libbundle.a ../../../bin/macosx/gmake/x64/Debug/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -L/usr/local/lib -m64
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -69,7 +69,7 @@ ifeq ($(config),debug_native)
   TARGETDIR = ../../../bin/macosx/gmake/native/Debug
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/native/Debug/ris-acceptance-test
-  DEFINES += -D_DEBUG
+  DEFINES += -DBUNDLE_NO_GPL -D_DEBUG
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -79,7 +79,7 @@ ifeq ($(config),debug_native)
   LIBS += ../../../bin/macosx/gmake/native/Debug/libbundle.a ../../../bin/macosx/gmake/native/Debug/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/native/Debug/libbundle.a ../../../bin/macosx/gmake/native/Debug/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/local/lib
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -96,7 +96,7 @@ ifeq ($(config),release_x32)
   TARGETDIR = ../../../bin/macosx/gmake/x32/Release
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/x32/Release/ris-acceptance-test
-  DEFINES +=
+  DEFINES += -DBUNDLE_NO_GPL
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -106,7 +106,7 @@ ifeq ($(config),release_x32)
   LIBS += ../../../bin/macosx/gmake/x32/Release/libbundle.a ../../../bin/macosx/gmake/x32/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x32/Release/libbundle.a ../../../bin/macosx/gmake/x32/Release/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib32 -L/usr/local/lib -m32
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -123,7 +123,7 @@ ifeq ($(config),release_x64)
   TARGETDIR = ../../../bin/macosx/gmake/x64/Release
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/x64/Release/ris-acceptance-test
-  DEFINES +=
+  DEFINES += -DBUNDLE_NO_GPL
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -133,7 +133,7 @@ ifeq ($(config),release_x64)
   LIBS += ../../../bin/macosx/gmake/x64/Release/libbundle.a ../../../bin/macosx/gmake/x64/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/x64/Release/libbundle.a ../../../bin/macosx/gmake/x64/Release/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -L/usr/local/lib -m64
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -150,7 +150,7 @@ ifeq ($(config),release_native)
   TARGETDIR = ../../../bin/macosx/gmake/native/Release
   TARGET = $(TARGETDIR)/ris-acceptance-test
   OBJDIR = ../../../obj/macosx/gmake/native/Release/ris-acceptance-test
-  DEFINES +=
+  DEFINES += -DBUNDLE_NO_GPL
   INCLUDES += -I../../../deps/Catch/single_include -I../../../deps/picojson -I../../../deps/picojson_serializer -I../../../deps/bundle -I../../../deps/yaml-cpp/include -I/usr/local/include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
@@ -160,7 +160,7 @@ ifeq ($(config),release_native)
   LIBS += ../../../bin/macosx/gmake/native/Release/libbundle.a ../../../bin/macosx/gmake/native/Release/libyaml-cpp.a -lboost_system -lboost_filesystem -lboost_regex -lc++
   LDDEPS += ../../../bin/macosx/gmake/native/Release/libbundle.a ../../../bin/macosx/gmake/native/Release/libyaml-cpp.a
   ALL_LDFLAGS += $(LDFLAGS) -L/usr/local/lib
-  LINKCMD = $(CXX) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+  LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
