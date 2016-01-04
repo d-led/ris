@@ -23,6 +23,10 @@ end
 
 make_solution 'ris'
 
+defines {
+	'BUNDLE_NO_GPL'
+}
+
 platforms 'native'
 
 includedirs {
@@ -85,7 +89,7 @@ function get_uname()
 	if os.get then
 		return os.get()
 	end
-	
+
 	local uname = exec 'uname'
 	uname = uname or 'windows'
 	uname = uname:lower():gsub("^%s*(.-)%s*$", "%1") --trimmed--
