@@ -30,10 +30,11 @@ R"(
 #------------------------
 header: "res.h"
 source: "res.cpp"
+namespace: "res"
 
 resources:
   -
-    compression: "LZ4F"
+    #compression: "LZ4F" #compression needs including and linking to https://github.com/r-lyeh/bundle
     name: "some_text"
     source: "some text"
     source_type: "string"
