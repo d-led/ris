@@ -129,7 +129,7 @@ c++03
 A `C++03` override template is provided: [template_cpp03.json](ris_lib/template_cpp03.json) with a linear search instead of an `unordered_map` for the key/value API. Use it for example like
 
 ```
-ris my_template.json template_cpp03.json
+ris resources.json template_cpp03.json
 ```
 
 now and then
