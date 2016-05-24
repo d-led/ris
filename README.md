@@ -162,7 +162,8 @@ To rebuild `ris` from scratch, the following dependencies are needed:
 alternatives
 ------------
 
- - [incbin](https://github.com/graphitemaster/incbin)
+ - [incbin 1](https://github.com/rmitton/incbin)
+ - [incbin 2](https://github.com/graphitemaster/incbin)
 
 license
 =======
