@@ -164,6 +164,7 @@ alternatives
 
  - [incbin 1](https://github.com/rmitton/incbin)
  - [incbin 2](https://github.com/graphitemaster/incbin)
+ - [cembed](https://github.com/rxi/cembed)
 
 license
 =======
