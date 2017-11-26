@@ -7,6 +7,8 @@ ris
 
 **ris** allows embedding (potentially compressed) blobs of data into executables, which can be queried at runtime
 
+Go implementation: [risgo](https://github.com/d-led/risgo)
+
 usage
 -----
 
